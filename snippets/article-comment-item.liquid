@@ -1,0 +1,12 @@
+{%- capture comment_author -%}
+  <strong><span data-i18n='{% render 'translationData' with  comment.author  %}'>{% render 'translationText' with  comment.author  %}</span></strong>
+{%- endcapture -%}
+{% assign comment_date = comment.created_at | date: format: 'month_day_year' %}
+<blockquote class="article--comments-item">
+  <cite>
+    <span data-i18n='blog.comments.author_html || {"author":"{{ comment_author | replace: "||", "^^" | replace: "'", "&apos;" }}"," date":"{{ comment_date | replace: "||", "^^" | replace: "'", "&apos;" }}"}'>{{ 'blog.comments.author_html' | t: author: comment_author, date: comment_date }}</span>
+  </cite>
+  <div class="rte">
+    <span data-i18n='{% render 'translationData' with  comment.content  %}'>{% render 'translationText' with  comment.content  %}</span>
+  </div>
+</blockquote>

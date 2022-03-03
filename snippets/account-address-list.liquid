@@ -1,0 +1,25 @@
+{% comment %}
+  @param address {Object}
+    Object containing address items
+{% endcomment %}
+
+<ul class="account-address-list">
+  <li><span data-i18n='{% render 'translationData' with  address.first_name  %}'>{% render 'translationText' with  address.first_name  %}</span> <span data-i18n='{% render 'translationData' with  address.last_name  %}'>{% render 'translationText' with  address.last_name  %}</span></li>
+  {% if address.company != blank %}
+    <li><span data-i18n='{% render 'translationData' with  address.company  %}'>{% render 'translationText' with  address.company  %}</span></li>
+  {% endif %}
+  {% if address.street != blank %}
+    <li><span data-i18n='{% render 'translationData' with  address.street  %}'>{% render 'translationText' with  address.street  %}</span></li>
+  {% endif %}
+  {% if address.city != blank or address.province_code != blank %}
+    <li>
+      <span data-i18n='{% render 'translationData' with  address.city  %}'>{% render 'translationText' with  address.city  %}</span>{% if address.province_code %}, <span data-i18n='{% render 'translationData' with  address.province_code  %}'>{% render 'translationText' with  address.province_code  %}</span>{% endif %}
+    </li>
+  {% endif %}
+  {% if address.country != blank or address.zip != blank %}
+    <li>{{ address.country }} <span data-i18n='{% render 'translationData' with  address.zip  %}'>{% render 'translationText' with  address.zip  %}</span></li>
+  {% endif %}
+  {% if address.phone != blank %}
+    <li><span data-i18n='{% render 'translationData' with  address.phone  %}'>{% render 'translationText' with  address.phone  %}</span></li>
+  {% endif %}
+</ul>

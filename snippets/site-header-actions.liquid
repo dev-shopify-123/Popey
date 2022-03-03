@@ -1,0 +1,26 @@
+<ul class="site-header-actions navmenu-depth-1" data-header-actions>
+  
+
+  {% if settings.enable_currency_converter %}
+    <li class="currency-converter-wrapper">
+      <div class="form-field-select-wrapper no-label">
+        <select
+          class="form-field-input form-field-select"
+          name="currencies"
+          aria-label="{{ 'header.converter.label' | t }}"
+          data-currency-converter>
+          {% assign supported_currencies = 'AED|ALL|AMD|ANG|AOA|ARS|AUD|AWG|AZN|BAM|BBD|BDT|BGN|BHD|BND|BOB|BRL|BSD|BTN|BWP|BYR|BZD|CAD|CHF|CLP|CNY|COP|CRC|CZK|DKK|DOP|DZD|EGP|ETB|EUR|FJD|GBP|GEL|GHS|GMD|GTQ|GYD|HKD|HNL|HRK|HUF|IDR|ILS|INR|ISK|JEP|JMD|JOD|JPY|KES|KGS|KHR|KRW|KWD|KYD|KZT|LBP|LKR|LTL|LVL|MAD|MDL|MGA|MKD|MMK|MNT|MOP|MUR|MVR|MXN|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PEN|PGK|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|RWF|SAR|SCR|SEK|SGD|STD|SYP|THB|TND|TRY|TTD|TWD|TZS|UAH|UGX|USD|UYU|VEF|VND|VUV|WST|XAF|XBT|XCD|XOF|XPF|ZAR|ZMW' %}
+          {% assign store_currencies = settings.currency_converter_currencies | split: ' ' %}
+          {%- assign translation0 =  shop.currency  | split: "z" -%}{%- assign langs = settings.lang_list | split: "," -%}{%- capture translationContent -%}{%- for lang in langs -%}{%- if translation0[forloop.index0] != blank -%}{{ translation0[forloop.index0]  }}{% else %}{{ translation0[0]  }}{%- endif -%}{%- unless forloop.last -%}||{%- endunless -%}{%- endfor -%}{%- endcapture -%}<option value="{{ shop.currency }}" selected="selected" data-i18n='{% render 'translationData' with translationContent, notHtml: true %}'>{% render 'translationText' with translationContent %}</option>
+          {% for code in store_currencies %}
+            {% if code != shop.currency and supported_currencies contains code %}
+              {%- assign translation0 =  code  | split: "z" -%}{%- assign langs = settings.lang_list | split: "," -%}{%- capture translationContent -%}{%- for lang in langs -%}{%- if translation0[forloop.index0] != blank -%}{{ translation0[forloop.index0]  }}{% else %}{{ translation0[0]  }}{%- endif -%}{%- unless forloop.last -%}||{%- endunless -%}{%- endfor -%}{%- endcapture -%}<option value="{{ code }}" data-i18n='{% render 'translationData' with translationContent, notHtml: true %}'>{% render 'translationText' with translationContent %}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+        {% include 'icon-chevron-down-small' %}
+      </div>
+    </li>
+  {% endif %}
+  <li class="store-locator-nav"><a href="/apps/store-locator/">{% render 'icon-pin' %} <span data-i18n='header.locator'>{{ 'header.locator' | t }}</span></a></li>
+</ul>

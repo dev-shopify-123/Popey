@@ -1,0 +1,116 @@
+{% comment %}
+  This is the main menu for the theme
+
+  @param menu LinkedList
+    The menu handle to look up.
+
+  @param blocks Array
+    Array of blocks possibly containing meganav information
+
+{% endcomment %}
+
+{% assign menu_list = linklists[menu].links %}
+{% assign menu_title = linklists[menu].title %}
+
+<ul
+  class="navmenu navmenu-depth-1"
+  data-navmenu
+  {% if menu_title %}aria-label="{{ menu_title }}"{% endif %}
+>
+  {% if side_menu != blank %}
+    {% include 'nav-side-menu', menu: linklists[side_menu].links %}
+  {% endif %}
+
+  {% for menu_item in menu_list %}
+    {% assign show_subnav = true %}
+    {% if linklists[menu_item.handle] == blank %}
+      {% assign show_subnav = false %}
+    {% endif %}
+
+    {% assign show_meganav = false %}
+    {% assign show_multi_column = false %}
+    {% assign shopify_attributes = null %}
+    {% assign meganav_block = null %}
+    {% if blocks.size > 0 %}
+      {% for block in blocks %}
+        {% if block.type == 'meganav_images' %}
+          {% assign meganav_trigger = block.settings.meganav_trigger | handle | strip %}
+        {% elsif block.type == 'multi_column_menu' %}
+          {% assign meganav_trigger = block.settings.menu_trigger | handle | strip %}
+        {% endif %}
+
+        {% if menu_item.handle == meganav_trigger and menu_item.links.size > 0 %}
+          {% assign show_meganav = true %}
+          {% assign shopify_attributes = block.shopify_attributes %}
+          {% assign meganav_block = block %}
+          {% if block.type == 'multi_column_menu' %}
+            {% assign show_multi_column = true %}
+          {% endif %}
+        {% elsif menu_item.title == meganav_trigger %}
+          {% assign meganav_block = block %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {%- capture navmenu_item_classes -%}
+      navmenu-item
+      {% if show_subnav %}navmenu-item-parent{% endif %}
+      navmenu-id-{{ menu_item.handle }}
+      {% if show_meganav %}navmenu-meganav-item-parent{% endif %}
+    {%- endcapture -%}
+
+    <li
+      class="{{ navmenu_item_classes | strip_newlines }}"
+      {% if show_meganav %}data-navmenu-meganav-trigger{% endif %}
+      {% if show_subnav %}data-navmenu-parent{% endif %}
+      {{ shopify_attributes }}
+    >
+      <a
+        class="navmenu-link {% if show_subnav %}navmenu-link-parent{% endif %} {% if menu_item.active %}navmenu-link-active{% endif %}"
+         {% if menu_item.url contains 'https' %} data-i18n='{% render 'translationData' with  menu_item.url, attr: "href", split_character: "~~"  %}'{% endif %}
+        href="{% if menu_item.url contains 'https' %}{% render 'translationText' with  menu_item.url, split_character: "~~" %}{% else %}{{ menu_item.url }}{% endif %}"
+        {% if show_subnav %}
+          aria-haspopup="true"
+          aria-expanded="false"
+        {% endif %}
+      >
+        <span data-i18n='{% render 'translationData' with  menu_item.title, split_character: "||"  %}'>{% render 'translationText' with  menu_item.title, split_character: "||"  %}</span>
+        {% if show_subnav %}
+          <span
+            class="navmenu-icon navmenu-icon-depth-1"
+            data-navmenu-trigger
+          >
+            {% include 'icon-chevron-down-small' %}
+          </span>
+        {% endif %}
+      </a>
+
+      {% if show_meganav %}
+        {% if show_multi_column %}
+          {%
+            include 'multi-column-menu',
+            menu: menu_item,
+            block: meganav_block,
+          %}
+        {% else %}
+          {%
+            include 'meganav',
+            menu: menu_item,
+            block: meganav_block,
+          %}
+        {% endif %}
+      {% elsif show_subnav %}
+        {%
+          include 'navlist',
+          menu: linklists[menu_item.handle],
+          menu_list: linklists[menu_item.handle].links,
+          depth: 2,
+          max_depth: 3,
+          show_arrows: true,
+          aria_expanded: false,
+          is_mobile: false,
+        %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

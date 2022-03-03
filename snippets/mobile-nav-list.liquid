@@ -1,0 +1,99 @@
+{% comment %}
+  This is the nav list for the mobile menu.
+
+  @param menu LinkedList
+    The menu handle to look up.
+
+  @param blocks Array
+    Array of blocks possibly containing meganav information
+
+{% endcomment %}
+
+<ul
+  class="navmenu navmenu-depth-1"
+  data-navmenu
+  {% if menu_title %}aria-label="{{ menu_title }}"{% endif %}
+>
+  {% for menu_item in menu_list %}
+    {% assign show_subnav = true %}
+    {% if linklists[menu_item.handle] == blank %}
+      {% assign show_subnav = false %}
+    {% endif %}
+
+    {% assign meganav_block = null %}
+    {% assign meganav_trigger = null %}
+    {% if blocks.size > 0 %}
+      {% for block in blocks %}
+        {% if block.type == 'meganav_images' %}
+          {% assign meganav_trigger = block.settings.meganav_trigger | handle | strip %}
+        {% endif %}
+
+        {% if menu_item.handle == meganav_trigger and menu_item.links.size > 0 %}
+          {% assign meganav_block = block %}
+        {% elsif menu_item.title == meganav_trigger %}
+          {% assign meganav_block = block %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {%- capture navmenu_item_classes -%}
+      navmenu-item
+      {% if show_subnav %}navmenu-item-parent{% endif %}
+      navmenu-id-{{ menu_item.handle }}
+    {%- endcapture -%}
+
+    <li
+      class="{{ navmenu_item_classes | strip_newlines }}"
+      {% if show_subnav %}data-navmenu-parent{% endif %}
+    >
+      <a
+        class="navmenu-link {% if show_subnav %}navmenu-link-parent{% endif %} {% if menu_item.active %}navmenu-link-active{% endif %}"
+        href="{{ menu_item.url }}"
+        {% if show_subnav %}
+          aria-haspopup="true"
+          aria-expanded="false"
+        {% endif %}
+      >
+        <span data-i18n='{% render 'translationData' with  menu_item.title  %}'>{% render 'translationText' with  menu_item.title  %}</span>
+      </a>
+
+      {% if show_subnav %}
+        {%
+          include 'mobile-navmenu-button',
+          button_label: menu_item.title,
+        %}
+      {% endif %}
+
+      {% if meganav_block %}
+        <div class="navmenu-submenu navmenu-meganav" data-navmenu-submenu>
+        {%
+          include 'meganav-promo',
+          meganav_block: meganav_block,
+          position: 'first'
+        %}
+      {% endif %}
+
+      {% if show_subnav %}
+        {%
+          include 'navlist',
+          menu_list: linklists[menu_item.handle].links,
+          depth: 2,
+          max_depth: 3,
+          show_arrows: true,
+          aria_expanded: false,
+          is_mobile: true,
+        %}
+      {% endif %}
+
+      {% if meganav_block %}
+        {%
+          include 'meganav-promo',
+          meganav_block: meganav_block,
+          position: 'last'
+        %}
+        </div>
+      {% endif %}
+    </li>
+  {% endfor %}
+  <li class="store-locator-nav navmenu-item"><a class="navmenu-link" href="/apps/store-locator/"> <span data-i18n='header.locator'>{{ 'header.locator' | t }}</span>{% render 'icon-pin' %}</a></li>
+</ul>

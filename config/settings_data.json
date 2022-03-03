@@ -1,0 +1,3736 @@
+{
+  "current": {
+    "color_background": "#ffffff",
+    "color_headings": "#000000",
+    "color_text": "#000000",
+    "color_text_light": "#080808",
+    "color_links": "#000000",
+    "color_button_background": "#000000",
+    "color_button_text": "#ffffff",
+    "color_button_secondary_background": "rgba(0,0,0,0)",
+    "color_button_secondary_text": "#000000",
+    "color_button_secondary_border": "#ffffff",
+    "color_header_background": "#ffffff",
+    "color_header_text": "#ffffff",
+    "color_input_text": "#000000",
+    "color_input_background": "#ffffff",
+    "color_input_border": "#000000",
+    "color_product_sale_accent": "#ff0000",
+    "color_product_review_star": "#fdd991",
+    "color_footer_background": "#e5e5e5",
+    "color_footer_text": "#000000",
+    "color_overlay": "#000000",
+    "overlay_opacity": 0,
+    "type_size_base": 17,
+    "type_heading": "open_sans_i8",
+    "type_heading_size": "1",
+    "type_heading_capitalize": false,
+    "type_heading_spacing": 0,
+    "type_body": "open_sans_n4",
+    "type_menu": "open_sans_i8",
+    "type_menu_capitalize": true,
+    "type_menu_spacing": 0,
+    "type_button": "open_sans_n8",
+    "type_button_capitalize": false,
+    "type_button_spacing": 0,
+    "type_section": "open_sans_n8",
+    "type_section_capitalize": false,
+    "type_section_spacing": 1,
+    "layout_max_width": 1600,
+    "product_show_vendor": true,
+    "product_show_sku": false,
+    "product_option_style": "radio",
+    "product_sales_badge": true,
+    "product_sales_badge_style": "text",
+    "product_social_sharing": true,
+    "product_ratings_reviews": true,
+    "product_ratings_star_display": "all",
+    "product_grid_show_second_image": false,
+    "product_grid_emphasize_price": true,
+    "product_grid_image_style": "natural",
+    "product_grid_image_crop": false,
+    "product_grid_show_quickshop": "always",
+    "product_grid_show_atc": "always",
+    "quickshop_show_dcb": false,
+    "quickshop_product_cart_redirect": false,
+    "quickshop_gallery_aspect_ratio": "natural",
+    "quickshop_gallery_image_crop": false,
+    "quickshop_gallery_thumbnail_position": "below",
+    "quickshop_gallery_video_autoplay": true,
+    "quickshop_gallery_video_looping": true,
+    "quickshop_gallery_hover_zoom": "disabled",
+    "swatches_enable": true,
+    "swatches_swatch_trigger": "Color",
+    "swatches_shape": "circle",
+    "swatches_product_card_size": 16,
+    "swatches_product_page_size": 24,
+    "swatches_option_style": "color_swatch",
+    "swatches_custom_colors": "",
+    "social_default_image": "",
+    "social_facebook": "https:\/\/www.facebook.com\/popeyestoronto\/",
+    "social_twitter": "",
+    "social_pinterest": "",
+    "social_instagram": "https:\/\/www.instagram.com\/popeyes.the6ix\/",
+    "social_tumblr": "",
+    "social_vimeo": "",
+    "social_youtube": "",
+    "social_linkedin": "",
+    "social_email": "",
+    "favicon": "shopify:\/\/shop_images\/logo_en_dark-bkgd_264x150_5e6c29e4-606a-4efc-98a7-2699eaf9d96c.png",
+    "enable_currency_converter": false,
+    "currency_display_format": "money_with_currency_format",
+    "currency_converter_currencies": "CAD",
+    "currency_converter_default": "CAD",
+    "enable_checkout_lock_icon": false,
+    "continue_shopping_url": "shopify:\/\/collections\/all",
+    "continue_url_cart": true,
+    "continue_url_404": true,
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "right",
+    "checkout_logo_size": "large",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#ededed",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman'",
+    "checkout_accent_color": "#000000",
+    "checkout_button_color": "#000000",
+    "checkout_error_color": "#e32c2b",
+    "product_enable_recently_viewed_products": true,
+    "product_slideshow_style": "natural",
+    "gallery_thumbnail_position": "below",
+    "enable_image_zoom": false,
+    "image_zoom_level": "min",
+    "product_grid_quick_shop": true,
+    "product_grid_quick_buy": true,
+    "social_google": "",
+    "show_dcb": false,
+    "product_grid_quick_look": true,
+    "font_body": "Google_Cabin_400,400i,700,700i",
+    "font_heading": "Google_Cabin_400,400i,700,700i",
+    "quickshop_ratings": true,
+    "quickshop_redirect_to_cart": false,
+    "quickshop_sales_badge": true,
+    "quickshop_sales_badge_style": "percentile_save",
+    "quickshop_ratings_reviews": true,
+    "quickshop_enable_social_sharing": true,
+    "product_cart_redirect": false,
+    "show_breadcrumbs": true,
+    "quickshop_show_vendor": true,
+    "sections": {
+      "static-header": {
+        "type": "static-header",
+        "blocks": {
+          "1594309355074": {
+            "type": "multi_column_menu",
+            "settings": {
+              "menu_trigger": "Proteins"
+            }
+          },
+          "1595278341025": {
+            "type": "multi_column_menu",
+            "settings": {
+              "menu_trigger": "Shop by Brand"
+            }
+          },
+          "1597087702216": {
+            "type": "multi_column_menu",
+            "settings": {
+              "menu_trigger": "Performance"
+            }
+          },
+          "1597088468849": {
+            "type": "multi_column_menu",
+            "settings": {
+              "menu_trigger": "Weight Management"
+            }
+          },
+          "1597088771679": {
+            "type": "multi_column_menu",
+            "settings": {
+              "menu_trigger": "Vitamins & Minerals"
+            }
+          },
+          "1597088867467": {
+            "type": "multi_column_menu",
+            "settings": {
+              "menu_trigger": "Exclusive & Value Sizes"
+            }
+          },
+          "1601909576600": {
+            "type": "multi_column_menu",
+            "settings": {
+              "menu_trigger": "Categories"
+            }
+          }
+        },
+        "block_order": [
+          "1594309355074",
+          "1595278341025",
+          "1597087702216",
+          "1597088468849",
+          "1597088771679",
+          "1597088867467",
+          "1601909576600"
+        ],
+        "settings": {
+          "sticky_header": false,
+          "full_width_header": true,
+          "logo": "shopify:\/\/shop_images\/Popeyes_Canada_Logo.png",
+          "logo_height": 42,
+          "logo_width": 156,
+          "filter_search_by": "disabled",
+          "enable_live_search": true,
+          "show_mobile_search_bar": true,
+          "enable_live_search_images": true,
+          "enable_live_search_articles_pages": false,
+          "quick_links": "",
+          "menu": "main-menu-new",
+          "side_menu": "",
+          "small_promo_heading": "",
+          "small_promo_text": "",
+          "small_promo_text_mobile": "",
+          "small_promo_link": "shopify:\/\/blogs\/news",
+          "small_promo_icon": "none",
+          "small_promo_heading2": "QUESTIONS?",
+          "small_promo_text2": "<p>FAQ<\/p>",
+          "small_promo_text_mobile2": "<p>FAQ<\/p>",
+          "small_promo_link2": "shopify:\/\/pages\/faq",
+          "small_promo_icon2": "none"
+        }
+      },
+      "static-list-collections": {
+        "type": "static-list-collections",
+        "settings": {}
+      },
+      "static-article": {
+        "type": "static-article",
+        "settings": {
+          "show_date": false,
+          "show_author": false,
+          "use_share_buttons": true
+        }
+      },
+      "static-slideshow": {
+        "type": "static-slideshow",
+        "blocks": {
+          "d61b729e-a3ea-4f57-9f18-2d924cbc6fde": {
+            "type": "slide",
+            "settings": {
+              "background_image": "shopify:\/\/shop_images\/WebsiteBannerEN_1400x600_387f39e1-6e30-4164-aa3b-246a45c19f32.png",
+              "title": "",
+              "text": "",
+              "color": "#ffffff",
+              "link": "shopify:\/\/collections\/bonus-size-exclusives",
+              "text_alignment": "center",
+              "button_one_label": "",
+              "button_one_link": "",
+              "button_one_style": "primary",
+              "button_two_label": "",
+              "button_two_link": "",
+              "button_two_style": "primary",
+              "show_overlay": true,
+              "overlay_color": "#000000",
+              "overlay_opacity": 50
+            }
+          },
+          "046d1107-3ae9-49ff-91fd-61a7564d8de1": {
+            "type": "slide",
+            "disabled": true,
+            "settings": {
+              "background_image": "shopify:\/\/shop_images\/Website-Banner_en_fed18926-50d6-4533-b949-9778f49f433e.jpg",
+              "title": "",
+              "text": "",
+              "color": "rgba(0,0,0,0)",
+              "link": "",
+              "text_alignment": "center",
+              "button_one_label": "",
+              "button_one_link": "",
+              "button_one_style": "primary",
+              "button_two_label": "",
+              "button_two_link": "",
+              "button_two_style": "primary",
+              "show_overlay": true,
+              "overlay_color": "#000000",
+              "overlay_opacity": 50
+            }
+          },
+          "8d1b3ba2-7ca1-4f02-88d3-4719bc289606": {
+            "type": "slide",
+            "disabled": true,
+            "settings": {
+              "background_image": "shopify:\/\/shop_images\/WhatsApp_Image_2021-05-07_at_5.06.19_PM.jpg",
+              "title": "",
+              "text": "",
+              "color": "rgba(0,0,0,0)",
+              "link": "shopify:\/\/products\/max-protein-wtf-protein-spread",
+              "text_alignment": "center",
+              "button_one_label": "",
+              "button_one_link": "",
+              "button_one_style": "primary",
+              "button_two_label": "",
+              "button_two_link": "",
+              "button_two_style": "primary",
+              "show_overlay": true,
+              "overlay_color": "#000000",
+              "overlay_opacity": 50
+            }
+          },
+          "c38e3560-256c-474c-80a4-0baf3b9e98ff": {
+            "type": "slide",
+            "disabled": true,
+            "settings": {
+              "background_image": "shopify:\/\/shop_images\/Popeye_s_Bogo_Header_New_3_7b52f6fa-4f30-4bad-a54a-f9137140a73a.jpg",
+              "title": "",
+              "text": "",
+              "color": "#ffffff",
+              "link": "shopify:\/\/products\/beyond-yourself-amino-iq-90s",
+              "text_alignment": "left",
+              "button_one_label": "",
+              "button_one_link": "",
+              "button_one_style": "primary",
+              "button_two_label": "",
+              "button_two_link": "",
+              "button_two_style": "primary",
+              "show_overlay": true,
+              "overlay_color": "#000000",
+              "overlay_opacity": 1
+            }
+          },
+          "04a75b4c-e0dc-4713-b20a-f689d463a601": {
+            "type": "slide",
+            "disabled": true,
+            "settings": {
+              "background_image": "shopify:\/\/shop_images\/Popeye_s_Bogo_Header_New_4.jpg",
+              "title": "",
+              "text": "",
+              "color": "#ffffff",
+              "link": "shopify:\/\/products\/pvl-bcaa-1000g",
+              "text_alignment": "center",
+              "button_one_label": "",
+              "button_one_link": "",
+              "button_one_style": "primary",
+              "button_two_label": "",
+              "button_two_link": "",
+              "button_two_style": "primary",
+              "show_overlay": true,
+              "overlay_color": "#000000",
+              "overlay_opacity": 1
+            }
+          },
+          "5a96d00a-711b-4759-b1ab-dc4d64f1abb6": {
+            "type": "slide",
+            "disabled": true,
+            "settings": {
+              "title": "Slideshow",
+              "text": "Introduce customers to your shop with lifestyle and product imagery",
+              "color": "#ffffff",
+              "link": "",
+              "text_alignment": "center",
+              "button_one_label": "Button",
+              "button_one_link": "",
+              "button_one_style": "primary",
+              "button_two_label": "",
+              "button_two_link": "",
+              "button_two_style": "primary",
+              "show_overlay": true,
+              "overlay_color": "#000000",
+              "overlay_opacity": 50
+            }
+          }
+        },
+        "block_order": [
+          "d61b729e-a3ea-4f57-9f18-2d924cbc6fde",
+          "046d1107-3ae9-49ff-91fd-61a7564d8de1",
+          "8d1b3ba2-7ca1-4f02-88d3-4719bc289606",
+          "c38e3560-256c-474c-80a4-0baf3b9e98ff",
+          "04a75b4c-e0dc-4713-b20a-f689d463a601",
+          "5a96d00a-711b-4759-b1ab-dc4d64f1abb6"
+        ],
+        "settings": {
+          "show_slideshow": true,
+          "enable_autoplay": true,
+          "autoplay_duration": 11,
+          "slideshow_height": "original"
+        }
+      },
+      "static-footer": {
+        "type": "static-footer",
+        "blocks": {
+          "1497987853004": {
+            "type": "social_accounts",
+            "settings": {}
+          },
+          "1593624497160": {
+            "type": "menu",
+            "settings": {
+              "menu": "main-menu"
+            }
+          },
+          "1497987862126": {
+            "type": "menu",
+            "settings": {
+              "menu": "footer"
+            }
+          },
+          "1586453433449": {
+            "type": "rich_text",
+            "settings": {
+              "title": "Popeye's Supplements Toronto",
+              "text": "<p>659 Yonge St, Toronto <\/p><p> ON, M4Y 1Z9 <\/p> <p> 416-924-5050 <\/p><p> orders@popeyestoronto.com <\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1497987853004",
+          "1593624497160",
+          "1497987862126",
+          "1586453433449"
+        ],
+        "settings": {
+          "payment_icons": true,
+          "additional_menu": ""
+        }
+      },
+      "static-search": {
+        "type": "static-search",
+        "settings": {
+          "results_per_page_range": 24,
+          "products_per_row": "4",
+          "enable_search_articles_pages": true
+        }
+      },
+      "static-highlights-banners": {
+        "type": "static-highlights-banners",
+        "blocks": {
+          "1592926145897": {
+            "type": "highlight",
+            "settings": {
+              "icon": "none",
+              "image": "shopify:\/\/shop_images\/waterloo.jpg",
+              "title": "Visit us!",
+              "text": "<p><\/p><p>Find a store near you<\/p>",
+              "link": "\/apps\/store-locator"
+            }
+          },
+          "static-highlights-banners-0": {
+            "type": "highlight",
+            "settings": {
+              "icon": "icon-delivery",
+              "title": "FREE SHIPPING",
+              "text": "<p><span style=\"text-decoration:underline\">on orders over $99<\/span><\/p>",
+              "link": "shopify:\/\/policies\/shipping-policy"
+            }
+          },
+          "1586885993017": {
+            "type": "highlight",
+            "settings": {
+              "icon": "icon-delivery",
+              "image": "shopify:\/\/shop_images\/core-strength-workout.jpg",
+              "title": "ARTICLES",
+              "text": "<p><span style=\"text-decoration:underline\">Recently Posted<\/span><\/p>",
+              "link": "shopify:\/\/blogs\/news"
+            }
+          },
+          "1585159538109": {
+            "type": "highlight",
+            "settings": {
+              "icon": "icon-heart",
+              "image": "shopify:\/\/shop_images\/canada-flag-image-free-download_150x75_9b9eb737-0bbe-4105-a09b-0d90d8113b75.jpg",
+              "title": "Proudly Canadian",
+              "text": "",
+              "link": "shopify:\/\/collections\/canadian-brands"
+            }
+          }
+        },
+        "block_order": [
+          "1592926145897",
+          "static-highlights-banners-0",
+          "1586885993017",
+          "1585159538109"
+        ],
+        "settings": {
+          "show_highlights_banner": true,
+          "color": "#000000",
+          "icon_color": "#000000",
+          "background_color": "#ffffff"
+        }
+      },
+      "static-collection": {
+        "type": "static-collection",
+        "blocks": {
+          "1597244801349": {
+            "type": "menu",
+            "settings": {
+              "collection": "",
+              "menu": ""
+            }
+          },
+          "1597241200865": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "cfm-isolates",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597241478187": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "mixed-whey",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597245661893": {
+            "type": "menu",
+            "settings": {
+              "collection": "",
+              "menu": ""
+            }
+          },
+          "1597241495750": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "sustained-release",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597246002572": {
+            "type": "menu",
+            "settings": {
+              "collection": "",
+              "menu": ""
+            }
+          },
+          "1597241518304": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "new-to-popeyes",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597246339608": {
+            "type": "menu",
+            "settings": {
+              "collection": "",
+              "menu": ""
+            }
+          },
+          "1597241531715": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "yes",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597246481559": {
+            "type": "menu",
+            "settings": {
+              "collection": "",
+              "menu": ""
+            }
+          },
+          "1597255849477": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "frontpage",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597255874881": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "amino-acids",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597255891090": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "cfm-isolates",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597255904983": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "clearance",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597255916309": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "creatine-powder",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597255935981": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "discontinued",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597255948243": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "efa",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597255962342": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "endurance",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597255997675": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "foundation-products",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256013597": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "glutamine-taurine",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256037221": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "womens-health",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256048425": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "workout-gear",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256063519": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "rtd",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256074925": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "athletic-alliance",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256086834": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "efa",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256098427": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "meal-replacements",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256114154": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "joint-care",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256132754": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "vitamins-minerals",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256145000": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "creatine-pill",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256161891": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "whey-juice",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256175557": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "cups-shakers-misc",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256228625": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "popeyes-gear",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256240135": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "greens-fiber-1",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256250626": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "gainers",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256263567": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "foundation-products",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256276383": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "glutamine-taurine",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256286787": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "multi",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256303916": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "testosterone-boosters",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256317843": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "weight-loss-support",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256329238": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "spreads-syrups-spices",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256341982": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "weight-loss",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256352302": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "ephedrine-energy",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256405055": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256427755": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "deals",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256468022": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "pvs-popeyes-value-size",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597256501831": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "keto",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1597345581455": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "natural-vegan",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1598907186348": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "fat-burners",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1598972892528": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "snacks-cookies-bread",
+              "groups_to_show": "Brand"
+            }
+          },
+          "b1fb7f76-a72d-4869-90df-36ba738c5bbb": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "protein",
+              "groups_to_show": "Brand"
+            }
+          },
+          "79ae294a-94f0-41d6-8389-6e03d39aa3dd": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "bars",
+              "groups_to_show": "Brand"
+            }
+          },
+          "ad268f1e-4ce5-4e50-8626-4d9df7a34e96": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "food-stuffs",
+              "groups_to_show": "Brand"
+            }
+          },
+          "ba6feeba-ab3b-4760-8d7b-5d955b07e9c0": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "pre-workout",
+              "groups_to_show": "Brand"
+            }
+          },
+          "77eb8298-7294-4c87-9fc4-4135e3bdcab5": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "high-tech",
+              "groups_to_show": "Brand"
+            }
+          },
+          "539ac14a-ae5a-4097-8ddc-5c2e8f7f5068": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "canadian-brand",
+              "groups_to_show": "Brand"
+            }
+          },
+          "908ac692-b24c-461f-93a1-094b72a22ab5": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "best-sellers",
+              "groups_to_show": "Brand"
+            }
+          },
+          "1c830f43-77bb-4445-a071-1e2237a377ac": {
+            "type": "collection-filters",
+            "settings": {
+              "collection": "all-products",
+              "groups_to_show": "Brand"
+            }
+          }
+        },
+        "block_order": [
+          "1597244801349",
+          "1597241200865",
+          "1597241478187",
+          "1597245661893",
+          "1597241495750",
+          "1597246002572",
+          "1597241518304",
+          "1597246339608",
+          "1597241531715",
+          "1597246481559",
+          "1597255849477",
+          "1597255874881",
+          "1597255891090",
+          "1597255904983",
+          "1597255916309",
+          "1597255935981",
+          "1597255948243",
+          "1597255962342",
+          "1597255997675",
+          "1597256013597",
+          "1597256037221",
+          "1597256048425",
+          "1597256063519",
+          "1597256074925",
+          "1597256086834",
+          "1597256098427",
+          "1597256114154",
+          "1597256132754",
+          "1597256145000",
+          "1597256161891",
+          "1597256175557",
+          "1597256228625",
+          "1597256240135",
+          "1597256250626",
+          "1597256263567",
+          "1597256276383",
+          "1597256286787",
+          "1597256303916",
+          "1597256317843",
+          "1597256329238",
+          "1597256341982",
+          "1597256352302",
+          "1597256405055",
+          "1597256427755",
+          "1597256468022",
+          "1597256501831",
+          "1597345581455",
+          "1598907186348",
+          "1598972892528",
+          "b1fb7f76-a72d-4869-90df-36ba738c5bbb",
+          "79ae294a-94f0-41d6-8389-6e03d39aa3dd",
+          "ad268f1e-4ce5-4e50-8626-4d9df7a34e96",
+          "ba6feeba-ab3b-4760-8d7b-5d955b07e9c0",
+          "77eb8298-7294-4c87-9fc4-4135e3bdcab5",
+          "539ac14a-ae5a-4097-8ddc-5c2e8f7f5068",
+          "908ac692-b24c-461f-93a1-094b72a22ab5",
+          "1c830f43-77bb-4445-a071-1e2237a377ac"
+        ],
+        "settings": {
+          "show_collection_image": true,
+          "products_per_page_range": 24,
+          "products_per_row": "4",
+          "sort_by": true,
+          "show_by": true,
+          "grid_list": false,
+          "default_view": "grid-view",
+          "show_sidebar": true,
+          "show_prod_count": true,
+          "filter_style": "groups",
+          "filter_limit": "5",
+          "filter_position": "below_menus",
+          "grid_categories": "",
+          "custom_ordered_categories": "Brand",
+          "custom_ordered_tags": "Brand",
+          "menu_depth_range": 1
+        }
+      },
+      "static-blog": {
+        "type": "static-blog",
+        "settings": {
+          "show_rss_link": false,
+          "show_date": false,
+          "show_author": false,
+          "show_excerpt": false,
+          "featured_post": "",
+          "posts_per_page_range": 9
+        }
+      },
+      "static-product": {
+        "type": "static-product",
+        "settings": {
+          "layout": "layout--two-col",
+          "show_dcb": false,
+          "product_cart_redirect": true,
+          "gallery_aspect_ratio": "natural",
+          "gallery_image_crop": true,
+          "gallery_thumbnail_position": "below",
+          "gallery_video_autoplay": true,
+          "gallery_video_looping": true,
+          "gallery_hover_zoom": "replace",
+          "gallery_click_to_zoom": "always"
+        }
+      },
+      "1520633208717": {
+        "type": "pxs-newsletter",
+        "settings": {
+          "title": "Subscribe to our newsletter",
+          "text": "",
+          "desktop_alignment": "right",
+          "mobile_alignment": "bottom"
+        }
+      },
+      "static-announcement": {
+        "type": "static-announcement",
+        "settings": {
+          "show_announcement": true,
+          "homepage_announcement": true,
+          "announcement_text": "BOGO 30% OFF ALL VALUE SIZED PRODUCTS",
+          "announcement_text_mobile": "BOGO 30% OFF ALL VALUE SIZED PRODUCTS",
+          "announcement_link": "",
+          "announcement_color": "#e5e5e5",
+          "announcement_background": "#000000"
+        }
+      },
+      "static-recently-viewed": {
+        "type": "static-recently-viewed",
+        "settings": {
+          "enable_recently_viewed_products": true
+        }
+      },
+      "static-product-recommendations": {
+        "type": "static-product-recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "product_recommendations_heading": "Produits suggérés||Recommended products"
+        }
+      },
+      "static-product-reviews": {
+        "type": "static-product-reviews",
+        "settings": {}
+      },
+      "static-password": {
+        "type": "static-password",
+        "settings": {
+          "logo": "",
+          "logo_height": 100,
+          "logo_width": 248,
+          "enable_newsletter_signup": true,
+          "newsletter_title": "ABONNEZ-VOUS À NOTRE INFOLETTRE",
+          "newsletter_text": "",
+          "show_social_title": true,
+          "show_social_icons": true
+        }
+      },
+      "static-cart": {
+        "type": "static-cart",
+        "settings": {
+          "enable_order_notes": false,
+          "enable_shipping_calc": true,
+          "shipping_calc_default_country": "Canada"
+        }
+      },
+      "1592928021621": {
+        "type": "dynamic-promo-mosaic",
+        "blocks": {
+          "1592939444480": {
+            "type": "promotion",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Free_Shipping_Banner_5.png",
+              "title": "Free Shipping on orders over $99",
+              "text": "<p>Start Shopping Now<\/p>",
+              "bottom_caption": true,
+              "color": "#ffffff",
+              "block_link": "shopify:\/\/collections\/all",
+              "button_text": "",
+              "button_style": "primary",
+              "show_overlay": false,
+              "background": "",
+              "opacity": 50
+            }
+          },
+          "1592928021621-0": {
+            "type": "promotion",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Popeye_s_Clearance_Header_new_4_3a6c85ff-4ed0-4f5a-bdc1-c27db9948330.png",
+              "title": "Best Supplement Prices",
+              "text": "<p>View Our Clearance Products<\/p>",
+              "bottom_caption": true,
+              "color": "#ffffff",
+              "block_link": "shopify:\/\/collections\/clearance",
+              "button_text": "",
+              "button_style": "primary",
+              "show_overlay": false,
+              "background": "",
+              "opacity": 1
+            }
+          },
+          "1592928021621-1": {
+            "type": "promotion",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Canada.jpg",
+              "title": "Support local business",
+              "text": "<p><\/p><p>DISCOVER OUR CANADIAN BRANDS<\/p>",
+              "bottom_caption": true,
+              "color": "#ffffff",
+              "block_link": "shopify:\/\/collections",
+              "button_text": "",
+              "button_style": "primary",
+              "show_overlay": false,
+              "background": "",
+              "opacity": 50
+            }
+          },
+          "1592939438135": {
+            "type": "promotion",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/65045930_2503285349684346_2542140135470792704_o.jpg",
+              "title": "From 20% to 60% more products",
+              "text": "<p>SHOP VALUE SIZES<\/p>",
+              "bottom_caption": true,
+              "color": "#ffffff",
+              "block_link": "shopify:\/\/collections\/bonus-size-exclusives",
+              "button_text": "",
+              "button_style": "primary",
+              "show_overlay": false,
+              "background": "",
+              "opacity": 1
+            }
+          }
+        },
+        "block_order": [
+          "1592939444480",
+          "1592928021621-0",
+          "1592928021621-1",
+          "1592939438135"
+        ],
+        "settings": {
+          "title": "",
+          "section_height": "medium",
+          "text_alignment": "bottom-left",
+          "maintain_aspect_ratio": true,
+          "compress_blocks": false
+        }
+      },
+      "1592940434497": {
+        "type": "dynamic-featured-collection",
+        "blocks": {
+          "1592940462065": {
+            "type": "title_card",
+            "settings": {
+              "position": "beginning",
+              "pre_heading": "",
+              "heading": "BEST SELLERS",
+              "button_text": "Shop now",
+              "text_color": "#ffffff",
+              "overlay_color": "#000000",
+              "overlay_opacity": 100
+            }
+          }
+        },
+        "block_order": [
+          "1592940462065"
+        ],
+        "settings": {
+          "title": "",
+          "layout": "grid",
+          "collection": "best-sellers",
+          "product_count": 5,
+          "cta_label": "",
+          "cta_button_style": "primary"
+        }
+      },
+      "1592940581459": {
+        "type": "dynamic-featured-collection",
+        "blocks": {
+          "1592940613981": {
+            "type": "title_card",
+            "settings": {
+              "position": "beginning",
+              "pre_heading": "",
+              "heading": "NEW & TRENDY",
+              "button_text": "Shop now",
+              "text_color": "#ffffff",
+              "overlay_color": "#000000",
+              "overlay_opacity": 100
+            }
+          }
+        },
+        "block_order": [
+          "1592940613981"
+        ],
+        "settings": {
+          "title": "",
+          "layout": "grid",
+          "collection": "new-trendy",
+          "product_count": 15,
+          "cta_label": "",
+          "cta_button_style": "primary"
+        }
+      },
+      "1592940656041": {
+        "type": "dynamic-promo-mosaic",
+        "blocks": {
+          "1592940656041-0": {
+            "type": "promotion",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/waterloo.jpg",
+              "title": "ABOUT US",
+              "text": "<p>At Popeye's, we offer the latest in health and nutrition products so you can achieve your wellness and sports performance goals!<\/p>",
+              "bottom_caption": false,
+              "color": "#ffffff",
+              "block_link": "shopify:\/\/pages\/about",
+              "button_text": "LEARN MORE",
+              "button_style": "secondary",
+              "show_overlay": true,
+              "background": "#000000",
+              "opacity": 70
+            }
+          }
+        },
+        "block_order": [
+          "1592940656041-0"
+        ],
+        "settings": {
+          "title": "",
+          "section_height": "large",
+          "text_alignment": "center-center",
+          "maintain_aspect_ratio": false,
+          "compress_blocks": false
+        }
+      },
+      "1592940946820": {
+        "type": "dynamic-featured-collection",
+        "blocks": {
+          "1592940961646": {
+            "type": "title_card",
+            "settings": {
+              "position": "beginning",
+              "pre_heading": "",
+              "heading": "VALUE SIZES & EXCLUSIVE PRODUCTS",
+              "button_text": "Shop now",
+              "text_color": "#ffffff",
+              "overlay_color": "#000000",
+              "overlay_opacity": 100
+            }
+          }
+        },
+        "block_order": [
+          "1592940961646"
+        ],
+        "settings": {
+          "title": "",
+          "layout": "grid",
+          "collection": "bonus-size-exclusives",
+          "product_count": 5,
+          "cta_label": "",
+          "cta_button_style": "primary"
+        }
+      },
+      "1592941343014": {
+        "type": "dynamic-logo-list",
+        "disabled": true,
+        "blocks": {
+          "1592941343014-0": {
+            "type": "logo",
+            "settings": {
+              "link": ""
+            }
+          },
+          "1592941343014-1": {
+            "type": "logo",
+            "settings": {
+              "link": ""
+            }
+          },
+          "1592941343014-2": {
+            "type": "logo",
+            "settings": {
+              "link": ""
+            }
+          },
+          "1592941343014-3": {
+            "type": "logo",
+            "settings": {
+              "link": ""
+            }
+          },
+          "1592942033524": {
+            "type": "logo",
+            "settings": {
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1592941343014-0",
+          "1592941343014-1",
+          "1592941343014-2",
+          "1592941343014-3",
+          "1592942033524"
+        ],
+        "settings": {
+          "title": "BRANDS",
+          "button_text": "All Brands",
+          "button_url": "shopify:\/\/collections"
+        }
+      },
+      "1594743494979": {
+        "type": "testimonials",
+        "blocks": {
+          "ae548827-efd8-49de-b7de-9a3b694f9ea1": {
+            "type": "quote",
+            "settings": {
+              "date": "May 18th",
+              "title": "Recommending to my Peers",
+              "content": "<p>Love the knowledge the girl helping me had! Especially as this is my first time being there. I will definitely be back, and recommend to my peers.<\/p>",
+              "name": "B. V"
+            }
+          },
+          "5f7a6a35-a1bc-455b-9067-e7d8601e958e": {
+            "type": "quote",
+            "settings": {
+              "date": "May 5th",
+              "title": "Price was really good",
+              "content": "<p>I was very pleased with the service and knowledge from the staff that helped me out. I got what I was looking for. Price was really good and came out with some good info on supplements. <\/p>",
+              "name": "M. S"
+            }
+          },
+          "08cc1c8d-c88b-4a02-89c0-097e0478fd48": {
+            "type": "quote",
+            "settings": {
+              "date": "April 30th",
+              "title": "Great Place",
+              "content": "<p>Great place. The staff is always friendly and very helpful. They know about the products and they have great service. <\/p>",
+              "name": "D. K"
+            }
+          },
+          "baddd81a-51d4-45b9-ae85-d525b8c9569a": {
+            "type": "quote",
+            "settings": {
+              "date": "April 4th",
+              "title": "Greeted me warmly",
+              "content": "<p>I had planned for just a quick stop to pick a supplement I&#x27;d run low on and that was wonderfully facilitated by the employee at the store. Greeted me warmly, asked how he could help, and quickly found and priced the supplement I&#x27;d come in for without being rushed. Great experience. <\/p>",
+              "name": "S. V"
+            }
+          },
+          "33318474-34e0-48ae-8404-f3cf58728d2d": {
+            "type": "quote",
+            "settings": {
+              "date": "March 22nd",
+              "title": "Strongly recommend",
+              "content": "<p>Couldn&#x27;t ask for nicer staff. The new manager is awesome, super nice and helpful. Strongly recommend shopping here.<\/p>",
+              "name": "C. C"
+            }
+          },
+          "940c2554-b365-4906-958f-a0eaf5296f4d": {
+            "type": "quote",
+            "settings": {
+              "date": "March 11th",
+              "title": "Excellent experience.",
+              "content": "<p>Excellent experience. The rep was very helpful in explaining the difference between some different protein powders and providing his feedback on items. The rep was very down-to-earth and easy to talk to. <\/p>",
+              "name": "N. R"
+            }
+          },
+          "4c3bd667-5755-46ea-9a36-19345fe05e28": {
+            "type": "quote",
+            "settings": {
+              "date": "February 1st",
+              "title": "Fast and Friendly",
+              "content": "<p>Fast and friendly service, the customer service rep was polite and understood my needs <\/p>",
+              "name": "M. K"
+            }
+          },
+          "889f75b5-efc1-41c9-9aba-948b50624976": {
+            "type": "quote",
+            "settings": {
+              "date": "February 1st",
+              "title": "Employee was excellent",
+              "content": "<p>Employee was excellent and very friendly, I was also very pleased with the sale prices I received. <\/p>",
+              "name": "T. G"
+            }
+          },
+          "7a50f495-ad80-45e0-9b92-99ea96b4fd90": {
+            "type": "quote",
+            "settings": {
+              "date": "January 26th",
+              "title": "Amazing customer service",
+              "content": "<p>Amazing customer service, knowledgeable on the products. I know when I walk into a Popeye&#x27;s I will be treated right, with high quality products at the best price <\/p>",
+              "name": "R. W"
+            }
+          },
+          "c4a32a55-15fe-4d1f-a74d-e01fc0e9e065": {
+            "type": "quote",
+            "settings": {
+              "date": "January 13th",
+              "title": "Friendly and Knowledgeable",
+              "content": "<p>Very friendly and knowledgeable about the products.<br\/><\/p>",
+              "name": "N. S"
+            }
+          },
+          "b364d289-b55d-4618-874d-4831915ce263": {
+            "type": "quote",
+            "settings": {
+              "date": "January 2nd",
+              "title": "Very Knowledgeable",
+              "content": "<p>The staff is very knowledgeable and helped me pick out what I wanted. Didn&#x27;t try to upsell me.<br\/><\/p>",
+              "name": "C. C"
+            }
+          },
+          "76c54a10-7c39-47ab-b7de-9206cebc961f": {
+            "type": "quote",
+            "settings": {
+              "date": "December 1st",
+              "title": "Will always come back to a Popeyes",
+              "content": "<p>The fella that was working the evening I came in (Nov 30) was beyond pleasant. He took the time to check prices and discuss some of the products. I greatly appreciate the time he spent with myself and my girlfriend who came along, she ended up buying two products as well. The sale that was on when we came in was a great deal. I bought twice as much as I expected to:) I will always come back to a Popeyes for my supplements.<\/p>",
+              "name": "J. V"
+            }
+          },
+          "ddb4a22f-c76c-4ff1-bf7b-0d8273d155c4": {
+            "type": "quote",
+            "settings": {
+              "date": "October 20th",
+              "title": "Excellent Selection",
+              "content": "<p>Very knowledgeable and helpful staff, will definitely be back again. Was able to get exactly what I was looking for, excellent selection of products in stock<\/p>",
+              "name": "M.L"
+            }
+          },
+          "5eb6b947-90a8-4370-92f0-815e62f01177": {
+            "type": "quote",
+            "settings": {
+              "date": "October 26th",
+              "title": "Wide Range of Products",
+              "content": "<p>The store had excellent service and a very wide range of products, I found what I was looking for very quickly. If you are looking for protein to help build muscle this is the store to go to!<\/p>",
+              "name": "J. S"
+            }
+          },
+          "1594743641969": {
+            "type": "quote",
+            "settings": {
+              "date": "September 19th",
+              "title": "Be Healthy and Get the Best Prices!",
+              "content": "<p>&quot;If you are reading this and have not been to Popeye&#x27;s, then trust me go to Popeye&#x27;s, it is not only for bodybuilders, it is for anyone that wants to be healthy and get the best prices, after you walk out of Popeye&#x27;s you will forget you have 10% off at GNC because that is still 20% more than Popeyes, plus Popeyes staff actually know what they are doing and they are not pushy. Get their Phyto berry and Veggie Greens and your life will change for the better.&quot;<\/p>",
+              "name": "D. M."
+            }
+          },
+          "1601901780337": {
+            "type": "quote",
+            "settings": {
+              "date": "September 14th",
+              "title": "Always Impressed",
+              "content": "<p>Anyone that visits the Lloydminster store, will be pleased with the experience and the customer service they receive. I have gone there several times and I am always impressed with everything that they have to offer! I highly recommend Popeyes! Keep up the great work!<\/p>",
+              "name": "L. B"
+            }
+          },
+          "1601902062975": {
+            "type": "quote",
+            "settings": {
+              "date": "September 24th",
+              "title": "Best Price Every Time",
+              "content": "<p>Great service! They do price matching which means you get the best price every time. That&#x27;s why Popeye&#x27;s supplements is always my choice.<\/p>",
+              "name": "E. S"
+            }
+          },
+          "1594743639219": {
+            "type": "quote",
+            "settings": {
+              "date": "August 28th",
+              "title": "Highly Recommend",
+              "content": "<p>&quot;Incredible experience... the guy working was extremely helpful and efficient.. I didn&#x27;t want to leave.. and the product selection way exceeded my expectations.. I will be back soon.. highly recommend checking them out.&quot;<\/p>",
+              "name": "T. R-D."
+            }
+          },
+          "1594743513518": {
+            "type": "quote",
+            "settings": {
+              "date": "June 2nd",
+              "title": "Great Service!",
+              "content": "<p>&quot;The staff are always super helpful and the customer service goes above and beyond!&quot;<\/p>",
+              "name": "J. C."
+            }
+          }
+        },
+        "block_order": [
+          "ae548827-efd8-49de-b7de-9a3b694f9ea1",
+          "5f7a6a35-a1bc-455b-9067-e7d8601e958e",
+          "08cc1c8d-c88b-4a02-89c0-097e0478fd48",
+          "baddd81a-51d4-45b9-ae85-d525b8c9569a",
+          "33318474-34e0-48ae-8404-f3cf58728d2d",
+          "940c2554-b365-4906-958f-a0eaf5296f4d",
+          "4c3bd667-5755-46ea-9a36-19345fe05e28",
+          "889f75b5-efc1-41c9-9aba-948b50624976",
+          "7a50f495-ad80-45e0-9b92-99ea96b4fd90",
+          "c4a32a55-15fe-4d1f-a74d-e01fc0e9e065",
+          "b364d289-b55d-4618-874d-4831915ce263",
+          "76c54a10-7c39-47ab-b7de-9206cebc961f",
+          "ddb4a22f-c76c-4ff1-bf7b-0d8273d155c4",
+          "5eb6b947-90a8-4370-92f0-815e62f01177",
+          "1594743641969",
+          "1601901780337",
+          "1601902062975",
+          "1594743639219",
+          "1594743513518"
+        ],
+        "settings": {
+          "title": "TESTIMONIALS"
+        }
+      },
+      "static-faq": {
+        "type": "static-faq",
+        "blocks": {
+          "1601046785428": {
+            "type": "section",
+            "settings": {
+              "title": "PERSONAL INFORMATION AND PRIVACY"
+            }
+          },
+          "1601046797135": {
+            "type": "question",
+            "settings": {
+              "section": "PERSONAL INFORMATION AND PRIVACY",
+              "title": "Is my credit card information secure?",
+              "content": "<p>Our platform holds the six PCI standard categories and they are applied to each of our platforms: maintaining a secure network, protecting cardholder data, maintaining a vulnerability management program and implementing strict control measures. Network reviews and tests are conducted regularly to preserve this information security policy.<\/p>"
+            }
+          },
+          "1601335588165": {
+            "type": "question",
+            "settings": {
+              "section": "PERSONAL INFORMATION AND PRIVACY",
+              "title": "I would prefer not to enter my credit card information online. Are there any other options for placing an order?",
+              "content": "<p>At Popeye&#x27;s Supplements, you can purchase our products the way you want. Of course, you can always shop at one of our locations or use one of our third part providers like Pay Pal Express and Sezzle.<\/p>"
+            }
+          },
+          "1601335773629": {
+            "type": "section",
+            "settings": {
+              "title": "ORDER AND DELIVERY WHERE, WHEN AND HOW?"
+            }
+          },
+          "1601335809022": {
+            "type": "question",
+            "settings": {
+              "section": "ORDER AND DELIVERY WHERE, WHEN AND HOW?",
+              "title": "When will my order be shipped?",
+              "content": "<p>Daily order processing cut off time is 11:00am MST*. Orders placed after this time may be processed and shipped the next business day. All orders are processed and shipped as quickly as possible. Please allow 3-4 business days as Canada Post (CP) continues to see significantly increased parcel volumes as Canadians adopt different shopping behaviors during Covid-10 and due to the important safety measures in place at CP protecting their employees and Canadians. Short delays may take place pending any order discrepancies, larger volume days due to special sales or offers, weekends and statutory holidays.<\/p>"
+            }
+          },
+          "1601335870526": {
+            "type": "question",
+            "settings": {
+              "section": "ORDER AND DELIVERY WHERE, WHEN AND HOW?",
+              "title": "How can I check my order status?",
+              "content": "<p>Make sure you have received the confirmation email regarding shipping. You may always contact us regarding your order at weborders@popeyesedmonton.ca<\/p>"
+            }
+          },
+          "1601335968684": {
+            "type": "question",
+            "settings": {
+              "section": "ORDER AND DELIVERY WHERE, WHEN AND HOW?",
+              "title": "Can I view my order history?",
+              "content": "<p>Yes.<\/p><p><\/p><p>Hop over to the <a href=\"https:\/\/shoppopeyes.com\/en\/account\/login\">My Account<\/a> section at the very top of the home page. Log in using your email address and password. You will then be able to view your order history.<\/p>"
+            }
+          },
+          "1601336045565": {
+            "type": "question",
+            "settings": {
+              "section": "ORDER AND DELIVERY WHERE, WHEN AND HOW?",
+              "title": "Will you be able to notify me if there are problems with my order?",
+              "content": "<p>We will notify you immediately by email if there are any problems with your order, including back orders and credit card authorization issues.<\/p>"
+            }
+          },
+          "1601336159221": {
+            "type": "section",
+            "settings": {
+              "title": "MODIFICATION AND CANCELLATION"
+            }
+          },
+          "1601336164642": {
+            "type": "question",
+            "settings": {
+              "section": "MODIFICATION AND CANCELLATION",
+              "title": "Can I make changes to my order after I submit it?",
+              "content": "<p>We make every effort to ensure that your orders are processed as quickly as possible. Due to the speed of most of our shipments, we cannot make any changes once the order has been submitted.<\/p>"
+            }
+          },
+          "1601336204617": {
+            "type": "question",
+            "settings": {
+              "section": "MODIFICATION AND CANCELLATION",
+              "title": "Can I cancel my order once it has been submitted?",
+              "content": "<p>We make every effort to ensure that your orders are processed as soon as possible. You can send a message to our customer service department as quickly as possible. If your order has not yet been processed and shipped, we can proceed to cancel it. If your products have already been shipped, it will be impossible to cancel this order. Once the products have been received, you will be able to go to the store to exchange them.<\/p>"
+            }
+          },
+          "1601336309868": {
+            "type": "section",
+            "settings": {
+              "title": "RETURN AND EXCHANGE"
+            }
+          },
+          "1601336319401": {
+            "type": "question",
+            "settings": {
+              "section": "RETURN AND EXCHANGE",
+              "title": "There is a missing item in my order. What can I do?",
+              "content": "<p>If an item is missing in your order, please contact our <a href=\"https:\/\/shoppopeyes.com\/en\/pages\/contactez-nous\">customer service support <\/a>through email. Our team will then proceed to analyze your request and follow up with you within the next five business days.<\/p><p><\/p>"
+            }
+          },
+          "1601336424688": {
+            "type": "question",
+            "settings": {
+              "section": "RETURN AND EXCHANGE",
+              "title": "What should I do if I receive damaged or defective items?",
+              "content": "<p>We make every effort to ensure that your order arrives in perfect condition. Unfortunately, items may sometimes be damaged during shipping. We understand the frustration this may cause and will make every effort to replace the product as quickly as possible.<\/p><p><\/p><p>If you have received a damaged item, please send us an email at weborders@popeyesedmonton.ca.<\/p><p>Write down your name, your order number and include a picture of the damaged item so we can immediately take care of the replacement of this item.<\/p>"
+            }
+          },
+          "1601336593598": {
+            "type": "question",
+            "settings": {
+              "section": "RETURN AND EXCHANGE",
+              "title": "Can I return or exchange a product from an online or phone order?",
+              "content": "<p>Yes, you can return or exchange a product purchased on our website or by phone by visiting your nearest Popeye’s store.<\/p><p>However, you must provide the credit or debit card used at the time of purchase in order to proceed with the refund.<\/p>"
+            }
+          },
+          "1601336769682": {
+            "type": "section",
+            "settings": {
+              "title": "ACCOUNT"
+            }
+          },
+          "1601336780013": {
+            "type": "question",
+            "settings": {
+              "section": "ACCOUNT",
+              "title": "Do I have to create an account to order online?",
+              "content": "<p>You do not need to create an account in order to make online purchases. But with an account, you will not only earn Popeye&#x27;s Bucks but also you will receive secret deals, be able to keep track of your purchase history and receive the latest news from our stores.<\/p><p><\/p>"
+            }
+          },
+          "1601336991303": {
+            "type": "question",
+            "settings": {
+              "section": "ACCOUNT",
+              "title": "I recently changed my address, my email address and\/or my credit card. How can you change any account information?",
+              "content": "<p>Go to the My Account section at the very top of the home page. Log in using your email address and current password. You will then be able to change your information, billing and\/or shipping address, email address and password linked to your account.<\/p>"
+            }
+          },
+          "1601337041037": {
+            "type": "question",
+            "settings": {
+              "section": "ACCOUNT",
+              "title": "I forgot the password associated with my account. What should I do?",
+              "content": "<p>Hop over to the My Account section at the very top of the home page. Scroll down to the &quot;Forgotten Password&quot; section and follow the instructions to instantly receive a new password by email.<\/p><p><\/p><p>Do not hesitate to contact us for any additional information related to your account password.<\/p>"
+            }
+          },
+          "1601337098067": {
+            "type": "section",
+            "settings": {
+              "title": "POPEYE’S BUCKS"
+            }
+          },
+          "1601337121394": {
+            "type": "question",
+            "settings": {
+              "section": "POPEYE’S BUCKS",
+              "title": "Are there any membership fees associated with Popeye’s Bucks?",
+              "content": "<p>No. There are no membership fees for this reward program in any Popeye’s Supplements Canada locations.<\/p>"
+            }
+          },
+          "1601337148239": {
+            "type": "question",
+            "settings": {
+              "section": "POPEYE’S BUCKS",
+              "title": "How do I earn Popeye’s Bucks?",
+              "content": "<p>Popeye’s Bucks are automatically added to your account through our sales system. Every transaction earns you four percent of your purchase total before tax which are added to your account as Popeye’s Bucks. They will be added directly to your account, which will be linked to every online order you make.<\/p>"
+            }
+          },
+          "1601337181873": {
+            "type": "question",
+            "settings": {
+              "section": "POPEYE’S BUCKS",
+              "title": "How can I redeem the Popeye’s Bucks linked to my account?",
+              "content": "<p>You will need to visit one of our stores in order to redeem your earned Popeye&#x27;s Bucks towards a purchase. While you can earn Popeye&#x27;s Bucks by shopping online, there is unfortunately no option available to use them towards your online purchases at this time. <\/p>"
+            }
+          },
+          "1601337287818": {
+            "type": "question",
+            "settings": {
+              "section": "POPEYE’S BUCKS",
+              "title": "Will I earn Popeye's Bucks by ordering online?",
+              "content": "<p>Yes! You will be earning Popeye&#x27;s Bucks just as if you were shopping at one of our locations.<\/p>"
+            }
+          },
+          "1601337485886": {
+            "type": "section",
+            "settings": {
+              "title": "PRODUCTS"
+            }
+          },
+          "1601337509469": {
+            "type": "question",
+            "settings": {
+              "section": "PRODUCTS",
+              "title": "Am I supporting local when I shop at Popeye's?",
+              "content": "<p>Good news, you sure are! Popeye&#x27;s Supplements is 100% a Canadian company and the bulk of our products are made in Canada. We have put an icon on the picture of most of Canadian products to allow you to easily identify them. Or <a href=\"\/collections\/canadian-brand\" title=\"Canadian Brands\">Click Here<\/a> to Shop Canadian Brands! <\/p>"
+            }
+          },
+          "1601337830234": {
+            "type": "question",
+            "settings": {
+              "section": "PRODUCTS",
+              "title": "How can I look up the nutritional information on a product?",
+              "content": "<p>Most of our online product sheets include the nutritional information label. However, if you need more details, do not hesitate to contact us for more information.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1601046785428",
+          "1601046797135",
+          "1601335588165",
+          "1601335773629",
+          "1601335809022",
+          "1601335870526",
+          "1601335968684",
+          "1601336045565",
+          "1601336159221",
+          "1601336164642",
+          "1601336204617",
+          "1601336309868",
+          "1601336319401",
+          "1601336424688",
+          "1601336593598",
+          "1601336769682",
+          "1601336780013",
+          "1601336991303",
+          "1601337041037",
+          "1601337098067",
+          "1601337121394",
+          "1601337148239",
+          "1601337181873",
+          "1601337287818",
+          "1601337485886",
+          "1601337509469",
+          "1601337830234"
+        ],
+        "settings": {
+          "search_placeholder": "How can we help?",
+          "search_title": ""
+        }
+      },
+      "indirect-translations": {
+        "type": "indirect-translations",
+        "blocks": {
+          "1595424319010": {
+            "type": "transaltion",
+            "settings": {
+              "title": "store locator title",
+              "css_selector": "#store-locator-title",
+              "innerText": true,
+              "translation": "",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595426292901": {
+            "type": "url_exclusions",
+            "settings": {
+              "url": "\/apps\/store-locator"
+            }
+          },
+          "1595427375206": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Find store near text",
+              "css_selector": ".main_search_label",
+              "innerText": true,
+              "translation": "",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595427583189": {
+            "type": "transaltion",
+            "settings": {
+              "title": "locator Distance text",
+              "css_selector": ".distance_label",
+              "innerText": true,
+              "translation": "",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595427605495": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Locator results text",
+              "css_selector": ".search_limit_label",
+              "innerText": true,
+              "translation": "",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595427644608": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Locator Search button",
+              "css_selector": "#submitBtn",
+              "innerText": true,
+              "translation": "",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595449142066": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews headline",
+              "css_selector": ".reviews-review-headline",
+              "innerText": false,
+              "translation": "Avis||Reviews",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595449241984": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews write review",
+              "css_selector": "spr-summary-actions-newreview",
+              "innerText": false,
+              "translation": "Donnez un avis||Write a review",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595449284200": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews no review",
+              "css_selector": ".reviews-no-review",
+              "innerText": false,
+              "translation": "Aucun avis pour le moment||No reviews yet",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595449354777": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews Based on",
+              "css_selector": ".reviews-based-on",
+              "innerText": false,
+              "translation": "Basé sur||Based on",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595449402285": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews next",
+              "css_selector": ".reviews-next",
+              "innerText": false,
+              "translation": "Suivant||Next",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595449596419": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews previous",
+              "css_selector": ".reviews-previous",
+              "innerText": false,
+              "translation": "Précédant||Previous",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595449636858": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews report",
+              "css_selector": ".reviews-report",
+              "innerText": false,
+              "translation": "Signaler comme inapproprié||Report as Inappropriate",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595449673077": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews reported",
+              "css_selector": ".reviews-reported",
+              "innerText": false,
+              "translation": "Cet avis à été signalé||This review has been reported",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595449835278": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews name",
+              "css_selector": ".spr-form-contact-name label",
+              "innerText": false,
+              "translation": "Nom||Name",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595449868830": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Review enter name",
+              "css_selector": ".spr-form-contact-name input",
+              "innerText": false,
+              "translation": "Entrez votre nom||Enter your name",
+              "attr": "placeholder",
+              "notHtml": false
+            }
+          },
+          "1595449914049": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews email",
+              "css_selector": ".spr-form-contact-email label",
+              "innerText": false,
+              "translation": "Courriel||Email",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595449941122": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews rating",
+              "css_selector": ".spr-form-review-rating label",
+              "innerText": false,
+              "translation": "Note||Rating",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595449983071": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews review title",
+              "css_selector": ".spr-form-review-title label",
+              "innerText": false,
+              "translation": "Titre de votre avis",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595450036007": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews give title",
+              "css_selector": ".spr-form-review-title input",
+              "innerText": false,
+              "translation": "Donnez un titre à votre avis",
+              "attr": "placeholder",
+              "notHtml": false
+            }
+          },
+          "1595450135317": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews body",
+              "css_selector": ".reviews-body-of-review",
+              "innerText": false,
+              "translation": "Corps de l'avis||Body of Review",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595450184656": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews write commen",
+              "css_selector": ".spr-form-review-body textarea",
+              "innerText": false,
+              "translation": "Écrivez vos commentaires ici||Write your comments here",
+              "attr": "placeholder",
+              "notHtml": false
+            }
+          },
+          "1595450242589": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews submit",
+              "css_selector": "[value=\"Submit Review\"]",
+              "innerText": false,
+              "translation": "Soumettre un avis||Submit review",
+              "attr": "value",
+              "notHtml": false
+            }
+          },
+          "1595450398060": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews write a review",
+              "css_selector": ".spr-form-title",
+              "innerText": false,
+              "translation": "Donner un avis||Write a review",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595451824477": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews review",
+              "css_selector": ".reviews-review",
+              "innerText": false,
+              "translation": "Avis||Review",
+              "attr": "",
+              "notHtml": false
+            }
+          },
+          "1595451883293": {
+            "type": "transaltion",
+            "settings": {
+              "title": "Reviews reviews",
+              "css_selector": ".reviews-reviews",
+              "innerText": false,
+              "translation": "Avis||Reviews",
+              "attr": "",
+              "notHtml": false
+            }
+          }
+        },
+        "block_order": [
+          "1595424319010",
+          "1595426292901",
+          "1595427375206",
+          "1595427583189",
+          "1595427605495",
+          "1595427644608",
+          "1595449142066",
+          "1595449241984",
+          "1595449284200",
+          "1595449354777",
+          "1595449402285",
+          "1595449596419",
+          "1595449636858",
+          "1595449673077",
+          "1595449835278",
+          "1595449868830",
+          "1595449914049",
+          "1595449941122",
+          "1595449983071",
+          "1595450036007",
+          "1595450135317",
+          "1595450184656",
+          "1595450242589",
+          "1595450398060",
+          "1595451824477",
+          "1595451883293"
+        ],
+        "settings": {}
+      }
+    },
+    "content_for_index": [
+      "1520633208717",
+      "1592928021621",
+      "1592940434497",
+      "1592940581459",
+      "1592940656041",
+      "1592940946820",
+      "1592941343014",
+      "1594743494979"
+    ]
+  },
+  "presets": {
+    "Graphic": {
+      "color_background": "#ffffff",
+      "color_headings": "#484848",
+      "color_text": "#4d4d4d",
+      "color_text_light": "#949494",
+      "color_links": "#e32619",
+      "color_button_background": "#e32619",
+      "color_button_text": "#ffffff",
+      "color_button_secondary_background": "#ffffff",
+      "color_button_secondary_text": "#e32619",
+      "color_button_secondary_border": "#dddddd",
+      "color_header_background": "#ffffff",
+      "color_header_text": "#484848",
+      "color_input_text": "#4d4d4d",
+      "color_input_background": "#ffffff",
+      "color_input_border": "#dddddd",
+      "color_product_sale_accent": "#e32619",
+      "color_product_review_star": "#f6c347",
+      "color_footer_background": "#ffffff",
+      "color_footer_text": "#686868",
+      "color_overlay": "#000000",
+      "overlay_opacity": 50,
+      "type_size_base": 16,
+      "type_heading": "futura_n7",
+      "type_heading_size": "1",
+      "type_heading_capitalize": false,
+      "type_heading_spacing": 0,
+      "type_body": "lato_n4",
+      "type_menu": "lato_n7",
+      "type_menu_capitalize": false,
+      "type_menu_spacing": 0,
+      "type_button": "lato_n7",
+      "type_button_capitalize": false,
+      "type_button_spacing": 0,
+      "type_section": "futura_n7",
+      "type_section_capitalize": false,
+      "type_section_spacing": 0,
+      "layout_max_width": 1400,
+      "product_show_vendor": true,
+      "product_show_sku": false,
+      "product_enable_recently_viewed_products": true,
+      "product_option_style": "select",
+      "product_sales_badge": true,
+      "product_sales_badge_style": "money",
+      "product_social_sharing": true,
+      "product_slideshow_style": "natural",
+      "gallery_thumbnail_position": "below",
+      "product_ratings_reviews": true,
+      "product_ratings_star_display": "prod-page",
+      "product_grid_show_second_image": false,
+      "product_grid_emphasize_price": false,
+      "product_grid_image_style": "natural",
+      "swatches_enable": true,
+      "swatches_swatch_trigger": "Color",
+      "swatches_shape": "square",
+      "swatches_product_card_size": 32,
+      "swatches_product_page_size": 64,
+      "swatches_option_style": "variant_image",
+      "swatches_custom_colors": "",
+      "product_grid_show_quickshop": "always",
+      "product_grid_show_atc": "always",
+      "quickshop_show_dcb": true,
+      "quickshop_product_cart_redirect": false,
+      "social_default_image": "",
+      "social_facebook": "",
+      "social_twitter": "",
+      "social_pinterest": "",
+      "social_instagram": "",
+      "social_tumblr": "",
+      "social_vimeo": "",
+      "social_youtube": "",
+      "social_linkedin": "",
+      "social_email": "",
+      "favicon": "",
+      "enable_currency_converter": true,
+      "currency_display_format": "money_format",
+      "currency_converter_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "currency_converter_default": "USD",
+      "enable_checkout_lock_icon": false,
+      "continue_shopping_url": "shopify:\/\/collections\/all",
+      "continue_url_cart": true,
+      "continue_url_404": true,
+      "enable_image_zoom": false,
+      "image_zoom_level": "min",
+      "product_grid_quick_shop": true,
+      "product_grid_quick_buy": true,
+      "social_google": "",
+      "show_dcb": false,
+      "product_grid_quick_look": true,
+      "font_body": "Google_Lato_400,400i,700,700i",
+      "font_heading": "\"League Spartan\", sans-serif",
+      "quickshop_ratings": true,
+      "quickshop_redirect_to_cart": false,
+      "quickshop_sales_badge": true,
+      "quickshop_sales_badge_style": "percentile_save",
+      "quickshop_ratings_reviews": true,
+      "quickshop_enable_social_sharing": true,
+      "product_cart_redirect": false,
+      "show_breadcrumbs": true,
+      "quickshop_show_vendor": true,
+      "sections": {
+        "static-header": {
+          "type": "static-header",
+          "blocks": {
+            "1517255946962": {
+              "type": "meganav_images",
+              "settings": {}
+            },
+            "1572476394007": {
+              "type": "multi_column_menu",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1517255946962",
+            "1572476394007"
+          ],
+          "settings": {
+            "sticky_header": false,
+            "full_width_header": false,
+            "logo_height": 40,
+            "logo_width": 150,
+            "filter_search_by": "disabled",
+            "enable_live_search": true,
+            "show_mobile_search_bar": true,
+            "enable_live_search_images": true,
+            "enable_live_search_articles_pages": true,
+            "quick_links": "shop-by-piece",
+            "menu": "main-menu",
+            "small_promo_heading": "Free Shipping",
+            "small_promo_text": "<p>on all orders over $75<\/p>",
+            "small_promo_text_mobile": "<p>on all orders over $75<\/p>",
+            "small_promo_icon": "icon-delivery",
+            "image": ""
+          }
+        },
+        "1520634789686": {
+          "type": "dynamic-featured-product",
+          "settings": {
+            "show_dcb": false,
+            "product_cart_redirect": false
+          }
+        },
+        "1498182734213": {
+          "type": "dynamic-twitter-feed",
+          "settings": {
+            "retweets": false,
+            "images": false
+          }
+        },
+        "1517239645202": {
+          "type": "dynamic-search",
+          "settings": {
+            "filter_search_by": "disabled",
+            "enable_live_search": true,
+            "enable_live_search_images": true,
+            "enable_live_search_articles_pages": false,
+            "position": "top-center",
+            "show-overlay": true,
+            "color": "#4d4d4d",
+            "background": "#ffffff",
+            "opacity": 75
+          }
+        },
+        "static-blog": {
+          "type": "static-blog",
+          "settings": {
+            "show_rss_link": true,
+            "show_date": true,
+            "show_author": true,
+            "show_excerpt": true,
+            "posts_per_page_range": 9
+          }
+        },
+        "1493143038057": {
+          "type": "dynamic-promo-mosaic",
+          "blocks": {
+            "1493143038057-0": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "secondary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 1
+              }
+            },
+            "1493143038057-1": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1493143038057-2": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1493143583401": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            }
+          },
+          "block_order": [
+            "1493143038057-0",
+            "1493143038057-1",
+            "1493143038057-2",
+            "1493143583401"
+          ],
+          "settings": {
+            "title": "",
+            "section_height": "small",
+            "text_alignment": "top-left",
+            "maintain_aspect_ratio": false,
+            "compress_blocks": false
+          }
+        },
+        "static-footer": {
+          "type": "static-footer",
+          "blocks": {
+            "static-footer-0": {
+              "type": "menu",
+              "settings": {
+                "menu": "main-menu"
+              }
+            },
+            "1498182586280": {
+              "type": "menu",
+              "settings": {}
+            },
+            "1498182572847": {
+              "type": "menu",
+              "settings": {}
+            },
+            "1493171899575": {
+              "type": "social_accounts",
+              "settings": {}
+            },
+            "static-footer-1": {
+              "type": "newsletter",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "static-footer-0",
+            "1498182586280",
+            "1498182572847",
+            "1493171899575",
+            "static-footer-1"
+          ],
+          "settings": {
+            "payment_icons": false,
+            "additional_menu": "footer"
+          }
+        },
+        "1493145778308": {
+          "type": "dynamic-promo-grid",
+          "blocks": {
+            "1493145778308-0": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "promo_width": "full-width",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            }
+          },
+          "block_order": [
+            "1493145778308-0"
+          ],
+          "settings": {
+            "section_height": "medium",
+            "text_alignment": "center-center",
+            "maintain_aspect_ratio": true,
+            "compress_blocks": false
+          }
+        },
+        "static-highlights-banners": {
+          "type": "static-highlights-banners",
+          "blocks": {
+            "static-highlights-banners-0": {
+              "type": "highlight",
+              "settings": {
+                "icon": "icon-delivery",
+                "image": "",
+                "title": "Free Shipping",
+                "text": "<p>When you spend $100+<\/p>",
+                "link": ""
+              }
+            },
+            "static-highlights-banners-1": {
+              "type": "highlight",
+              "settings": {
+                "icon": "icon-cell-phone",
+                "image": "",
+                "title": "Give Us A Call",
+                "text": "<p>+1 (201) 555-5555<\/p>",
+                "link": ""
+              }
+            },
+            "static-highlights-banners-2": {
+              "type": "highlight",
+              "settings": {
+                "icon": "icon-chat-alternate",
+                "image": "",
+                "title": "Chat With Us",
+                "text": "<p>We offer 24-hour chat support<\/p>",
+                "link": ""
+              }
+            },
+            "static-highlights-banners-3": {
+              "type": "highlight",
+              "settings": {
+                "icon": "icon-pin",
+                "image": "",
+                "title": "Locations",
+                "text": "<p>Find a store near you<\/p>",
+                "link": ""
+              }
+            }
+          },
+          "block_order": [
+            "static-highlights-banners-0",
+            "static-highlights-banners-1",
+            "static-highlights-banners-2",
+            "static-highlights-banners-3"
+          ],
+          "settings": {
+            "show_highlights_banner": false,
+            "color": "#4d4d4d",
+            "icon_color": "#4d4d4d",
+            "background_color": "#f8f8f8"
+          }
+        },
+        "1521054862775": {
+          "type": "dynamic-video",
+          "settings": {
+            "show_caption": false,
+            "autoplay": false,
+            "aspect_ratio": "16-9",
+            "position": "center-center",
+            "show_overlay": false,
+            "background": "#000000",
+            "opacity": 50
+          }
+        },
+        "static-collection": {
+          "type": "static-collection",
+          "blocks": {
+            "1498186879532": {
+              "type": "menu",
+              "settings": {
+                "menu": ""
+              }
+            },
+            "1498186836236": {
+              "type": "menu",
+              "settings": {
+                "menu": ""
+              }
+            },
+            "1572651808624": {
+              "type": "menu",
+              "settings": {
+                "menu": ""
+              }
+            }
+          },
+          "block_order": [
+            "1498186879532",
+            "1498186836236",
+            "1572651808624"
+          ],
+          "settings": {
+            "show_collection_image": true,
+            "products_per_page_range": 24,
+            "products_per_row": "4",
+            "sort_by": true,
+            "show_by": true,
+            "grid_list": true,
+            "default_view": "grid-view",
+            "show_sidebar": true,
+            "show_prod_count": true,
+            "filter_style": "groups",
+            "filter_limit": "5",
+            "filter_position": "above_menus",
+            "grid_categories": "",
+            "custom_ordered_categories": "",
+            "custom_ordered_tags": "",
+            "menu_depth_range": 1
+          }
+        },
+        "static-slideshow": {
+          "type": "static-slideshow",
+          "blocks": {
+            "static-slideshow-0": {
+              "type": "slide",
+              "settings": {
+                "color": "#ffffff",
+                "text_alignment": "center",
+                "button_one_label": "Button",
+                "button_one_style": "primary",
+                "button_two_style": "primary",
+                "show_overlay": true,
+                "overlay_color": "#000000",
+                "overlay_opacity": 50
+              }
+            },
+            "static-slideshow-1": {
+              "type": "slide",
+              "settings": {
+                "color": "#ffffff",
+                "text_alignment": "center",
+                "button_one_label": "Button",
+                "button_one_style": "primary",
+                "button_two_style": "primary",
+                "show_overlay": true,
+                "overlay_color": "#000000",
+                "overlay_opacity": 50
+              }
+            }
+          },
+          "block_order": [
+            "static-slideshow-0",
+            "static-slideshow-1"
+          ],
+          "settings": {
+            "show_slideshow": false,
+            "enable_autoplay": true,
+            "autoplay_duration": 8,
+            "slideshow_height": "medium"
+          }
+        },
+        "1493163784784": {
+          "type": "dynamic-featured-collection",
+          "settings": {
+            "title": "Featured Collection",
+            "layout": "grid",
+            "collection": "muuto",
+            "product_count": 5,
+            "cta_button_style": "primary"
+          }
+        },
+        "1493171740659": {
+          "type": "dynamic-blog-posts",
+          "settings": {
+            "title": "Blog Posts",
+            "blog": "news",
+            "show_date": true,
+            "show_author": true,
+            "show_excerpt": true
+          }
+        },
+        "1493166188493": {
+          "type": "dynamic-menu-list",
+          "blocks": {
+            "1493166188493-0": {
+              "type": "menu",
+              "settings": {}
+            },
+            "1493166188493-1": {
+              "type": "menu",
+              "settings": {}
+            },
+            "1493166188493-2": {
+              "type": "menu",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1493166188493-0",
+            "1493166188493-1",
+            "1493166188493-2"
+          ],
+          "settings": {}
+        },
+        "static-product": {
+          "type": "static-product",
+          "settings": {
+            "layout": "layout--two-col",
+            "show_dcb": false,
+            "product_cart_redirect": false
+          }
+        },
+        "1540247561673": {
+          "type": "dynamic-promo-grid",
+          "blocks": {
+            "1540247561673-0": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "promo_width": "half-width",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1540247561673-1": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "promo_width": "half-width",
+                "show_overlay": false,
+                "background": "#ee3224",
+                "opacity": 50
+              }
+            }
+          },
+          "block_order": [
+            "1540247561673-0",
+            "1540247561673-1"
+          ],
+          "settings": {
+            "title": "",
+            "section_height": "small",
+            "text_alignment": "top-left",
+            "maintain_aspect_ratio": false,
+            "compress_blocks": false
+          }
+        },
+        "static-announcement": {
+          "type": "static-announcement",
+          "settings": {
+            "show_announcement": false,
+            "homepage_announcement": false,
+            "announcement_color": "#ffffff"
+          }
+        },
+        "static-product-recommendations": {
+          "type": "static-product-recommendations",
+          "settings": {
+            "show_product_recommendations": true,
+            "product_recommendations_heading": "Inspired by your shopping trends"
+          }
+        },
+        "static-product-reviews": {
+          "type": "static-product-reviews",
+          "settings": {}
+        },
+        "static-recently-viewed": {
+          "type": "static-recently-viewed",
+          "settings": {
+            "enable_recently_viewed_products": true
+          }
+        }
+      },
+      "content_for_index": [
+        "1493143038057",
+        "1493145778308",
+        "1540247561673",
+        "1493163784784",
+        "1520634789686",
+        "1521054862775",
+        "1493166188493",
+        "1493171740659",
+        "1498182734213",
+        "1517239645202"
+      ]
+    },
+    "Supply": {
+      "color_background": "#ffffff",
+      "color_headings": "#222222",
+      "color_text": "#4d4d4d",
+      "color_text_light": "#949494",
+      "color_links": "#1e8570",
+      "color_button_background": "#ffab41",
+      "color_button_text": "#1a390c",
+      "color_button_secondary_background": "#ffffff",
+      "color_button_secondary_text": "#1e8570",
+      "color_button_secondary_border": "#dddddd",
+      "color_header_background": "#30656b",
+      "color_header_text": "#ffffff",
+      "color_input_text": "#4d4d4d",
+      "color_input_background": "#ffffff",
+      "color_input_border": "#dddddd",
+      "color_product_sale_accent": "#de0101",
+      "color_product_review_star": "#ffab41",
+      "color_footer_background": "#f8f8f8",
+      "color_footer_text": "#5c5c5c",
+      "color_overlay": "#000000",
+      "overlay_opacity": 50,
+      "type_size_base": 16,
+      "type_heading": "cabin_n7",
+      "type_heading_size": "1",
+      "type_heading_capitalize": false,
+      "type_heading_spacing": 0,
+      "type_body": "cabin_n4",
+      "type_menu": "cabin_n6",
+      "type_menu_capitalize": false,
+      "type_menu_spacing": 0,
+      "type_button": "cabin_n6",
+      "type_button_capitalize": false,
+      "type_button_spacing": 0,
+      "type_section": "cabin_n7",
+      "type_section_capitalize": false,
+      "type_section_spacing": 1,
+      "layout_max_width": 1400,
+      "product_show_vendor": false,
+      "product_show_sku": false,
+      "product_enable_recently_viewed_products": true,
+      "product_option_style": "select",
+      "product_sales_badge": true,
+      "product_sales_badge_style": "percentile",
+      "product_social_sharing": true,
+      "product_slideshow_style": "natural",
+      "gallery_thumbnail_position": "below",
+      "product_ratings_reviews": true,
+      "product_ratings_star_display": "all",
+      "product_grid_show_second_image": false,
+      "product_grid_emphasize_price": true,
+      "product_grid_image_style": "natural",
+      "swatches_enable": false,
+      "swatches_swatch_trigger": "Color",
+      "swatches_shape": "square",
+      "swatches_product_card_size": 16,
+      "swatches_product_page_size": 16,
+      "swatches_option_style": "color_swatch",
+      "swatches_custom_colors": "",
+      "product_grid_show_quickshop": "always",
+      "product_grid_show_atc": "always",
+      "quickshop_show_dcb": true,
+      "quickshop_product_cart_redirect": false,
+      "social_default_image": "",
+      "social_facebook": "",
+      "social_twitter": "",
+      "social_pinterest": "",
+      "social_instagram": "",
+      "social_tumblr": "",
+      "social_vimeo": "",
+      "social_youtube": "",
+      "social_linkedin": "",
+      "social_email": "",
+      "favicon": "",
+      "enable_currency_converter": true,
+      "currency_display_format": "money_format",
+      "currency_converter_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "currency_converter_default": "USD",
+      "enable_checkout_lock_icon": false,
+      "continue_shopping_url": "shopify:\/\/collections\/all",
+      "continue_url_cart": true,
+      "continue_url_404": true,
+      "enable_image_zoom": false,
+      "image_zoom_level": "min",
+      "product_grid_quick_shop": true,
+      "product_grid_quick_buy": true,
+      "social_google": "",
+      "show_dcb": false,
+      "product_grid_quick_look": true,
+      "font_body": "Google_Cabin_400,400i,700,700i",
+      "font_heading": "Google_Cabin_400,400i,700,700i",
+      "product_cart_redirect": false,
+      "sections": {
+        "static-header": {
+          "type": "static-header",
+          "blocks": {
+            "1517257487463": {
+              "type": "meganav_images",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1517257487463"
+          ],
+          "settings": {
+            "sticky_header": true,
+            "full_width_header": false,
+            "logo_height": 40,
+            "logo_width": 150,
+            "filter_search_by": "product_type",
+            "enable_live_search": true,
+            "show_mobile_search_bar": true,
+            "enable_live_search_images": true,
+            "enable_live_search_articles_pages": true,
+            "quick_links": "quick-links",
+            "menu": "main-menu",
+            "small_promo_icon": "none",
+            "image": ""
+          }
+        },
+        "1497987534817": {
+          "type": "dynamic-twitter-feed",
+          "settings": {
+            "retweets": false,
+            "images": false
+          }
+        },
+        "static-list-collections": {
+          "type": "static-list-collections",
+          "settings": {}
+        },
+        "static-article": {
+          "type": "static-article",
+          "settings": {
+            "show_date": true,
+            "show_author": true,
+            "use_share_buttons": true
+          }
+        },
+        "1497995056454": {
+          "type": "dynamic-featured-collection",
+          "blocks": {
+            "1572650065202": {
+              "type": "title_card",
+              "settings": {
+                "position": "end",
+                "text_color": "#ffffff",
+                "overlay_color": "#1d8570",
+                "overlay_opacity": 0,
+                "image": ""
+              }
+            }
+          },
+          "block_order": [
+            "1572650065202"
+          ],
+          "settings": {
+            "title": "",
+            "layout": "slideshow",
+            "collection": "",
+            "product_count": 10,
+            "cta_label": "",
+            "cta_button_style": "primary"
+          }
+        },
+        "static-slideshow": {
+          "type": "static-slideshow",
+          "blocks": {
+            "static-slideshow-1": {
+              "type": "slide",
+              "settings": {
+                "background_image": "",
+                "color": "#ffffff",
+                "text_alignment": "center",
+                "button_one_style": "primary",
+                "button_two_style": "primary",
+                "show_overlay": true,
+                "overlay_color": "#111111",
+                "overlay_opacity": 35
+              }
+            },
+            "static-slideshow-0": {
+              "type": "slide",
+              "settings": {
+                "color": "#ffffff",
+                "text_alignment": "center",
+                "button_one_style": "primary",
+                "button_two_style": "primary",
+                "show_overlay": true,
+                "overlay_color": "#111111",
+                "overlay_opacity": 5
+              }
+            },
+            "1517242272829": {
+              "type": "slide",
+              "settings": {
+                "color": "#ffffff",
+                "text_alignment": "center",
+                "button_one_style": "primary",
+                "button_two_style": "primary",
+                "show_overlay": true,
+                "overlay_color": "#000000",
+                "overlay_opacity": 45
+              }
+            }
+          },
+          "block_order": [
+            "static-slideshow-1",
+            "static-slideshow-0",
+            "1517242272829"
+          ],
+          "settings": {
+            "show_slideshow": true,
+            "enable_autoplay": true,
+            "autoplay_duration": 8,
+            "slideshow_height": "large"
+          }
+        },
+        "static-footer": {
+          "type": "static-footer",
+          "blocks": {
+            "1497987853004": {
+              "type": "social_accounts",
+              "settings": {}
+            },
+            "1497987889867": {
+              "type": "menu",
+              "settings": {
+                "menu": "navigate"
+              }
+            },
+            "1497987887830": {
+              "type": "menu",
+              "settings": {
+                "menu": "community"
+              }
+            },
+            "1497987862126": {
+              "type": "menu",
+              "settings": {
+                "menu": "support"
+              }
+            },
+            "1520633482343": {
+              "type": "rich_text",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1497987853004",
+            "1497987889867",
+            "1497987887830",
+            "1497987862126",
+            "1520633482343"
+          ],
+          "settings": {
+            "payment_icons": true,
+            "additional_menu": "footer"
+          }
+        },
+        "static-search": {
+          "type": "static-search",
+          "settings": {
+            "results_per_page_range": 24,
+            "products_per_row": "4",
+            "enable_search_articles_pages": true
+          }
+        },
+        "static-highlights-banners": {
+          "type": "static-highlights-banners",
+          "blocks": {
+            "static-highlights-banners-0": {
+              "type": "highlight",
+              "settings": {
+                "icon": "icon-delivery",
+                "image": "",
+                "title": "Free Shipping",
+                "text": "<p>When you spend $50+<\/p>"
+              }
+            },
+            "static-highlights-banners-1": {
+              "type": "highlight",
+              "settings": {
+                "icon": "icon-cell-phone",
+                "image": "",
+                "title": "Call Us Anytime",
+                "text": "<p>+1 (250) 555-5555<\/p>"
+              }
+            },
+            "static-highlights-banners-2": {
+              "type": "highlight",
+              "settings": {
+                "icon": "icon-people-alternate",
+                "image": "",
+                "title": "Chat With Us",
+                "text": "<p>We offer 24-hour chat support<\/p>"
+              }
+            },
+            "static-highlights-banners-3": {
+              "type": "highlight",
+              "settings": {
+                "icon": "icon-gift-card",
+                "image": "",
+                "title": "Gift Cards",
+                "text": "<p>For your loved one, in any amount<\/p>"
+              }
+            }
+          },
+          "block_order": [
+            "static-highlights-banners-0",
+            "static-highlights-banners-1",
+            "static-highlights-banners-2",
+            "static-highlights-banners-3"
+          ],
+          "settings": {
+            "show_highlights_banner": true,
+            "color": "#4d4d4d",
+            "icon_color": "#4d4d4d",
+            "background_color": "#f8f8f8"
+          }
+        },
+        "1517012346780": {
+          "type": "dynamic-video",
+          "settings": {
+            "title": "Video",
+            "show_caption": false,
+            "caption": "<p>A short description of the video.<\/p>",
+            "autoplay": false,
+            "aspect_ratio": "16-9",
+            "position": "center-center",
+            "show_overlay": true,
+            "background": "#000000",
+            "opacity": 40
+          }
+        },
+        "static-collection": {
+          "type": "static-collection",
+          "blocks": {
+            "1572648609386": {
+              "type": "menu",
+              "settings": {
+                "menu": "collections"
+              }
+            }
+          },
+          "block_order": [
+            "1572648609386"
+          ],
+          "settings": {
+            "show_collection_image": true,
+            "products_per_page_range": 24,
+            "products_per_row": "4",
+            "sort_by": true,
+            "show_by": true,
+            "grid_list": true,
+            "default_view": "grid-view",
+            "show_sidebar": true,
+            "show_prod_count": true,
+            "filter_style": "groups",
+            "filter_limit": "999",
+            "filter_position": "above_menus",
+            "grid_categories": "",
+            "custom_ordered_categories": "",
+            "custom_ordered_tags": "",
+            "menu_depth_range": 1
+          }
+        },
+        "1497987614708": {
+          "type": "dynamic-featured-collection",
+          "blocks": {
+            "1572649899712": {
+              "type": "title_card",
+              "settings": {
+                "position": "end",
+                "text_color": "#ffffff",
+                "overlay_color": "#1d8570",
+                "overlay_opacity": 0
+              }
+            }
+          },
+          "block_order": [
+            "1572649899712"
+          ],
+          "settings": {
+            "title": "Featured Products",
+            "layout": "slideshow",
+            "product_count": 10,
+            "cta_label": "",
+            "cta_button_style": "primary"
+          }
+        },
+        "1497989801200": {
+          "type": "dynamic-promo-grid",
+          "blocks": {
+            "1497989801200-2": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "promo_width": "half-width",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1497989902765": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "promo_width": "half-width",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1497989801200-0": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "promo_width": "half-width",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1497989801200-1": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "promo_width": "half-width",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            }
+          },
+          "block_order": [
+            "1497989801200-2",
+            "1497989902765",
+            "1497989801200-0",
+            "1497989801200-1"
+          ],
+          "settings": {
+            "section_height": "small",
+            "text_alignment": "top-left",
+            "maintain_aspect_ratio": true,
+            "compress_blocks": true
+          }
+        },
+        "1497987529582": {
+          "type": "dynamic-blog-posts",
+          "settings": {
+            "blog": "news",
+            "show_date": true,
+            "show_author": true,
+            "show_excerpt": true
+          }
+        },
+        "1497982042455": {
+          "type": "dynamic-promo-mosaic",
+          "blocks": {
+            "1498248584447": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1497982042455-1": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1498248685900": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1497982042455-0": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1497982042455-2": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            }
+          },
+          "block_order": [
+            "1498248584447",
+            "1497982042455-1",
+            "1498248685900",
+            "1497982042455-0",
+            "1497982042455-2"
+          ],
+          "settings": {
+            "section_height": "medium",
+            "text_alignment": "top-left",
+            "maintain_aspect_ratio": false,
+            "compress_blocks": false
+          }
+        },
+        "static-blog": {
+          "type": "static-blog",
+          "settings": {
+            "show_rss_link": false,
+            "show_date": true,
+            "show_author": false,
+            "show_excerpt": false,
+            "posts_per_page_range": 9
+          }
+        },
+        "static-product": {
+          "type": "static-product",
+          "settings": {
+            "layout": "layout--three-col",
+            "show_dcb": true,
+            "product_cart_redirect": false
+          }
+        },
+        "1520633208717": {
+          "type": "pxs-newsletter",
+          "settings": {
+            "title": "Newsletter",
+            "desktop_alignment": "left",
+            "mobile_alignment": "top"
+          }
+        },
+        "static-announcement": {
+          "type": "static-announcement",
+          "settings": {
+            "show_announcement": false,
+            "homepage_announcement": false,
+            "announcement_color": "#ffffff"
+          }
+        },
+        "static-recently-viewed": {
+          "type": "static-recently-viewed",
+          "settings": {
+            "enable_recently_viewed_products": true
+          }
+        },
+        "static-product-recommendations": {
+          "type": "static-product-recommendations",
+          "settings": {
+            "show_product_recommendations": true,
+            "product_recommendations_heading": "Related Products"
+          }
+        },
+        "static-product-reviews": {
+          "type": "static-product-reviews",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "1497982042455",
+        "1497989801200",
+        "1497987614708",
+        "1497995056454",
+        "1497987529582",
+        "1517012346780",
+        "1497987534817",
+        "1520633208717"
+      ]
+    },
+    "Industrial": {
+      "color_background": "#ffffff",
+      "color_headings": "#4c4c4c",
+      "color_text": "#4c5154",
+      "color_text_light": "#949494",
+      "color_links": "#0076de",
+      "color_button_background": "#0076de",
+      "color_button_text": "#ffffff",
+      "color_button_secondary_background": "#ffffff",
+      "color_button_secondary_text": "#0076de",
+      "color_button_secondary_border": "#dddddd",
+      "color_header_background": "#1d2236",
+      "color_header_text": "#ffffff",
+      "color_input_text": "#4d4d4d",
+      "color_input_background": "#ffffff",
+      "color_input_border": "#dddddd",
+      "color_product_sale_accent": "#de0101",
+      "color_product_review_star": "#4c4c4c",
+      "color_footer_background": "#edeff3",
+      "color_footer_text": "#5c5c5c",
+      "color_overlay": "#000000",
+      "overlay_opacity": 50,
+      "type_size_base": 16,
+      "type_heading": "arimo_n7",
+      "type_heading_size": "1",
+      "type_heading_capitalize": false,
+      "type_heading_spacing": 0,
+      "type_body": "libre_franklin_n4",
+      "type_menu": "libre_franklin_n7",
+      "type_menu_capitalize": false,
+      "type_menu_spacing": 0,
+      "type_button": "libre_franklin_n7",
+      "type_button_capitalize": false,
+      "type_button_spacing": 0,
+      "type_section": "arimo_n7",
+      "type_section_capitalize": false,
+      "type_section_spacing": 1,
+      "layout_max_width": 1400,
+      "product_show_vendor": true,
+      "product_show_sku": false,
+      "product_enable_recently_viewed_products": false,
+      "product_option_style": "radio",
+      "product_sales_badge": true,
+      "product_sales_badge_style": "text",
+      "product_social_sharing": true,
+      "product_slideshow_style": "natural",
+      "gallery_thumbnail_position": "below",
+      "product_ratings_reviews": true,
+      "product_ratings_star_display": "all",
+      "product_grid_show_second_image": false,
+      "product_grid_emphasize_price": true,
+      "product_grid_image_style": "natural",
+      "swatches_enable": true,
+      "swatches_swatch_trigger": "Color",
+      "swatches_shape": "circle",
+      "swatches_product_card_size": 16,
+      "swatches_product_page_size": 24,
+      "swatches_option_style": "color_swatch",
+      "swatches_custom_colors": "Orange: #FE6C00\nCyan: #28D6F7\nBlue: #3697CB\nRed: #DA3328\nYellow: #F9D02F\nGreen: #19C17F\nPink: #CF236E",
+      "product_grid_show_quickshop": "always",
+      "product_grid_show_atc": "always",
+      "quickshop_show_dcb": false,
+      "quickshop_product_cart_redirect": false,
+      "social_default_image": "",
+      "social_facebook": "",
+      "social_twitter": "",
+      "social_pinterest": "",
+      "social_instagram": "",
+      "social_tumblr": "",
+      "social_vimeo": "",
+      "social_youtube": "",
+      "social_linkedin": "",
+      "social_email": "",
+      "favicon": "",
+      "enable_currency_converter": true,
+      "currency_display_format": "money_with_currency_format",
+      "currency_converter_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "currency_converter_default": "USD",
+      "enable_checkout_lock_icon": false,
+      "continue_shopping_url": "shopify:\/\/collections\/all",
+      "continue_url_cart": true,
+      "continue_url_404": true,
+      "enable_image_zoom": true,
+      "image_zoom_level": "max",
+      "product_grid_quick_shop": true,
+      "product_grid_quick_buy": true,
+      "social_google": "",
+      "show_dcb": false,
+      "font_body": "Google_Libre+Franklin_400,400i,700,700i",
+      "product_cart_redirect": false,
+      "font_heading": "Google_Arimo_400,400i,700,700i",
+      "product_grid_quick_look": true,
+      "sections": {
+        "static-header": {
+          "type": "static-header",
+          "settings": {
+            "sticky_header": false,
+            "full_width_header": false,
+            "logo_height": 56,
+            "logo_width": 150,
+            "filter_search_by": "product_type",
+            "enable_live_search": true,
+            "show_mobile_search_bar": false,
+            "enable_live_search_images": true,
+            "enable_live_search_articles_pages": true,
+            "quick_links": "",
+            "menu": "main-menu",
+            "small_promo_heading": "",
+            "small_promo_text": "",
+            "small_promo_text_mobile": "",
+            "small_promo_link": "",
+            "small_promo_icon": "none",
+            "image": ""
+          }
+        },
+        "1497918122928": {
+          "type": "dynamic-collection-list",
+          "blocks": {
+            "1497918122928-1": {
+              "type": "collection",
+              "settings": {}
+            },
+            "1497918122928-3": {
+              "type": "collection",
+              "settings": {}
+            },
+            "1497918122928-2": {
+              "type": "collection",
+              "settings": {}
+            },
+            "1497918666626": {
+              "type": "collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1497918122928-1",
+            "1497918122928-3",
+            "1497918122928-2",
+            "1497918666626"
+          ],
+          "settings": {
+            "title": "Most Popular Brands"
+          }
+        },
+        "1521049818431": {
+          "type": "dynamic-featured-product",
+          "settings": {
+            "show_dcb": false,
+            "product_cart_redirect": false
+          }
+        },
+        "static-collection": {
+          "type": "static-collection",
+          "blocks": {
+            "1572652324737": {
+              "type": "menu",
+              "settings": {
+                "menu": "shop"
+              }
+            }
+          },
+          "block_order": [
+            "1572652324737"
+          ],
+          "settings": {
+            "show_collection_image": false,
+            "products_per_page_range": 24,
+            "products_per_row": "3",
+            "sort_by": true,
+            "show_by": true,
+            "grid_list": true,
+            "default_view": "list-view",
+            "show_sidebar": true,
+            "show_prod_count": true,
+            "filter_style": "groups",
+            "filter_limit": "999",
+            "filter_position": "above_menus",
+            "grid_categories": "",
+            "custom_ordered_tags": "",
+            "menu_depth_range": 1
+          }
+        },
+        "1497904638504": {
+          "type": "dynamic-promo-grid",
+          "blocks": {
+            "1497904638504-0": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "promo_width": "half-width",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1497904638504-1": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "promo_width": "half-width",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            }
+          },
+          "block_order": [
+            "1497904638504-0",
+            "1497904638504-1"
+          ],
+          "settings": {
+            "section_height": "small",
+            "text_alignment": "top-left",
+            "maintain_aspect_ratio": true,
+            "compress_blocks": true
+          }
+        },
+        "1497902596403": {
+          "type": "dynamic-promo-mosaic",
+          "blocks": {
+            "1497902596403-0": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1497902596403-2": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1497902655509": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1497902596403-1": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            },
+            "1497902666994": {
+              "type": "promotion",
+              "settings": {
+                "button_style": "primary",
+                "show_overlay": false,
+                "background": "",
+                "opacity": 50
+              }
+            }
+          },
+          "block_order": [
+            "1497902596403-0",
+            "1497902596403-2",
+            "1497902655509",
+            "1497902596403-1",
+            "1497902666994"
+          ],
+          "settings": {
+            "title": "",
+            "section_height": "medium",
+            "text_alignment": "top-left",
+            "maintain_aspect_ratio": false,
+            "compress_blocks": true
+          }
+        },
+        "static-article": {
+          "type": "static-article",
+          "settings": {
+            "show_date": true,
+            "show_author": false,
+            "use_share_buttons": true
+          }
+        },
+        "1520984517333": {
+          "type": "pxs-newsletter",
+          "settings": {
+            "desktop_alignment": "left",
+            "mobile_alignment": "top"
+          }
+        },
+        "static-slideshow": {
+          "type": "static-slideshow",
+          "blocks": {
+            "static-slideshow-0": {
+              "type": "slide",
+              "settings": {
+                "background_image": "",
+                "color": "#ffffff",
+                "link": "",
+                "text_alignment": "center",
+                "button_one_label": "Button",
+                "button_one_link": "",
+                "button_one_style": "primary",
+                "button_two_label": "",
+                "button_two_link": "",
+                "button_two_style": "primary",
+                "show_overlay": true,
+                "overlay_color": "#000000",
+                "overlay_opacity": 50
+              }
+            },
+            "static-slideshow-1": {
+              "type": "slide",
+              "settings": {
+                "background_image": "",
+                "color": "#ffffff",
+                "link": "",
+                "text_alignment": "center",
+                "button_one_label": "Button",
+                "button_one_link": "",
+                "button_one_style": "primary",
+                "button_two_label": "",
+                "button_two_link": "",
+                "button_two_style": "primary",
+                "show_overlay": true,
+                "overlay_color": "#000000",
+                "overlay_opacity": 50
+              }
+            }
+          },
+          "block_order": [
+            "static-slideshow-0",
+            "static-slideshow-1"
+          ],
+          "settings": {
+            "show_slideshow": false,
+            "enable_autoplay": true,
+            "autoplay_duration": 8,
+            "slideshow_height": "medium"
+          }
+        },
+        "static-footer": {
+          "type": "static-footer",
+          "blocks": {
+            "1497906897044": {
+              "type": "menu",
+              "settings": {}
+            },
+            "1497909194722": {
+              "type": "menu",
+              "settings": {}
+            },
+            "1497906879041": {
+              "type": "menu",
+              "settings": {}
+            },
+            "1497906643880": {
+              "type": "social_accounts",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1497906897044",
+            "1497909194722",
+            "1497906879041",
+            "1497906643880"
+          ],
+          "settings": {
+            "payment_icons": false,
+            "additional_menu": ""
+          }
+        },
+        "1497904091093": {
+          "type": "dynamic-featured-collection",
+          "settings": {
+            "layout": "grid",
+            "product_count": 5,
+            "cta_button_style": "primary"
+          }
+        },
+        "1497905019048": {
+          "type": "dynamic-blog-posts",
+          "settings": {
+            "blog": "news",
+            "show_date": true,
+            "show_author": true,
+            "show_excerpt": true
+          }
+        },
+        "1520636219191": {
+          "type": "pxs-map",
+          "disabled": true,
+          "settings": {
+            "section_height": "medium",
+            "title": "Our Location",
+            "content": "<p>1221 Broad St, Victoria, BC<\/p>",
+            "text_alignment": "center",
+            "layout": "overlay-bottom-left",
+            "layout_mobile": "above",
+            "address": "1221 Broad St, Victoria, BC",
+            "enable_custom_colors": true,
+            "foreground_color": "#4c5154",
+            "background_color": "#ffffff",
+            "zoom": 4,
+            "image": "",
+            "image_position": "center center",
+            "overlay_color": "#000000",
+            "opacity": 0
+          }
+        },
+        "static-blog": {
+          "type": "static-blog",
+          "settings": {
+            "show_rss_link": true,
+            "show_date": true,
+            "show_author": false,
+            "show_excerpt": true,
+            "featured_post": "",
+            "posts_per_page_range": 9
+          }
+        },
+        "static-highlights-banners": {
+          "type": "static-highlights-banners",
+          "blocks": {
+            "static-highlights-banners-0": {
+              "type": "highlight",
+              "settings": {
+                "icon": "icon-delivery",
+                "image": "",
+                "title": "Free Shipping",
+                "text": "<p>When you spend $100+<\/p>",
+                "link": ""
+              }
+            },
+            "static-highlights-banners-1": {
+              "type": "highlight",
+              "settings": {
+                "icon": "icon-cell-phone",
+                "image": "",
+                "title": "Give Us A Call",
+                "text": "<p>+1 (250) 555-5555<\/p>",
+                "link": ""
+              }
+            },
+            "static-highlights-banners-2": {
+              "type": "highlight",
+              "settings": {
+                "icon": "icon-chat-alternate",
+                "image": "",
+                "title": "Chat With Us",
+                "text": "<p>We offer 24-hour chat support<\/p>",
+                "link": ""
+              }
+            },
+            "1517238432387": {
+              "type": "highlight",
+              "settings": {
+                "icon": "icon-store",
+                "image": "",
+                "title": "Locations",
+                "text": "<p>Find a store near you<\/p>",
+                "link": ""
+              }
+            }
+          },
+          "block_order": [
+            "static-highlights-banners-0",
+            "static-highlights-banners-1",
+            "static-highlights-banners-2",
+            "1517238432387"
+          ],
+          "settings": {
+            "show_highlights_banner": true,
+            "color": "#4d4d4d",
+            "icon_color": "#4d4d4d",
+            "background_color": "#f8f8f8"
+          }
+        },
+        "static-product": {
+          "type": "static-product",
+          "settings": {
+            "layout": "layout--three-col",
+            "show_dcb": true,
+            "product_cart_redirect": false
+          }
+        },
+        "static-announcement": {
+          "type": "static-announcement",
+          "settings": {
+            "show_announcement": true,
+            "homepage_announcement": false,
+            "announcement_link": "",
+            "announcement_color": "#ffffff",
+            "announcement_background": "#6c84b3"
+          }
+        },
+        "static-recently-viewed": {
+          "type": "static-recently-viewed",
+          "settings": {
+            "enable_recently_viewed_products": false
+          }
+        },
+        "static-product-recommendations": {
+          "type": "static-product-recommendations",
+          "settings": {
+            "show_product_recommendations": true
+          }
+        },
+        "static-product-reviews": {
+          "type": "static-product-reviews",
+          "settings": {}
+        },
+        "static-search": {
+          "type": "static-search",
+          "settings": {
+            "results_per_page_range": 24,
+            "products_per_row": "3",
+            "enable_search_articles_pages": true
+          }
+        }
+      },
+      "content_for_index": [
+        "1497902596403",
+        "1497918122928",
+        "1521049818431",
+        "1497904091093",
+        "1497904638504",
+        "1497905019048",
+        "1520636219191",
+        "1520984517333"
+      ]
+    }
+  }
+}

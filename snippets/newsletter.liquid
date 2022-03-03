@@ -1,0 +1,59 @@
+{% assign newsletter_tags = 'prospect' %}
+
+{%- if template contains 'password' %}
+  {% assign newsletter_tags = 'prospect, password page, lang_fr||prospect, password page, lang_en' %}
+{%- else -%}
+  {% assign newsletter_tags = 'prospect, newsletter, lang_fr||prospect, newsletter, lang_en' %}
+{%- endif -%}
+
+{% unless input_id %}
+  {% assign input_id = 'newsletter_email' %}
+{% endunless %}
+
+<div class="newsletter">
+  {% form 'customer', id: form_id %}
+    {% if form.posted_successfully? %}
+      <p class="newsletter-success">
+        <span data-i18n='general.newsletter.success'>{{ 'general.newsletter.success' | t }}</span>
+      </p>
+    {% else %}
+      <input
+        type="hidden"
+        name="contact[tags]"
+        data-i18n='{% include 'translationData' with newsletter_tags, attr: "value" %}'
+        value="{% include 'translationText' with newsletter_tags %}"
+      >
+
+      <div class="form-fields-inline">
+        <div class="form-field newsletter-input">
+          <input
+            class="form-field-input form-field-text"
+            name="contact[email]"
+            id="{{ input_id }}"
+            type="email"
+            aria-label="{{ 'general.newsletter.placeholder' | t }}"
+          >
+
+          <label
+            class="form-field-title"
+            for="{{ input_id }}"
+            data-i18n="general.newsletter.placeholder"
+          >
+            {{ 'general.newsletter.placeholder' | t }}
+          </label>
+        </div>
+
+        <div class="form-field newsletter-submit">
+          <button
+            class="button-primary"
+            name="subscribe"
+            type="submit"
+            data-i18n="general.newsletter.subscribe"
+          >
+            {{ 'general.newsletter.subscribe' | t }}
+          </button>
+        </div>
+      </div>
+    {% endif %}
+  {% endform %}
+</div>

@@ -1,0 +1,158 @@
+<section
+  class="account-page account-page-login"
+  data-template-account
+  data-template-account-login>
+  <header class="account-page-masthead">
+    <h1 class="account-page-title">
+      <span data-i18n='customers.login.title'>{{ 'customers.login.title' | t }}</span>
+    </h1>
+  </header>
+
+  <article class="account-page-content">
+    <div class="account-login visible" data-account-login-main>
+      {% form 'customer_login' %}
+
+        {% if form.errors != blank %}
+          <div class="account-message message--error">
+            <span data-i18n='{% render 'translationData' with  form.errors, default_errors: true %}'>{% render 'translationText' with  form.errors, default_errors: true %}</span>
+          </div>
+        {% endif %}
+
+        <div class="form-field">
+          <input
+            class="form-field-input form-field-text"
+            id="customer_email"
+            name="customer[email]"
+            type="text"
+            autocorrect="off"
+            autocapitalize="off">
+          <label
+            class="form-field-title"
+            data-i18n="customers.forms.email"
+            for="customer_email">
+            {{ 'customers.forms.email' | t }}
+          </label>
+        </div>
+
+        {% if form.password_needed %}
+          <div class="form-field form-field--account-password">
+            <input
+              class="form-field-input form-field-text"
+              id="customer_password"
+              name="customer[password]"
+              type="password">
+            <label
+              class="form-field-title"
+              data-i18n="customers.forms.password"
+              for="customer_password">
+              {{ 'customers.forms.password' | t }}
+            </label>
+          </div>
+        {% endif %}
+
+        <div class="form-action-row">
+          <button class="button-primary form-action--submit" type="submit">
+            <span data-i18n='customers.login.sign_in'>{{ 'customers.login.sign_in' | t }}</span>
+          </button>
+
+          <div class="form-action-row--helper">
+            <span class="form-action-row--helper-item">
+              <span data-i18n='customers.new_customer.title'>{{ 'customers.new_customer.title' | t }}</span>
+              <a href="/account/register" id="customer_register_link"><span data-i18n='customers.register.title'>{{ 'customers.register.title' | t }}</span></a>
+            </span>
+
+            {% if form.password_needed %}
+              <span class="form-action-row--helper-item">
+                <a href="#customer_recovery" data-login-toggle>
+                  <span data-i18n='customers.login.forgot_password'>{{ 'customers.login.forgot_password' | t }}</span>
+                </a>
+              </span>
+            {% endif %}
+          </div>
+        </div>
+
+      {% endform %}
+    </div>
+
+    <div
+      class="account-recovery"
+      id="customer_recovery"
+      data-account-login-recovery>
+      {% form 'recover_customer_password' %}
+
+        <h2 class="account-page-subtitle">
+          <span data-i18n='customers.recover_password.title'>{{ 'customers.recover_password.title' | t }}</span>
+        </h2>
+
+        <p><span data-i18n='customers.recover_password.subtitle'>{{ 'customers.recover_password.subtitle' | t }}</span></p>
+
+        {% assign has_message = false %}
+
+        {% if form.errors != blank %}
+          {% assign has_message = true %}
+          {% assign message_type = 'error' %}
+        {% endif %}
+
+        {% if form.posted_successfully? %}
+          {% assign has_message = true %}
+          {% assign message_type = 'success' %}
+        {% endif %}
+
+        {% if has_message %}
+          <div class="account-message message--{{ message_type }}" data-recovery-has-message>
+            {% case message_type %}
+              {% when 'success' %}
+                <p>
+                  <span data-i18n='customers.recover_password.success'>{{ 'customers.recover_password.success' | t }}</span>
+                </p>
+              {% when 'error' %}
+                {{ form.errors | default_errors }}
+            {% endcase %}
+          </div>
+        {% endif %}
+
+        <div class="form-field">
+          <input
+            class="form-field-input form-field-text"
+            id="customer_recovery_email"
+            name="email"
+            type="text"
+            autocorrect="off"
+            autocapitalize="off">
+          <label
+            class="form-field-title"
+            for="customer_recovery_email">
+            {{ 'customers.forms.email' | t }}
+          </label>
+        </div>
+
+        <div class="form-action-row">
+          <button class="button-primary" type="submit">
+            <span data-i18n='customers.forms.submit'>{{ 'customers.forms.submit' | t }}</span>
+          </button>
+
+          <button
+            class="button-secondary"
+            type="button"
+            data-login-toggle>
+            {{ 'customers.forms.cancel' | t }}
+          </button>
+        </div>
+      {% endform %}
+    </div>
+
+    {% if shop.checkout.guest_login %}
+      <div class="account-register account-register--guest">
+        <h2 class="account-register-subtitle">
+          <span data-i18n='customers.guest_login.title'>{{ 'customers.guest_login.title' | t }}</span>
+        </h2>
+
+        {% form 'guest_login' %}
+          <button class="button-primary" type="submit">
+            <span data-i18n='customers.guest_login.submit'>{{ 'customers.guest_login.submit' | t }}</span>
+          </button>
+        {% endform %}
+      </div>
+    {% endif %}
+  </article>
+</section>

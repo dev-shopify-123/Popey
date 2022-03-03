@@ -1,0 +1,69 @@
+{%- capture block_class -%}
+  site-footer-block-item
+  site-footer-block-{{ block.type | replace: '_', '-' }}
+  {% if block.type == 'menu' %}has-accordion{% endif %}
+{%- endcapture -%}
+
+<div class="{{ block_class | strip_newlines }}" {{ block.shopify_attributes }}>
+
+  {% if block.type == 'menu' %}
+      <h2 class="site-footer-block-title" data-accordion-trigger>
+        <span data-i18n='{% render 'translationData' with  linklists[block.settings.menu].title %}'>{% render 'translationText' with  linklists[block.settings.menu].title %}</span>
+
+        <span class="site-footer-block-icon accordion--icon">
+          {% include 'icon-chevron-down' %}
+        </span>
+      </h2>
+
+      <div class="site-footer-block-content accordion--content" data-accordion-content>
+        {%
+          include 'navlist',
+          menu_list: linklists[block.settings.menu].links,
+          depth: 1,
+          max_depth: 1,
+          aria_expanded: false
+        %}
+      </div>
+  {% elsif block.type == 'rich_text' or block.type == 'newsletter' %}
+    {% if block.settings.title != blank %}
+      <h2 class="site-footer-block-title">
+        <span data-i18n='{% render 'translationData' with  block.settings.title %}'>{% render 'translationText' with  block.settings.title %}</span>
+      </h2>
+    {% endif %}
+
+    {% if block.settings.text != blank %}
+      <div class="site-footer-block-content rte">
+        <span data-i18n='{% render 'translationData' with  block.settings.text  %}'>{% render 'translationText' with  block.settings.text  %}</span>
+      </div>
+    {% endif %}
+
+    {% if block.type == 'newsletter' %}
+      {% assign form_id = 'footer_newsletter_' | append: block.id %}
+      {%
+        include 'newsletter',
+        form_id: form_id,
+        input_id: 'footer_newsletter_email'
+      %}
+    {% endif %}
+  {% elsif block.type == 'social_accounts' %}
+    {% if block.settings.logo != blank %}
+        {% capture imgTranslation %}
+        <img src="{{ block.settings.logo | img_url: "700x" }}" alt="{{ block.settings.logo.alt }}" style="max-width: 100%;" />
+        {% if block.settings.logo_en != blank %}
+          ||
+          <img src="{{ block.settings.logo_en | img_url: "700x" }}" alt="{{ block.settings.logo_en.alt }}" style="max-width: 100%;" />
+        {% endif %}
+        {% endcapture %}
+      <div class="site-footer-logo" data-i18n='{% render 'translationData' with imgTranslation %}'>{% render 'translationText' with imgTranslation %}</div>
+    {% endif %}
+
+    <h2 class="site-footer-block-title">
+      <span data-i18n='footer.general.follow_us'>{{ 'footer.general.follow_us' | t }}</span>
+    </h2>
+
+    <div class="site-footer-block-content">
+      {% include 'social-list' %}
+    </div>
+  {% endif %}
+
+</div>

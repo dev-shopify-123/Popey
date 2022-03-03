@@ -1,0 +1,189 @@
+{% assign compare_at_price = 0 %}
+
+{% for variant in item.product.variants %}
+  {% if variant.id == item.variant.id and variant.compare_at_price > item.price %}
+    {% assign compare_at_price = variant.compare_at_price %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{%- assign item_has_discounts = false -%}
+{%- if item.line_level_discount_allocations.size > 0 -%}
+  {%- assign item_has_discounts = true -%}
+{%- endif -%}
+
+<li
+  class="cart-item"
+  data-cartitem
+  data-cartitem-id="{{ item.variant_id }}"
+  data-cartitem-key="{{ item.key }}"
+  data-cartitem-price="{{ item.price }}">
+  <figure class="cart-item--image-wrapper">
+    <a href="{{ item.url }}">
+      {% if item.image %}
+        {%
+          include 'rimg',
+          img: item.image,
+          alt: item.title,
+          size: '120x'
+        %}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder--image' }}
+      {% endif %}
+    </a>
+  </figure>
+
+  <div class="cart-item--inner">
+
+    <div class="cart-item--content">
+      <h2 class="cart-item--content-title">
+        <a href="{{ item.url }}">
+          <span data-i18n='{% render 'translationData' with  item.product.title  %}'>{% render 'translationText' with  item.product.title  %}</span>
+<span class='booster-cart-item-success-notes' data-key='{{item.key}}'></span><span class='booster-cart-item-upsell-notes' data-key='{{item.key}}'></span>
+        </a>
+      </h2>
+
+      {% unless item.product.has_only_default_variant %}
+        {% for option in item.product.options %}
+          <div class="cart-item--product-options">
+          	{% if option == 'Size' %}                                                     
+           		 <span class="cart-item--option-name"><span data-i18n='custom.product.size'>{{ 'custom.product.size' | t }}</span></span>
+            {% elsif option == 'Colour' %}                                                  
+           	 <span class="cart-item--option-name"><span data-i18n='custom.product.flavour'>{{ 'custom.product.flavour' | t  }}</span></span>
+            {% else %}                                                
+            	<span class="cart-item--option-name"><span data-i18n='{% render 'translationData' with  option  %}'>{% render 'translationText' with  option  %}</span></span>                      
+          	{% endif %}   
+            {{ item.variant.options[forloop.index0] }}
+          </div>
+        {% endfor %}
+      {% endunless %}
+
+      <div class="cart-item--content-price">
+        <span class="cart-item--price-title"><span class="hulkapps-cart-item-price" data-key="{{item.key}}">
+          <span data-i18n='cart.general.price'>{{ 'cart.general.price' | t }}</span></span>
+        </span>
+
+        {% if compare_at_price > item.price or item.original_price > item.final_price %}
+          <span class="visually-hidden"><span data-i18n='product.item.price.original'>{{ 'product.item.price.original' | t }}</span></span>
+          <s class="cart-item--sale-price money">
+            {%- if item_has_discounts -%}
+              {{ item.original_price | money }}
+            {%- else -%}
+              {{ compare_at_price | money }}
+            {%- endif %}
+          </s>
+          <span class="visually-hidden"><span data-i18n='product.item.price.current'>{{ 'product.item.price.current' | t }}</span></span>
+        {% endif %}
+
+        <span class="money {% if item_has_discounts %}cart-item--discount-price{% endif %}">
+          {%- if item_has_discounts -%}
+            {{ item.final_price | money }}
+          {%- else -%}<span class="hulkapps-cart-item-price" data-key="{{item.key}}">
+          {{ item.original_price | money }}</span>
+          {%- endif %}
+        </span>
+      </div>
+
+      {%- if item_has_discounts -%}
+        <ul class="discount-list" aria-label="{{ 'product.general.discounts' | t }}">
+          {% for discount_allocation in item.line_level_discount_allocations %}
+            <li class="discount-list-item">
+              {% include 'icon-library', id: 'icon-sale-tag' %}
+              {{ discount_allocation.discount_application.title }}
+              (-<span class="money">{{ discount_allocation.amount | money }}</span>)
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if settings.product_show_sku == true %}
+        <div
+          class="
+            cart-item--sku
+            {% if item.sku == empty %}cart-item--sku-empty{% endif %}
+          "
+        >
+          {{ 'product.general.sku_html' | t: sku: item.sku | strip_newlines }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="cart-item--info">
+      <div
+        class="cart-item--quantity form-fields--qty"
+        data-quantity-wrapper
+        >
+        <div class="form-field form-field--qty-select {% if item.quantity < 10 %}visible{% else %}hidden{% endif %}">
+          <div class="form-field-select-wrapper">
+            <select
+              class="form-field-input form-field-select form-field-filled"
+              id="quantity_{{ item.key | replace: ':', '_' }}"
+              {% if item.quantity >= 10 %}tabindex="-1"{% endif %}
+              aria-label="{{ 'general.general.quantity' | t }}"
+              data-quantity-select
+              data-cartitem-quantity>
+              {% for i in (1..9) %}
+                <option {% if i == item.quantity %}selected {% endif %}value="{{ i }}">
+                  {{ i }}
+                </option>
+              {% endfor %}
+              <option value="10">
+                10+
+              </option>
+            </select>
+
+            <label class="form-field-title" for="quantity_{{ item.key | replace: ':', '_' }}">
+              <span data-i18n='general.general.quantity'>{{ 'general.general.quantity' | t }}</span>
+            </label>
+            {% include 'icon-chevron-down-small' %}
+            </div>
+        </div>
+
+        <div class="form-field form-field--qty-input {% if item.quantity < 10 %}hidden{% else %}visible{% endif %}">
+          <input
+            class="form-field-input form-field-number form-field-filled"
+            value="{{ item.quantity }}"
+            name="updates[]"
+            id="updates_{{ item.key }}"
+            type="text"
+            pattern="\d*"
+            {% if item.quantity < 10 %}tabindex="-1"{% endif %}
+            aria-label="{{ 'general.general.quantity' | t }}"
+            data-quantity-input
+            data-cartitem-quantity>
+          <label class="form-field-title" for="updates_{{ item.key }}">
+            <span data-i18n='general.general.quantity'>{{ 'general.general.quantity' | t }}</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="cart-item--total">
+        <span class="visually-hidden"><span data-i18n='product.item.price.total_line_price'>{{ 'product.item.price.total_line_price' | t }}</span></span>
+        {%- if item_has_discounts -%}
+          <span class="visually-hidden"><span data-i18n='product.item.price.original'>{{ 'product.item.price.original' | t }}</span></span>
+        <s class="original-price money"><span class="" data-key="{{item.key}}"><span class='booster-cart-item-line-price' data-key='{{item.key}}'>{{ item.original_line_price | money }}</span></span></s>
+          <span class="visually-hidden"><span data-i18n='product.item.price.current'>{{ 'product.item.price.current' | t }}</span></span>
+        {%- endif -%}
+        <div
+          class="money {% if item_has_discounts %}cart-item--discount-price{% endif %}"
+          aria-live="polite"
+          data-cartitem-total
+        ><span class="" data-key="{{item.key}}">
+          {{ item.final_line_price | money }}</span>
+        </div>
+      </div>
+
+      <div class="cart-item--remove">
+        <a
+          href="/cart/change?line={{ forloop.index }}&amp;quantity=0"
+          class="cart-item--remove-link"
+          data-cartitem-remove
+          aria-label="remove {{ item.product.title | escape }}"
+        >
+          {% include 'icon-remove' %}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</li>

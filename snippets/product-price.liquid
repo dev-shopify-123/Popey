@@ -1,0 +1,65 @@
+{% comment %}
+  @param class_root {String}
+    Base class root
+
+  @param price {Number}
+    product.price
+
+  @param price_varies {Bool}
+    product.price_varies
+
+  @param compare_at_price {Number}
+    product.compare_at_price
+
+  @param compare_at_price_varies {Bool}
+    Displays a range price is a product's variants have differing prices
+
+  @param on_sale {Bool}
+    If a product, or one of it's variants is on sale
+
+  @param emphasize_price {Bool}
+    Used in product grid item to add placeholder space
+
+  @param show_original {Bool}
+    Show original price if is consistent across all variants
+{% endcomment %}
+<div class="{{ class_root }}--price {% if compare_at_price_varies %}price--varies{% endif %}">
+  <div
+    class="price--compare-at {% if emphasize_price or on_sale and show_original %}visible{% endif %}"
+    data-price-compare-at
+  >
+    {%- capture price_html -%}
+      <span class="visually-hidden"><span data-i18n='product.item.price.original'>{{ 'product.item.price.original' | t }}</span></span>
+      <span class="money">
+        {{ compare_at_price | money }}
+      </span>
+    {%- endcapture -%}
+
+    {% if compare_at_price_varies and on_sale and show_original %}
+      {{ 'product.item.price.range_html' | t: price: price_html | strip_newlines }}
+    {% elsif on_sale and show_original %}
+      {{ price_html }}
+    {% elsif emphasize_price %}
+      <span class="price--spacer"></span>
+    {% elsif show_original %}
+      <span class="money"></span>
+    {% endif %}
+  </div>
+
+  <div class="price--main" data-price>
+    {%- capture price_html -%}
+      <span class="money">
+        {{ price | money }}
+      </span>
+    {%- endcapture -%}
+
+    {% if price_varies %}
+      {{ 'product.item.price.range_html' | t: price: price_html | strip_newlines }}
+    {% else %}
+      {% if on_sale and show_original %}
+        <span class="visually-hidden"><span data-i18n='product.item.price.current'>{{ 'product.item.price.current' | t }}</span></span>
+      {% endif %}
+      {{ price_html }}
+    {% endif %}
+  </div>
+</div>

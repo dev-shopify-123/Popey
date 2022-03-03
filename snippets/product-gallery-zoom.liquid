@@ -1,0 +1,82 @@
+{% comment %} Root element of PhotoSwipe. Must have class pswp. {% endcomment %}
+<div
+  class="pswp"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+  aria-label="{{ 'general.accessibility.product_zoom_dialog' | t }}"
+  data-photoswipe
+>
+
+  {% comment %} Background of PhotoSwipe.
+        It's a separate element as animating opacity is faster than rgba(). {% endcomment %}
+  <div class="pswp__bg"></div>
+
+  {% comment %} Slides wrapper with overflow:hidden. {% endcomment %}
+  <div class="pswp__scroll-wrap">
+      {% comment %} Container that holds slides.
+          PhotoSwipe keeps only 3 of them in the DOM to save memory.
+          Don't modify these 3 pswp__item elements, data is added later on. {% endcomment %}
+      <div class="pswp__container" aria-hidden="true">
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+      </div>
+
+      {% comment %} Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. {% endcomment %}
+      <div class="pswp__ui pswp__ui--hidden">
+          <div class="pswp__top-bar">
+              {% comment %}  Controls are self-explanatory. Order can be changed. {% endcomment %}
+              <div class="pswp__counter"></div>
+              <button class="pswp__button pswp__button--close" title="{{ 'general.accessibility.close' | t }}">
+                <span tabindex="-1">
+                  {% include 'icon-library', id: 'icon-close' %}
+                </span>
+              </button>
+              <button class="pswp__button pswp__button--share" title="Share"></button>
+              <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+              <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+              {% comment %} Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR {% endcomment %}
+              {% comment %} element will get class pswp__preloader--active when preloader is running {% endcomment %}
+              <div class="pswp__preloader">
+                  <div class="pswp__preloader__icn">
+                    <div class="pswp__preloader__cut">
+                      <div class="pswp__preloader__donut"></div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+              <div class="pswp__share-tooltip"></div>
+          </div>
+
+          <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+          </button>
+          <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+          </button>
+
+          <div class="pswp__caption">
+              <div class="pswp__caption__center"></div>
+          </div>
+      </div>
+  </div>
+  <div class="product-zoom--thumbnails" data-photoswipe-thumbs>
+    <button
+      class="gallery-navigation--scroll-button scroll-left"
+      aria-label="Scroll thumbnails left"
+      data-gallery-scroll-button
+    >
+      {% include 'icon-chevron-down' %}
+    </button>
+    <button
+      class="gallery-navigation--scroll-button scroll-right"
+      aria-label="Scroll thumbnails right"
+      data-gallery-scroll-button
+    >
+      {% include 'icon-chevron-down' %}
+    </button>
+    <div class="product-zoom--thumb-scroller" data-photoswipe-thumb-scroller></div>
+  </div>
+</div>

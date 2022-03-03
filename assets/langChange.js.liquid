@@ -1,0 +1,317 @@
+if (!String.prototype.trim) {
+  String.prototype.trim = function () {
+    return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+  };
+}
+
+(function () {
+
+  if ( typeof window.CustomEvent === "function" ) return false;
+
+  function CustomEvent ( event, params ) {
+    params = params || { bubbles: false, cancelable: false, detail: undefined };
+    var evt = document.createEvent( 'CustomEvent' );
+    evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+    return evt;
+   }
+
+  CustomEvent.prototype = window.Event.prototype;
+
+  window.CustomEvent = CustomEvent;
+})();
+
+var translating = false;
+
+function changeLanguage(parent) {
+  translating = true;
+  if(!parent){
+    parent = 'html';
+  }
+    
+  $(parent).parent().find('[data-i18n]').each(function() {
+    window.requestAnimationFrame(function(){
+    	window.requestAnimationFrame(function(){
+          	if ($(this).attr('data-i18n').indexOf('||') !== -1) {
+
+              var translationOptions = $(this).attr('data-i18n').split('||');
+              var translationOption = translateInterpolations(JSON.parse(translationOptions[1]));
+
+              var changeInner = true;
+
+              translationOption.interpolation = {escapeValue: false};
+
+
+
+              if (translationOption.attr !== undefined) {
+
+                var translation = i18next.t(translationOptions[0].trim(), translationOption);
+                var oldTranslation = $(this).attr(translationOption.attr);
+
+                if(translation != oldTranslation){
+                  $(this).attr(translationOption.attr, translation);
+                }
+
+                if (translationOption.changeInner === undefined) {
+                  changeInner = false;
+                } else {
+                  changeInner = translationOption.changeInner;
+                }
+              }
+
+              if (changeInner) {
+
+                /**
+                               * if the "notHtml" key exist in the object we change the translation as text.
+                               * Mandatory for certain tag(ex: option tag can't be changed with html)
+                               */
+                if (translationOption.notHtml !== undefined) {
+                  var translation = i18next.t(translationOptions[0].trim(), translationOption);
+                  var oldTranslation = $(this).text();
+
+                  if(translation != oldTranslation){
+                    $(this).text(translation);
+                  }
+                } else if (translationOption.link_to != undefined) {
+                  var translation = "<a href='" + translationOption.link_to + "'>" + i18next.t(translationOptions[0].trim(), translationOption) + "</a>";
+                  var oldTranslation = $(this).html()
+
+                  if(cleanString(translation) != cleanString(oldTranslation)){
+                    $(this).html(translation);
+                  }
+                } else {
+                  var translation = i18next.t(translationOptions[0].trim(), translationOption);
+                  var translationEncoded = btoa(unescape(encodeURIComponent(translation)));
+                  var oldTranslation = $(this).html();
+                  var oldTranslationEncoded = $(this).attr("data-old-translation");
+
+                  if(cleanString(translation) != cleanString(oldTranslation) || translationEncoded != oldTranslationEncoded){
+                    $(this).attr("data-old-translation", btoa(unescape(encodeURIComponent(translation))));
+                    $(this).html(translation);
+                  }
+                }
+              }
+            } else if ($(this).attr('data-i18n').indexOf('~~') !== -1) {
+              var translationOptions = $(this).attr('data-i18n').split('~~');
+              var translsationKey = JSON.parse(translationOptions[0]).key;
+              var translationOption = translateInterpolations(JSON.parse(translationOptions[1]));
+              
+              
+
+              if (i18next.exists(translsationKey.trim())) {
+                var changeInner = true;
+
+
+                if (translationOption.attr !== undefined) {
+
+                  var translation = i18next.t(translsationKey.trim(), translationOption);
+                  var oldTranslation = $(this).attr(translationOption.attr);
+
+                  if(translation != oldTranslation){
+                    $(this).attr(translationOption.attr, translation);
+                  }
+
+                  if (translationOption.changeInner === undefined) {
+                    changeInner = false;
+                  } else {
+                    changeInner = translationOption.changeInner;
+                  }
+                }
+
+
+
+
+                if (changeInner) {
+                  if (translationOption.notHtml !== undefined) {
+                    var translation = i18next.t(translsationKey.trim());
+                    var oldTranslation = $(this).text();
+
+                    if(translation != oldTranslation){
+                      $(this).text(translation);
+                    }
+                  } else {
+                    var translation = i18next.t(translsationKey.trim());
+                    var translationEncoded = btoa(unescape(encodeURIComponent(translation)));
+                    var oldTranslation = $(this).html();
+                    var oldTranslationEncoded = $(this).attr("data-old-translation");
+
+                    
+                    if(cleanString(translation) != cleanString(oldTranslation) || translationEncoded != oldTranslationEncoded){
+                      $(this).attr("data-old-translation", btoa(unescape(encodeURIComponent(translation))));
+                      $(this).html(translation);
+                    }
+                  }
+                }
+              }
+            } else if (i18next.exists($(this).attr('data-i18n').trim())) {
+              var translation = i18next.t($(this).attr('data-i18n').trim());
+              var translationEncoded = btoa(unescape(encodeURIComponent(translation)));
+              var oldTranslation = $(this).html();
+              var oldTranslationEncoded = $(this).attr("data-old-translation");
+
+              if(cleanString(translation) != cleanString(oldTranslation) || translationEncoded != oldTranslationEncoded){
+                $(this).attr("data-old-translation", btoa(unescape(encodeURIComponent(translation))));
+                $(this).html(translation);
+              }
+            }
+        }.bind(this));
+    }.bind(this));
+  });
+
+  if(typeof(Event) === 'function') {
+    var event = new Event('languageChanged');
+  }else{
+    var event = new CustomEvent('languageChanged');
+  }
+
+  $(parent)[0].dispatchEvent(event);
+  translating = false;
+}
+
+var uniqueIdKey = 0;
+
+$(document).ready(function(){
+  if(Object.keys(translations).length){
+    var targetNode = document.getElementsByTagName('body')[0];
+
+    var config = { attributes: true, childList: true, subtree: true };
+
+    var callback = function(mutationsList, observer) {
+      for(var mutation of mutationsList) {
+        window.requestAnimationFrame(function(){
+          window.requestAnimationFrame(function(){
+            var mutation = this;
+            if(mutation.addedNodes.length > 0){
+              for (var i = 0; i < mutation.addedNodes.length; i++){
+                indirectTranslations.forEach(function(indirectTranslation){
+                  var cssSelector = indirectTranslation.cssSelector;
+                  var dataTranslation = indirectTranslation.translation;
+
+                  if($(mutation.addedNodes[i]).parent().find(cssSelector).length || $(cssSelector)[0] == $(mutation.addedNodes[i]).parent()[0]){
+                    var element = $(mutation.addedNodes[i]).parent().find(cssSelector);
+
+                    if(element.length == 0){
+                      element = $(mutation.addedNodes[i]).parent();
+                    }
+
+                    element.each(function(){
+                      if(!$(this).attr("data-i18n") && $(this).length > 0){
+                        if(indirectTranslation.useInnerText){
+                          var innerText = $($(this)[0]).html();
+                          dataTranslation = buildDataTranslation(innerText.replace("<p>||</p>", "||"));
+                        }
+
+                        $(this).attr("data-i18n", dataTranslation);
+                        loadUserTranslations(window.selectedLang, $(this)[0]);
+                        changeLanguage($(this)[0]);
+                      }
+                    });
+                  }
+                });
+
+
+                var addedNode = mutation.addedNodes[i];
+                var toTranslateFound = $(addedNode).parent().find('[data-i18n]');
+                var text = false;
+
+                if("#text" == addedNode.nodeName){
+                  toTranslateFound = $(addedNode).parent().parent().find('[data-i18n]');
+                  addedNode = $(addedNode).parent()[0];
+                  text = true;
+                }
+
+                if(toTranslateFound.length){
+                  loadUserTranslations(window.selectedLang, addedNode);
+                  changeLanguage(addedNode);
+                }
+              }
+            }
+            else if(mutation.type == "attributes" && mutation.attributeName != "id" && mutation.attributeName != "style" && mutation.attributeName != "data-i18n"){
+
+              if($(mutation.target).attr('data-i18n')){
+                loadUserTranslations(window.selectedLang, mutation.target);
+                changeLanguage(mutation.target);
+              }
+            }
+          }.bind(this));
+        }.bind(mutation));
+      }
+    };
+
+    // Create an observer instance linked to the callback function
+    var observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
+  }
+});
+
+function loadUserTranslations(lang, parent) {
+  if(!parent){
+    parent = 'html';
+  }
+  
+  $(parent).parent().find('[data-i18n]').each(function() {
+    if ($(this).attr('data-i18n').indexOf('~~') !== -1) {
+      try{
+      	var translationOptions = $(this).attr('data-i18n').split('~~');
+        var translsationKey = JSON.parse(translationOptions[0]).key;
+
+        var translationOption = translateInterpolations(JSON.parse(translationOptions[1]));
+
+        i18next.addResource(lang, 'translation', translsationKey.trim(), translationOption[lang], {keySeparator: false});
+      }
+      catch(e){
+      	console.log($(this).attr('data-i18n'));
+      }
+      
+    }
+  });
+}
+
+function translateInterpolations(options){
+  for(var option in options){
+  	var optionValue = options[option];
+    
+    if(optionValue.indexOf("^^") != -1){
+      var translationValue = optionValue.split("^^")[window.currentLangIndex];
+      
+      options[option] = translationValue;
+    }
+  }
+  
+  return options
+}
+
+function cleanString(string){
+	return $("<div />").html($('<textarea />').html(string).text().replace(/(\r\n|\n|\r)/gm, "").trim()).text().trim();
+}
+
+var uniqueId = 0;
+
+//Handlebars translation helper
+$(document).ready(function(){
+  if (typeof Handlebars !== 'undefined') {
+    Handlebars.registerHelper('translation', function(text) {
+      var dataTranslation = buildDataTranslation(text);
+
+      var textSplit = text.split("||");
+      return "<span data-i18n='" + dataTranslation + "'>" + textSplit[0].replace('"', '\"') + "</span>";
+    });
+  }
+});
+
+function buildDataTranslation(text){
+  uniqueId++;
+  var key = { key: new Date().getTime().toString() + uniqueId };
+  {%- capture lang_list -%}{%- for locale in shop.published_locales -%}{%- if locale.primary -%}{{- locale.iso_code -}}{%- endif -%}{%- endfor -%}{%- for locale in shop.published_locales -%}{%- if locale.primary -%}{%- continue -%}{%- endif -%},{{- locale.iso_code -}}{%- endfor -%}{%- endcapture -%}
+  var langArray = {{ lang_list | remove: " " | split: "," | json }}
+
+  var textSplit = text.split("||");
+  var langObject = {};
+
+  for(var i = 0; i < textSplit.length; i++){
+    langObject[langArray[i]] = textSplit[i].replace('"', '\"');
+  }
+  
+  return JSON.stringify(key) + " ~~ " + JSON.stringify(langObject);
+}

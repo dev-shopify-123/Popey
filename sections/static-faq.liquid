@@ -1,0 +1,390 @@
+<div class="faq-header">
+    <h1 class="faq-main-title"><span data-i18n='{% render 'translationData' with  page.title  %}'>{% render 'translationText' with  page.title  %}</span></h1>
+    
+    <div class="faq-search-wrapper">
+        <img src="{{ 'magnifying-glass.svg' | asset_url }}" alt="" />
+      <input data-i18n='{% render 'translationData' with   section.settings.search_placeholder, attr: "placeholder" %}' placeholder="{% render 'translationText' with   section.settings.search_placeholder %}" type="text" />
+    </div>
+  </div>
+  
+  <div class="promo-mosaic--container">
+    {% assign sections = section.blocks | where: 'type', 'section' %}
+    {% assign questions = section.blocks | where: 'type', 'question' %}
+    <div class="faq-wrapper">
+      <div class="faq-sections-wrapper">
+        <ul>
+          {% for block in sections %}
+          <li>
+            <div class="section-selection" data-tab-id="{{block.settings.title | handleize}}">
+              {% if block.settings.img != blank %}<div class="section-icon-container"><img src="{{block.settings.img | img_url: 'master' }}" alt="{{block.settings.img.alt}}" /></div>{% endif %}
+              <span><span data-i18n='{% render 'translationData' with  block.settings.title  %}'>{% render 'translationText' with  block.settings.title  %}</span></span>
+            </div>    
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+  
+      <div class="faq-questions-wrapper">
+        {% for blockSection in sections %}
+          <div class="questions-section-wrapper" data-tab-id="{{blockSection.settings.title | handleize}}" style="display: none;">
+            
+            <h2><span><span data-i18n='{% render 'translationData' with  blockSection.settings.title  %}'>{% render 'translationText' with  blockSection.settings.title  %}</span></span> {% if blockSection.settings.img != blank %}<img class="section-title-img" src="{{blockSection.settings.img | img_url: 'master' }}" alt="{{block.settings.img.alt}}" />{% endif %}</h2>
+            
+            {% for question in questions %}
+              {% if question.settings.section == blockSection.settings.title %}
+                <div class="question-wrapper">
+                  
+                  <div class="faq-question"><span data-i18n='{% render 'translationData' with  question.settings.title  %}'>{% render 'translationText' with  question.settings.title  %}</span></div>
+                  
+                  <div class="faq-answer"><span data-i18n='{% render 'translationData' with  question.settings.content  %}'>{% render 'translationText' with  question.settings.content  %}</span></div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+        <div class="questions-section-wrapper" data-tab-id="search" style="display: none;">
+          
+          <h2><span><span>{{ section.settings.search_title }}</span></span> <img class="section-title-img" src="{{ 'magnifying-glass.svg' | asset_url }}" alt="{{block.settings.img.alt}}" /></h2>
+          
+          {% for question in questions %}
+            <div class="question-wrapper" style="display: none;">
+              
+                  <div class="faq-question"><span data-i18n='{% render 'translationData' with  question.settings.title  %}'>{% render 'translationText' with  question.settings.title  %}</span></div>
+                  
+                  <div class="faq-answer"><span data-i18n='{% render 'translationData' with  question.settings.content  %}'>{% render 'translationText' with  question.settings.content  %}</span></div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    .faq-wrapper{
+        display: flex;
+    }
+    
+    .faq-sections-wrapper{
+        flex: 3;
+    }
+    
+    .faq-questions-wrapper{
+        flex: 6;
+    }
+    
+    .faq-question{
+      padding: 15px 0;
+        font-size: 15px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      padding-right: 40px;
+    }
+    
+    .question-wrapper{
+        
+      border-bottom: solid 1px black;
+      position: relative;
+    }
+    
+    .question-wrapper .faq-question:after{
+        content: "+";
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translate(0, -50%);
+      color: black;
+      font-size: 21px;
+    }
+    
+    .question-wrapper.opened .faq-question:after{
+        content: "-";
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translate(0, -50%);
+      color: black;
+      font-size: 21px;
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: all .5s;
+      color: black !important;
+    }
+    
+    .question-wrapper.opened .faq-answer{
+        max-height: 500px;
+      padding-bottom: 15px;
+    }
+    
+    .faq-sections-wrapper ul{
+        list-style-type: none;
+      background: black;
+      color: white;
+      margin-right: 63px;
+      padding: 44px 20px;
+    }
+    
+    .section-selection {
+      cursor: pointer;
+    }
+    
+    .section-selection.selected {
+      font-weight: bold;
+    }
+    
+    .faq-sections-wrapper li{
+        margin-bottom: 20px;
+    }
+    .faq-sections-wrapper li:last-child{
+        margin-bottom: 0;
+    }
+    
+    .section-icon-container{
+        display: none;
+    }
+    
+    .section-icon-container img{
+        max-height: 50px;
+    }
+    
+    .section-title-img{
+      vertical-align: middle;
+      margin-left: 20px;
+      max-height: 60px;
+    }
+    
+    .faq-header{
+        text-align: center;
+      background: #EFEEEF;
+      padding: 50px;
+      margin-bottom: 50px;
+    }
+    
+    #MainContent{
+        margin-top: 0 !important;
+    }
+    
+    .faq-search-wrapper{
+        width: 100%;
+      max-width: 500px;
+      margin: auto;
+      position: relative;
+    }
+    
+    .faq-search-wrapper img{
+        position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translate(0,-50%);
+      width: 18px;
+    }
+    
+    .faq-search-wrapper input{
+        width: 100%;
+        padding: 10px;
+      padding-left: 51px;
+      background: white;
+      border: solid 1px #707070;
+    }
+    
+    @media only screen and (max-width: 750px) {
+      .faq-sections-wrapper{
+        margin-bottom: 30px;
+      }
+      
+      .faq-wrapper{
+        display: block;
+      }
+  
+      .faq-wrapper ul{
+        margin: 0;
+        color: black;
+        background: initial;
+        display: flex;
+        padding: 0;
+        max-width: 100%;
+        overflow: auto;
+      }
+      
+      .faq-wrapper .section-selection{
+        padding: 10px;
+        height: 100px;
+        width: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        font-size: 13px;
+        margin-right: 15px;
+        text-align: center;
+      }
+      
+      .faq-wrapper .section-selection.selected{
+        border: solid 1px black;
+      }
+      
+      .section-icon-container{
+        display: block;
+      }
+      
+      
+    }
+  </style>
+  
+  <script>
+    var tab = qs('tab');
+    if(tab){
+      $('.section-selection[data-tab-id="' + tab + '"]').addClass("selected");
+        $('.questions-section-wrapper[data-tab-id="' + tab + '"]').addClass("opened").fadeIn('fast');
+    }
+    else{
+      $(".section-selection:first-child").addClass("selected");
+      $('.questions-section-wrapper:first-child').addClass("opened").fadeIn('fast');
+      window.history.pushState("", "", window.location.pathname + "?tab=" + $('.questions-section-wrapper:first-child').data('tab-id'));
+    }
+    
+    window.onpopstate = function(event) {
+      var tab = qs('tab');
+      if(tab){
+        $(".questions-section-wrapper.opened").fadeOut('fast');
+        $(".questions-section-wrapper.opened").removeClass('opened');
+        $(".section-selection").removeClass("selected");
+        $('.section-selection[data-tab-id="' + tab + '"]').addClass("selected");
+        setTimeout(function(){
+          $('.questions-section-wrapper[data-tab-id="' + tab + '"]').addClass("opened").fadeIn('fast');
+        }.bind(this), 200);
+      }
+      else{
+        $(".questions-section-wrapper.opened").fadeOut('fast');
+        $(".questions-section-wrapper.opened").removeClass('opened');
+        $(".section-selection").removeClass("selected");
+        $('.section-selection:first-child').addClass("selected");
+        setTimeout(function(){
+          $('.questions-section-wrapper:first-child').addClass("opened").fadeIn('fast');
+          window.history.pushState("", "", window.location.pathname + "?tab=" + $('.questions-section-wrapper:first-child').data('tab-id'));
+        }.bind(this), 200);
+      }
+    };
+    
+    $(".faq-search-wrapper input").on("input", function(e){
+      $.expr[':'].contains = function(a, i, m) {
+        return jQuery(a).text().toUpperCase()
+        .indexOf(m[3].toUpperCase()) >= 0;
+      };
+  
+      var val = $(".faq-search-wrapper input").val()
+      
+      $('.questions-section-wrapper[data-tab-id="search"] .question-wrapper').css("display", "none");
+      if(val != ""){
+        $('.questions-section-wrapper[data-tab-id="search"] .question-wrapper:contains(' + val + ')').css("display", "block");
+      }
+      
+  
+        var searchSection = $('.questions-section-wrapper[data-tab-id="search"]');
+      if(searchSection.css('display') == 'none'){
+        $(".questions-section-wrapper.opened").fadeOut('fast');
+        $(".questions-section-wrapper.opened").removeClass('opened');
+        $(".section-selection").removeClass("selected");
+        
+       
+        
+        setTimeout(function(){
+          $('.questions-section-wrapper[data-tab-id="search"]').addClass("opened").fadeIn('fast');
+        }.bind(this), 200);
+      }
+    });
+    
+    $(".faq-question").on("click", function(){
+        $(this).parent().toggleClass("opened");
+    });
+    
+    $(".section-selection").on("click", function(){
+      $(".section-selection").removeClass("selected");
+      $(this).addClass("selected");
+      
+      $(".questions-section-wrapper.opened").fadeOut('fast');
+      $(".questions-section-wrapper.opened").removeClass('opened');
+      
+      setTimeout(function(){
+        var tabId = $(this).data('tab-id');
+        $('.questions-section-wrapper[data-tab-id="' + tabId + '"]').addClass("opened").fadeIn('fast');
+        window.history.pushState("", "", window.location.pathname + "?tab=" + tabId);
+      }.bind(this), 200);
+    });
+    
+    // get query parameters
+    function qs(key) {
+      key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+      var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+      return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+    }
+  </script>
+  
+  {% schema %}
+    {
+      "name": "FAQ",
+      "settings": [
+          {
+              "type": "text",
+              "id": "search_placeholder",
+              "label": "Search placeholder"
+          },
+          {
+              "type": "text",
+              "id": "search_title",
+              "label": "Search title"
+          }
+      ],
+      "blocks": [
+          {
+              "name": "Section",
+              "type": "section",
+              "settings": [
+                  {
+                      "type": "text",
+                      "id": "title",
+                      "label": "Section name"
+                  },
+                  {
+                      "type": "image_picker",
+                      "id": "img",
+                      "label": "Section icon"
+                  }
+              ]
+          },
+          {
+              "name": "Question",
+              "type": "question",
+              "settings": [
+                  {
+                      "type": "text",
+                      "id": "section",
+                      "label": "Question for section",
+                      "info": "Put the name of the section where this question should appear"
+                  },
+                  {
+                      "type": "text",
+                      "id": "title",
+                      "label": "Question"
+                  },
+                  {
+                      "type": "richtext",
+                      "id": "content",
+                      "label": "answer"
+                  }
+              ]
+          }
+      ]
+    }
+  {% endschema %}
+  
+  {% stylesheet %}
+  {% endstylesheet %}
+  
+  {% javascript %}
+  {% endjavascript %}
+  

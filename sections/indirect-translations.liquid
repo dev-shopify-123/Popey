@@ -1,0 +1,93 @@
+<script>
+	var indirectTranslations = [
+		{% assign indirectTranslationsBlocks = section.blocks | where: "type", "transaltion" %}
+		{% for block in indirectTranslationsBlocks %}
+		{
+			cssSelector: {{ block.settings.css_selector | json }},
+			{% capture escapeTranslation %}{% include 'translationData' with block.settings.translation, attr: block.settings.attr, notHtml: block.settings.notHtml %}{% endcapture %}
+			translation: '{{ escapeTranslation | replace: "\", "\\\\" }}',
+			useInnerText: {{ block.settings.innerText }}
+		}{% unless forloop.last %},{% endunless %}
+		{% endfor %}
+	];
+
+	var excludedUrls = [
+		{% assign exclusionBlocks = section.blocks | where: "type", "url_exclusions" %}
+		{% for block in exclusionBlocks %}
+			{{ block.settings.url | json }}{% unless forloop.last %},{% endunless %}
+		{% endfor %}
+	];
+  </script>
+  
+  {% schema %}
+	{
+	  "name": "Indirect translations",
+	  "settings": [
+		  {
+			  "type": "paragraph",
+			  "content": "Some basic knowledge about css query selectors are needed to use this section. This section is to translate texts that aren't accessible in the shopify interface like sections added by apps."
+		  }
+	  ],
+	  "blocks": [
+		  {
+			  "type": "transaltion",
+			  "name": "Indirect translation",
+			  "settings": [
+				  {
+					  "type": "text",
+					  "id": "title",
+					  "label": "Translation title",
+					  "info": "Won't change anything this is just to organize all your indirect translations"
+				  },
+				  {
+					  "type": "text",
+					  "id": "css_selector",
+					  "label": "CSS selector target",
+					  "info": "The css query selector that targets the element with the text to translate"
+				  },
+				  {
+					  "type": "checkbox",
+					  "id": "innerText",
+					  "label": "Use inner text"
+				  },
+				  {
+					  "type": "textarea",
+					  "id": "translation",
+					  "label": "Translation",
+					  "info": "Enter the translations with the translation separator"
+				  },
+				  {
+					  "type": "text",
+					  "id": "attr",
+					  "label": "Attribute",
+					  "info": "ex: placeholder"
+				  },
+				  {
+					  "type": "checkbox",
+					  "id": "notHtml",
+					  "label": "Not html",
+					  "info": "Only check if text is in a select dropdown"
+				  }
+			  ]
+		  },
+		  {
+			  "type": "url_exclusions",
+			  "name": "URL Exclusions",
+			  "settings": [
+			 	   {
+						"type": "text",
+						"id": "url",
+						"label": "URL to exclude"
+				   } 
+			  ]
+		  }
+	  ]
+	}
+  {% endschema %}
+  
+  {% stylesheet %}
+  {% endstylesheet %}
+  
+  {% javascript %}
+  {% endjavascript %}
+  

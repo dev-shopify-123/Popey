@@ -1,0 +1,13 @@
+<article class="site-page" data-template-page>
+  <header class="page-masthead">
+    <h1 class="page-title">
+      <span data-i18n='{% render 'translationData' with  page.title  %}'>{% render 'translationText' with  page.title  %}</span>
+    </h1>
+  </header>
+
+  {% if page.content != blank %}
+    <div class="page-content rte">
+      <span data-i18n='{% render 'translationData' with  page.content  %}'>{% render 'translationText' with  page.content  %}</span>
+    </div>
+  {% endif %}
+</article>

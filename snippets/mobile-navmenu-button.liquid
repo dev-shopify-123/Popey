@@ -1,0 +1,18 @@
+{% comment %}
+  @param button_label String
+    For assistive technology to read out label for button
+{% endcomment %}
+
+<button
+  class="navmenu-button"
+  data-navmenu-trigger
+  aria-expanded="false"
+>
+  <div class="navmenu-button-wrapper" tabindex="-1">
+    <span class="navmenu-icon navmenu-icon-depth-{{ depth }}">
+      {% assign submenu_arrow_index = depth | minus: 1 %}
+      {% include 'icon-chevron-down-small' %}
+    </span>
+    <span class="visually-hidden"><span data-i18n='{% render 'translationData' with  button_label  %}'>{% render 'translationText' with  button_label  %}</span></span>
+  </div>
+</button>

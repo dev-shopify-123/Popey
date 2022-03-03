@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+
+    <title>
+      {% render 'translationText' with  shop.name  %}
+    </title>
+
+    {% if page_description != blank %}
+      <meta name="description" content="{% render 'translationText' with  page_description %}">
+    {% endif %}
+
+    {% include 'favicon' %}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta name="viewport" content="width=device-width">
+
+    {% assign twitter_handle = settings.social_twitter | split: 'twitter.com/' | last %}
+    {%
+      include 'social-meta-tags',
+      twitter_handle: settings.twitter_handle
+    %}
+
+    {{ content_for_header }}
+
+    <script>
+      document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,'js');
+      if(window.Shopify&&window.Shopify.designMode)document.documentElement.className+=' in-theme-editor';
+      if(('ontouchstart' in window)||window.DocumentTouch&&document instanceof DocumentTouch)document.documentElement.className=document.documentElement.className.replace(/\bno-touch\b/,'has-touch');
+    </script>
+
+    {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  {% include 'booster-common' %}
+
+  {% section 'indirect-translations' %}
+  {{ "molsoft_vendors.js" | asset_url | script_tag }}
+  {% include 'translationsList' %}
+  {{ "molsoft_multilingual.js" | asset_url | script_tag }}
+
+                </head>
+
+  <body class="template-{{ template | split: '.' | first }}">
+    <main class="site-main" aria-label="main content" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% comment %}
+      Modal container, used on Collections, Password, and QuickShop
+    {% endcomment %}
+    {% include 'modal' %}
+
+    <script
+      src="{{ 'vendors-main.bundle.js' | asset_url }}"
+    >
+    </script>
+
+    <script
+      src="{{ 'empire.js' | asset_url }}"
+      data-scripts
+      data-pxu-polyfills="{{ 'polyfills.js' | asset_url }}"
+    >
+    </script>
+  {% include 'booster-discounts' %}
+</body>
+</html>

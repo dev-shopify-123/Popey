@@ -1,0 +1,96 @@
+{% if request.page_type == 'product' %}
+    {% assign settings = shop.metafields.dla_dm.timer.value %}
+{% assign discounts = settings.discounts %}
+
+{% assign tag_start = settings.tag_start %}
+{% assign tag_delimiter = "-" %}
+{% assign discounts_stop = "" %}
+
+{% for tag in product.tags %}
+  {% assign tag_short = tag | remove_first: tag_start %}
+
+  {% if tag != tag_short %}
+    {% assign tag_parts = tag_short | split: tag_delimiter %}
+    {% assign variant_id = tag_parts[0] %}
+    {% assign variant_discount_id = tag_parts[1] %}
+
+    {% for discount in discounts %}
+      {% assign discount_id = discount[0] %}
+      {% assign date_stop = discount[1] %}
+
+      {% if variant_discount_id == discount_id %}
+        {% if discounts_stop == "" %}
+          {%- capture discounts_stop -%}
+            "{{ variant_id }}": "{{ date_stop }}"
+          {%- endcapture -%}
+        {% else %}
+          {%- capture discounts_stop -%}
+            {{ discounts_stop }}, "{{ variant_id }}": "{{ date_stop }}"
+          {%- endcapture -%}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+<script type="text/javascript">
+  {% if settings.timer.type %}
+    {% assign timer_type = settings.timer.type | json %}
+  {% else %}
+    {%- capture timer_type -%}
+      "counting"
+    {%- endcapture -%}
+  {% endif %}
+
+  {% if settings.timer.format %}
+    {% assign timer_format = settings.timer.format | json %}
+  {% else %}
+    {%- capture timer_format -%}
+      "{D} d. {h} h. {m} min. {ss} sec."
+    {%- endcapture -%}
+  {% endif %}
+
+  {% if settings.timer.translations %}
+    {% assign timer_translations = settings.timer.translations | json %}
+  {% else %}
+    {%- capture timer_translations -%}
+      {"month.1.full":"January","month.1.short":"Jan","month.2.full":"February","month.2.short":"Feb","month.3.full":"March","month.3.short":"Mar","month.4.full":"April","month.4.short":"Apr","month.5.full":"May","month.5.short":"May","month.6.full":"June","month.6.short":"Jun","month.7.full":"July","month.7.short":"Jul","month.8.full":"August","month.8.short":"Aug","month.9.full":"September","month.9.short":"Sep","month.10.full":"October","month.10.short":"Oct","month.11.full":"November","month.11.short":"Nov","month.12.full":"December","month.12.short":"Dec"}
+    {%- endcapture -%}
+  {% endif %}
+
+  window.DLA = window.DLA || {};
+  window.DLA.dla_dm = window.DLA.dla_dm || {};
+  window.DLA.dla_dm.timer = window.DLA.dla_dm.timer || {};
+  window.DLA.dla_dm.timer.discounts_stop = {% raw %}{{% endraw %}{{ discounts_stop }}{% raw %}}{% endraw %};
+  window.DLA.dla_dm.timer.type = {{ timer_type }};
+  window.DLA.dla_dm.timer.format = {{ timer_format }};
+  window.DLA.dla_dm.timer.translations = {{ timer_translations }};
+  window.DLA.dla_dm.timer.element_class = "dla_dm_timer";
+  window.DLA.dla_dm.timer.visible_class = "dla_dm_timer_visible";
+  window.DLA.dla_dm.timer.design_mode = false;
+</script>
+
+<style type="text/css">
+  .dla_dm_timer {
+    display: none;
+  }
+  .dla_dm_timer p {
+    margin: 0;
+  }
+  .dla_dm_timer.dla_dm_timer_visible {
+    display: block;
+
+    {% if settings.timer.padding %}
+      {% assign padding = settings.timer.padding %}
+      margin: {{ padding.top }}{{ padding.units }} {{ padding.right }}{{ padding.units }} {{ padding.bottom }}{{ padding.units }} {{ padding.left }}{{ padding.units }};
+    {% endif %}
+  }
+</style>
+<div class="dla_dm_timer">
+  {% if settings.timer.padding %}
+    {{ settings.timer.template }}
+  {% else %}
+    <p>⏳ Sale ends in <strong>{timer}</strong></p>
+  {% endif %}
+</div>
+{% endif %}

@@ -1,0 +1,146 @@
+{%- capture meganav_classes -%}
+  navmenu-submenu
+  navmenu-meganav
+  navmenu-meganav--desktop
+  navmenu-wrapper
+{%- endcapture -%}
+
+{%- capture navmenu_classes -%}
+  navmenu
+  navmenu-depth-2
+  navmenu-meganav-items
+{%- endcapture -%}
+
+<li
+    class="navmenu-meganav-item-parent meganav-side-menu"
+    data-navmenu-meganav-trigger>
+    <a
+        class="navmenu-link navmenu-link-parent"
+        href="#"
+        aria-haspopup="true"
+        aria-expanded="false" >
+        <div class="site-header-menu-toggle--button" tabindex="-1">
+            <span class="toggle-icon--bar toggle-icon--bar-top"></span>
+            <span class="toggle-icon--bar toggle-icon--bar-middle"></span>
+            <span class="toggle-icon--bar toggle-icon--bar-bottom"></span>
+            <span class="visually-hidden"><span data-i18n='general.accessibility.menu'>{{ 'general.accessibility.menu' | t }}</span></span>
+        </div>
+    </a>
+
+    <div
+        class="{{ meganav_classes | strip_newlines }}"
+        data-navmenu-submenu
+        data-meganav-menu
+        data-meganav-id="{{ meganav_block.id }}">
+        <div class="navmenu-meganav-wrapper">
+            <div class="navmenu-meganav-wrapper navmenu-multi-column-items meganav-side-menu-main-links">
+                <ul class="navmenu navmenu-depth-2 multi-column-count-4" style="display: flex; flex-direction: column;">
+            
+                    {% for menu_item in menu %}
+                        <li class="navmenu-item article--inner" data-menu="{{ linklists[menu_item.handle].handle }}">
+                            <a href="{{ menu_item.url }}" class="navmenu-link navmenu-link-parent">
+                                <span data-i18n='{% render 'translationData' with  menu_item.title  %}'>{% render 'translationText' with  menu_item.title  %}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                
+                    {% comment %}
+                    <li class="navmenu-item">
+                        <a href="#" class="navmenu-link navmenu-link-parent">
+                            test2
+                        </a>
+                        <div class="navmenu-meganav-wrapper">
+                            <ul
+                                class="{{ navmenu_classes | strip_newlines }}"
+                                style="max-width: 1000px">
+                                {%- capture navmenu_item_classes -%}
+                                navmenu-item
+                                navmenu-item-parent
+                                navmenu-id-{{ menu_item.title | handle }}
+                                navmenu-meganav-item
+                                {%- endcapture -%}
+                                <li
+                                    class="{{ navmenu_item_classes | strip_newlines }}"}>
+                                    <a href="#" class="navmenu-item-text navmenu-link-parent">
+                                        testa
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                
+                
+                
+                    <li class="navmenu-item">
+                    <a href="#" class="navmenu-link navmenu-link-parent">
+                        test3
+                    </a>
+                    <ul>
+                    {% endcomment %}
+                    
+            
+                </ul>
+            </div>
+            {% for menu_item in menu %}
+            {% assign show_subnav = true %}
+            {% if linklists[menu_item.handle] == blank %}
+                {% assign show_subnav = false %}
+            {% endif %}
+
+            {% assign show_meganav = false %}
+            {% assign show_multi_column = false %}
+            {% assign shopify_attributes = null %}
+            {% assign meganav_block = null %}
+            {% if blocks.size > 0 %}
+            {% for block in blocks %}
+                {% if block.type == 'meganav_images' %}
+                {% assign meganav_trigger = block.settings.meganav_trigger | handle | strip %}
+                {% elsif block.type == 'multi_column_menu' %}
+                {% assign meganav_trigger = block.settings.menu_trigger | handle | strip %}
+                {% endif %}
+
+                {% if menu_item.handle == meganav_trigger and menu_item.links.size > 0 %}
+                {% assign show_meganav = true %}
+                {% assign shopify_attributes = block.shopify_attributes %}
+                {% assign meganav_block = block %}
+                {% if block.type == 'multi_column_menu' %}
+                    {% assign show_multi_column = true %}
+                {% endif %}
+                {% elsif menu_item.title == meganav_trigger %}
+                {% assign meganav_block = block %}
+                {% endif %}
+            {% endfor %}
+            {% endif %}
+
+            {%- capture navmenu_item_classes -%}
+            navmenu-item
+            {% if show_subnav %}navmenu-item-parent{% endif %}
+            navmenu-id-{{ menu_item.handle }}
+            {% if show_meganav %}navmenu-meganav-item-parent{% endif %}
+            {%- endcapture -%}
+
+            {% if show_meganav %}
+                {% if show_multi_column %}
+                {%
+                    include 'multi-column-menu',
+                    menu: menu_item,
+                    block: meganav_block,
+                %}
+                {% else %}
+                {%
+                    include 'meganav',
+                    menu: menu_item,
+                    block: meganav_block,
+                %}
+                {% endif %}
+            {% elsif show_subnav %}
+                {%
+                    include 'multi-column-menu',
+                    menu: menu_item,
+                    block: meganav_block,
+                %}
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</li>

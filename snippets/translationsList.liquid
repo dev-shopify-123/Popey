@@ -1,0 +1,20 @@
+<script>
+  {%- capture lang_list -%}{%- for locale in shop.published_locales -%}{%- if locale.primary -%}{{- locale.iso_code -}}{%- endif -%}{%- endfor -%}{%- for locale in shop.published_locales -%}{%- if locale.primary -%}{%- continue -%}{%- endif -%},{{- locale.iso_code -}}{%- endfor -%}{%- endcapture -%}
+  {% assign langs = lang_list | split: ',' %}
+  var translations = {
+    {% for lang in langs %}
+      {% capture assetName %}{{ lang | remove: " " }}.json{% endcapture %}
+
+    {{lang}}: "{{ assetName | asset_url }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  }
+  
+  var translationsArray = {{langs | json}};
+  var shopUrl = {{ shop.url | json }};
+  var currentLangIso = {{ request.locale.iso_code | json }};
+  var translationUrlPrefixes = {
+  	{%- for locale in shop.published_locales -%}
+    	{{- locale.iso_code -}}:  {{ locale.root_url | json }}{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  };
+</script>

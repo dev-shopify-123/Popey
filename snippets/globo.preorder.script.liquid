@@ -1,0 +1,100 @@
+{%- assign assets_url = 'product-1.png' | asset_img_url: '50x' | split: 'product-1_50x.png' -%}
+{%- assign files_url  = 'product-1.png' | file_img_url: '50x' | split: 'product-1_50x.png' -%}
+{% assign timezone_offset_1 = "now" | date: "%z" | slice: 0, 3 %}
+{% assign timezone_offset_2 = "now" | date: "%z" | slice: 3, 2 %}
+<script type="text/javascript">
+  window.Globo      = window.Globo || {};
+  Globo.moneyFormat = "{{ shop.money_format | replace: '"', "'" }}";
+  Globo.shopOrigin  = "{{ shop.permanent_domain }}";
+  Globo.assetsUrl   = '{{ assets_url[0] }}"';
+  Globo.filesUrl    = '{{ files_url[0] }}"';
+  window.GloboPreorderParams = {
+    apiUrl: "https://preorder.globosoftware.net",
+    shop: "{{ shop.permanent_domain }}",
+    domain: "{{ shop.domain }}",
+    theme: {"name":"Empire","version":"5.1.1"},
+    timezone_offset: '{{timezone_offset_1}}:{{timezone_offset_2}}',
+    now: '{{ "now" | date: "%Y-%m-%dT%H:%M:%S.0000" }}{{ timezone_offset_1 }}:{{timezone_offset_2}}',
+    locale: {{request.locale.iso_code | json}},
+    rootUrl: {%- if routes.root_url != "/" -%}{{ routes.root_url | json }}{%- else -%}''{%- endif -%},
+    page: "{{ request.page_type }}",
+    {% if product %}
+    product: {{product | json}},
+    {% else %}
+    product: null,
+    {% endif %}
+    collectionId: {%- if collection.id -%}{{collection.id}}{% else %}null{% endif %},
+    products: [],
+    cart: {{cart | json}},
+    properties: {
+      preorder: "_is_preorder",
+      discount: "_preorder_discount",
+      partial_payment: "_preorder_partial_payment",
+    },
+    customer: {% if customer %}{{customer.id}}{% else %}null{% endif %},
+    preorderSettings: {}
+  };
+  {%- if product -%}
+  {%- for variant in product.variants -%}
+    window.GloboPreorderParams.product.variants[{{forloop.index0}}] = {{variant | json}};
+    window.GloboPreorderParams.product.variants[{{forloop.index0}}].inventory_quantity = {{variant.inventory_quantity}};
+  {%- endfor -%}
+  window.GloboPreorderParams.product.collections = {{ product.collections | map: 'id' | json }};
+  window.GloboPreorderParams.product.first_available_variant = {{ product.first_available_variant | json }};
+  window.GloboPreorderParams.product.selected_variant = {{ product.selected_variant | json }};
+  {%- endif -%}
+  window.GloboPreorderParams.products = window.GloboPreorderParams.products || [];
+  {% if request.page_type == 'collection' and collection.products %}
+  window.GloboPreorderParams.products = window.GloboPreorderParams.products.concat([
+    {%- for product in collection.products -%}
+      {%- unless forloop.first -%},{%- endunless -%}
+      {"id":{{-product.id-}},"title":{{-product.title | json-}},"handle":"{{-product.handle-}}","collections":{{-product.collections | map: 'id' | json-}},"first_available_variant":{"id":{{product.selected_or_first_available_variant.id}}},"available":{{-product.available-}},"variants":[{%- for variant in product.variants -%}{%- unless forloop.first -%},{%- endunless -%}{"id":{{-variant.id-}},"price":{{-variant.price-}},"inventory_quantity":{{-variant.inventory_quantity-}}}{%- endfor -%}]}
+    {%- endfor -%}
+  ]);
+  {% elsif request.page_type == 'search' and search.results %}
+  window.GloboPreorderParams.products = window.GloboPreorderParams.products.concat([
+    {%- for product in search.results -%}
+      {%- unless forloop.first -%},{%- endunless -%}
+      {"id":{{-product.id-}},"title":{{-product.title | json-}},"handle":"{{-product.handle-}}","collections":{{-product.collections | map: 'id' | json-}},"first_available_variant":{"id":{{product.selected_or_first_available_variant.id}}},"available":{{-product.available-}},"variants":[{%- for variant in product.variants -%}{%- unless forloop.first -%},{%- endunless -%}{"id":{{-variant.id-}},"price":{{-variant.price-}},"inventory_quantity":{{-variant.inventory_quantity-}}}{%- endfor -%}]}
+    {%- endfor -%}
+  ]);
+  {% endif %}
+  {% if cart.items %}
+  window.GloboPreorderParams.products = window.GloboPreorderParams.products.concat([
+    {%- for item in cart.items -%}
+      {%- unless forloop.first -%},{%- endunless -%}
+      {"id":{{-item.product.id-}},"title":{{-item.product.title | json-}},"handle":"{{-item.product.handle-}}","collections":{{-item.product.collections | map: 'id' | json-}},"first_available_variant":{"id":{{item.product.selected_or_first_available_variant.id}}},"available":{{-item.product.available-}},"variants":[{%- for variant in item.product.variants -%}{%- unless forloop.first -%},{%- endunless -%}{"id":{{-variant.id-}},"price":{{-variant.price-}},"inventory_quantity":{{-variant.inventory_quantity-}}}{%- endfor -%}]}
+    {%- endfor -%}
+  ]);
+  {% endif %}
+</script>
+{% render 'globo.preorder.template' %}
+
+<script src="{{ 'globo.preorder.data.js' | asset_url }}" type="text/javascript" defer></script>
+<script src="{{ 'globo.preorder.js' | asset_url }}" type="text/javascript" defer></script>
+<script type="text/javascript">
+  var globoPreorderShowMultipleCurrencies = {% if settings.show_multiple_currencies %}true{% else %}false{% endif %};
+  var globoPreorderCartType    = {{settings.cart_type | json}};
+  var globoPreorderRegexCount  = /{% raw %}"{{ count }}|count|{{count}}"{% endraw %}/g;
+  (function (globoPreorderJquery) {
+    if (typeof globoPreorderJquery == 'function') {
+      document.addEventListener("Globo.Preorder.added", function (e) {
+        Globo.Preorder.addToCartCallBack(e.detail.addedItem, e.detail.quantity, globoPreorderJquery);
+      });
+      //Editions theme
+      if (globoPreorderJquery('.product-list').length) {
+        globoPreorderJquery('.product-list').on('preload-images', function(){
+          var event;
+          if(typeof(Event) === 'function') {
+            event = new Event('collectionUpdate');
+          }else{
+            event = document.createEvent('Event');
+            event.initEvent('collectionUpdate', true, true);
+          }
+          window.dispatchEvent(event);
+        });
+      }
+    }
+  }((window.jQuery||window.$)))
+</script>
+{{ 'globo.preorder.css' | asset_url | stylesheet_tag }}

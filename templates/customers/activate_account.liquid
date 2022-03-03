@@ -1,0 +1,58 @@
+<section
+  class="account-page account-page-activate"
+  data-template-account>
+  <header class="account-page-masthead">
+    <h1 class="account-page-title">
+      <span data-i18n='customers.activate_account.title'>{{ 'customers.activate_account.title' | t }}</span>
+    </h1>
+  </header>
+
+  <article class="account-page-content">
+    {% form 'activate_customer_password' %}
+
+      {% if form.errors != blank  %}
+        <div class="account-message message--error">
+          <span data-i18n='{% render 'translationData' with  form.errors, default_errors: true %}'>{% render 'translationText' with  form.errors, default_errors: true %}</span>
+        </div>
+      {% endif %}
+
+      <div class="form-field">
+        <input
+          class="form-field-input form-field-text"
+          id="password"
+          name="customer[password]"
+          type="password">
+        <label
+          class="form-field-title"
+          data-i18n="customers.forms.password"
+          for="password">
+          {{ 'customers.forms.password' | t }}
+        </label>
+      </div>
+
+      <div class="form-field">
+        <input
+          class="form-field-input form-field-text"
+          id="password_repeat"
+          name="customer[password_confirmation]"
+          type="password">
+        <label
+          class="form-field-title"
+          data-i18n="customers.forms.repeat_password"
+          for="password_repeat">
+          {{ 'customers.forms.repeat_password' | t }}
+        </label>
+      </div>
+
+      <div class="form-action-row">
+        <button class="button-primary" type="submit">
+          <span data-i18n='customers.activate_account.submit'>{{ 'customers.activate_account.submit' | t }}</span>
+        </button>
+
+        <a class="button-secondary" href="/">
+          <span data-i18n='customers.activate_account.decline_activation'>{{ 'customers.activate_account.decline_activation' | t }}</span>
+        </a>
+      </div>
+    {% endform %}
+  </article>
+</section>

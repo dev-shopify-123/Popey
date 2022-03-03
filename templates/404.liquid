@@ -1,0 +1,21 @@
+{% assign continue_shopping_url = "/collections/all" %}
+
+{% if settings.continue_shopping_url != blank %}
+  {% assign continue_shopping_url = settings.continue_shopping_url %}
+{% endif %}
+
+<section class="fourohfour--container">
+  <header class="fourohfour-title">
+    <h1><span data-i18n='404.general.title'>{{ '404.general.title' | t }}</span></h1>
+  </header>
+
+  <div class="fourohfour--inner">
+    <p><span data-i18n='404.general.text'>{{ '404.general.text' | t }}</span></p>
+
+    {% if settings.continue_url_404 != blank %}
+      <a class="button-primary" href="{{ continue_shopping_url }}">
+        <span data-i18n='404.general.continue_shopping'>{{ '404.general.continue_shopping' | t }}</span>
+      </a>
+    {% endif %}
+  </div>
+</section>

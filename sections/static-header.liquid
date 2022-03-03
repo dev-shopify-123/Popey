@@ -1,0 +1,880 @@
+<script
+  type="application/json"
+  data-section-id="{{ section.id }}"
+  data-section-type="static-header"
+  data-section-data>
+  {
+    "settings": {
+      "sticky_header": {{ section.settings.sticky_header | json }},
+      "live_search": {
+        "enable": {{ section.settings.enable_live_search | json }},
+        "enable_images": {{ section.settings.enable_live_search_images | json }},
+        "enable_content": {{ section.settings.enable_live_search_articles_pages | json }},
+        "money_format": {{ shop.money_format | strip_html | json }},
+        "context": {
+          {% capture translation %}<span data-i18n='search.general.view_all_results'>{{ 'search.general.view_all_results' | t }}</span>{% endcapture %}
+          "view_all_results": {{ translation | json }},
+          {% capture translation %}<span data-i18n='search.general.view_all_products'>{{ 'search.general.view_all_products' | t }}</span>{% endcapture %}
+          "view_all_products": {{ translation | json }},
+          "content_results": {
+            {% capture translation %}<span data-i18n='search.general.pages_and_posts_title'>{{ 'search.general.pages_and_posts_title' | t }}</span>{% endcapture %}
+            "title": {{ translation | json }},
+            {% capture translation %}<span data-i18n='search.general.pages_and_posts_no_results'>{{ 'search.general.pages_and_posts_no_results' | t }}</span>{% endcapture %}
+            "no_results": {{ translation | json }}
+          },
+          "no_results_products": {
+            {% capture translation %}<span data-i18n='search.general.no_results_products_title || { "terms": "*terms*"}'>{{ 'search.general.no_results_products_title' | t: terms: '*terms*' }}</span>{% endcapture %}
+            "title": {{ translation | json }},
+            {% capture translation %}<span data-i18n='search.general.no_results_products_message'>{{ 'search.general.no_results_products_message' | t }}</span>{% endcapture %}
+            "message": {{ translation | json }}
+          }
+        }
+      }
+    },
+    "currency": {
+      "enable": {{ settings.enable_currency_converter | default: false }},
+      "shop_currency": {{ shop.currency | json }},
+      "default_currency": {{ settings.currency_converter_default | default: shop.currency | json }},
+      "display_format": {{ settings.currency_display_format | json }},
+      "money_format": {{ shop[settings.currency_display_format] | strip_html | json }},
+      "money_format_no_currency": {{ shop.money_format | strip_html | json }},
+      "money_format_currency": {{ shop.money_with_currency_format | strip_html | json }}
+    }
+  }
+</script>
+
+{% assign logo_height = section.settings.logo_height | default: 100 %}
+{% assign logo_width = section.settings.logo_width | default: 200 %}
+{% assign logo_size = logo_width | prepend: 'x' %}
+{% style %}
+  .site-logo {
+    max-width: {{ logo_width }}px;
+    max-height: {{ logo_height }}px;
+  }
+{% endstyle %}
+
+<div
+  class="
+    site-header-main
+    {% if section.settings.full_width_header %}
+      site-header--full-width
+    {% endif %}
+  "
+  data-site-header-main
+  {% if section.settings.sticky_header %}data-site-header-sticky{% endif %}
+  {% unless section.settings.show_mobile_search_bar %}data-site-header-mobile-search-button{% endunless %}
+>
+  <button class="site-header-menu-toggle" data-menu-toggle>
+    <div class="site-header-menu-toggle--button" tabindex="-1">
+      <span class="toggle-icon--bar toggle-icon--bar-top"></span>
+      <span class="toggle-icon--bar toggle-icon--bar-middle"></span>
+      <span class="toggle-icon--bar toggle-icon--bar-bottom"></span>
+      <span class="visually-hidden"><span data-i18n='general.accessibility.menu'>{{ 'general.accessibility.menu' | t }}</span></span>
+    </div>
+  </button>
+
+  {% unless section.settings.show_mobile_search_bar %}
+    {% capture search_button %}
+        <div class="site-header-mobile-search-button--button" tabindex="-1">
+          {% include 'icon-search' %}
+        </div>
+    {% endcapture %}
+    {% if section.settings.enable_live_search %}
+      <button
+        class="site-header-mobile-search-button"
+        data-mobile-search-button
+      >
+        {{ search_button }}
+      </button>
+    {% else %}
+      <a
+        class="site-header-mobile-search-button"
+        href="{{ routes.search_url }}"
+      >
+        {{ search_button }}
+      </a>
+    {% endif %}
+  {% endunless %}
+
+  <div class="header-wrapper">
+    <div
+      class="
+        site-header-main-content
+        {% if section.settings.small_promo_text != empty %}
+          small-promo-enabled
+        {% endif %}
+      "
+    >
+      <div class="site-header-logo">
+        <a
+          class="site-logo"
+          href="/">
+          {% if section.settings.logo %}
+            {% assign logo_alt = section.settings.logo.alt %}
+            {% if logo_alt == '' %}
+              {% assign logo_alt = shop.name | strip %}
+            {% endif %}
+            {% capture imgTranslation %}
+            {%
+              include 'rimg',
+              img: section.settings.logo,
+              class: 'site-logo-image',
+              alt: logo_alt,
+              size: logo_size
+            %}
+            {% if section.settings.logo_en != blank %}
+              ||
+              {%
+                include 'rimg',
+                img: section.settings.logo_en,
+                class: 'site-logo-image',
+                alt: logo_alt,
+                size: logo_size
+              %}
+            {% endif %}
+            {% endcapture %}
+            <div data-i18n='{% render 'translationData' with imgTranslation %}'>{% render 'translationText' with imgTranslation %}</div>
+          {% else %}
+            {% if template == 'index' %}
+              <h1 class="site-logo-text">
+                <span data-i18n='{% render 'translationData' with  shop.name  %}'>{% render 'translationText' with  shop.name  %}</span>
+              </h1>
+            {% else %}
+              <span class="site-logo-text">
+                <span data-i18n='{% render 'translationData' with  shop.name  %}'>{% render 'translationText' with  shop.name  %}</span>
+              </span>
+            {% endif %}
+          {% endif %}
+        </a>
+      </div>
+
+      {%
+        include 'live-search-form',
+        quick_links: linklists[section.settings.quick_links],
+        enable_live_search: section.settings.enable_live_search,
+        enable_images: section.settings.enable_live_search_images,
+        enable_content: section.settings.enable_live_search_articles_pages
+      %}
+
+      {% if section.settings.small_promo_text != blank or section.settings.small_promo_heading != blank %}
+        <div class="small-promo">
+          {% if section.settings.small_promo_icon != 'none' or section.settings.image %}
+            <span
+              class="
+                small-promo-icon
+                {% if section.settings.image %}
+                  small-promo-icon--custom
+                {% else %}
+                  small-promo-icon--svg
+                {% endif %}
+              "
+            >
+              {% if section.settings.image == blank %}
+                {% include 'icon-library', id: section.settings.small_promo_icon %}
+              {% else %}
+                {%
+                  include 'rimg',
+                  class: 'small-promo-custom-icon',
+                  img: section.settings.image,
+                  size: '60x'
+                %}
+              {% endif %}
+            </span>
+          {% endif %}
+
+          <div class="small-promo-content">
+            {% if section.settings.small_promo_heading != blank %}
+              <span class="small-promo-heading">
+                {% if section.settings.small_promo_link != blank %}
+                <a
+                  href="{{ section.settings.small_promo_link }}"
+                >
+                {% endif %}
+                <span data-i18n='{% render 'translationData' with  section.settings.small_promo_heading %}'>{% render 'translationText' with  section.settings.small_promo_heading %}</span>
+                {% if section.settings.small_promo_link != blank %}
+                </a>
+                {% endif %}
+              </span>
+            {% endif %}
+
+            {% if section.settings.small_promo_text_mobile != blank %}
+              <div class="small-promo-text-mobile">
+                {% if section.settings.small_promo_link != blank %}
+                <a
+                  href="{{ section.settings.small_promo_link }}"
+                >
+                {% endif %}
+                <span data-i18n='{% render 'translationData' with  section.settings.small_promo_text_mobile  %}'>{% render 'translationText' with  section.settings.small_promo_text_mobile  %}</span>
+                {% if section.settings.small_promo_link != blank %}
+                </a>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% if section.settings.small_promo_text != blank %}
+              <div class="small-promo-text-desktop">
+                {% if section.settings.small_promo_link != blank %}
+                  <a
+                    href="{{ section.settings.small_promo_link }}"
+                  >
+                  {% endif %}
+                <span data-i18n='{% render 'translationData' with  section.settings.small_promo_text  %}'>{% render 'translationText' with  section.settings.small_promo_text  %}</span>
+                {% if section.settings.small_promo_link != blank %}
+                </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+      {% endif %}
+
+      {% if section.settings.small_promo_text2 != blank or section.settings.small_promo_heading2 != blank %}
+        <div class="small-promo">
+          {% if section.settings.small_promo_icon2 != 'none' or section.settings.image2 %}
+            <span
+              class="
+                small-promo-icon
+                {% if section.settings.image %}
+                  small-promo-icon--custom
+                {% else %}
+                  small-promo-icon--svg
+                {% endif %}
+              "
+            >
+              {% if section.settings.image2 == blank %}
+                {% include 'icon-library', id: section.settings.small_promo_icon2 %}
+              {% else %}
+                {%
+                  include 'rimg',
+                  class: 'small-promo-custom-icon',
+                  img: section.settings.image2,
+                  size: '60x'
+                %}
+              {% endif %}
+            </span>
+          {% endif %}
+
+          <div class="small-promo-content">
+            {% if section.settings.small_promo_heading2 != blank %}
+              <span class="small-promo-heading">
+                {% if section.settings.small_promo_link2 != blank %}
+                <a
+                  href="{{ section.settings.small_promo_link2 }}"
+                >
+                {% endif %}
+                <span data-i18n='{% render 'translationData' with  section.settings.small_promo_heading2 %}'>{% render 'translationText' with  section.settings.small_promo_heading2 %}</span>
+                {% if section.settings.small_promo_link2 != blank %}
+                </a>
+                {% endif %}
+              </span>
+            {% endif %}
+
+            {% if section.settings.small_promo_text_mobile2 != blank %}
+              <div class="small-promo-text-mobile">
+                {% if section.settings.small_promo_link2 != blank %}
+                <a
+                  href="{{ section.settings.small_promo_link2 }}"
+                >
+                {% endif %}
+                <span data-i18n='{% render 'translationData' with  section.settings.small_promo_text_mobile2  %}'>{% render 'translationText' with  section.settings.small_promo_text_mobile2  %}</span>
+                {% if section.settings.small_promo_link2 != blank %}
+                </a>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% if section.settings.small_promo_text2 != blank %}
+              <div class="small-promo-text-desktop">
+                {% if section.settings.small_promo_link2 != blank %}
+                  <a
+                    href="{{ section.settings.small_promo_link2 }}"
+                  >
+                  {% endif %}
+                <span data-i18n='{% render 'translationData' with  section.settings.small_promo_text2  %}'>{% render 'translationText' with  section.settings.small_promo_text2  %}</span>
+                {% if section.settings.small_promo_link2 != blank %}
+                </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+      {% endif %}
+
+      
+    </div>
+
+    <div class="header-right-actions">
+      <div class="header-login-buttons">
+        {% if shop.customer_accounts_enabled %}
+          {% unless customer %}
+            <div class="site-header-account-link">
+              <a href="/account/login">
+                {% include 'icon-user' %}
+              </a>
+            </div>
+          {% else %}
+            <div class="site-header-account-link">
+              <a href="/account">{% include 'icon-user' %}</a>
+            </div>
+          {% endunless %}
+        {% endif %}
+      </div>
+
+      <div class="site-header-cart">
+        <a class="site-header-cart--button" href="/cart">
+          <span
+            class="site-header-cart--count {% if cart.item_count > 0 %}visible{% endif %}"
+            data-header-cart-count="{% if cart.item_count > 0 %}{{ cart.item_count }}{% endif %}">
+          </span>
+
+          {% include 'icon-cart' %}
+          <span class="visually-hidden"><span data-i18n='general.accessibility.cart'>{{ 'general.accessibility.cart' | t }}</span></span>
+        </a>
+      </div>
+
+      <div>
+        {% render 'language-selector' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="
+    site-navigation-wrapper
+
+    {% if shop.customer_accounts_enabled or settings.enable_currency_converter %}
+      site-navigation--has-actions
+    {% endif %}
+
+    {% if section.settings.full_width_header %}
+      site-header--full-width
+    {% endif %}
+  "
+  data-site-navigation
+  id="site-header-nav"
+>
+  <nav
+    class="site-navigation"
+    aria-label="{{ 'general.accessibility.nav_main' | t }}"
+  >
+    {%
+      include 'navmenu',
+      side_menu: section.settings.side_menu,
+      menu: section.settings.menu,
+      blocks: section.blocks,
+      is_mobile: false
+    %}
+
+    {% include 'site-header-actions' %}
+  </nav>
+</div>
+
+{%
+  include 'site-mobile-nav',
+  blocks: section.blocks,
+%}
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "site-header-wrapper",
+  "settings": [
+    {
+      "id": "sticky_header",
+      "type": "checkbox",
+      "label": "Enable sticky header",
+      "default": true
+    },
+    {
+      "id": "full_width_header",
+      "type": "checkbox",
+      "label": "Enable full width header",
+      "default": false
+    },
+    {
+      "id": "logo",
+      "type": "image_picker",
+      "label": "Logo image",
+      "info": "200 x 80px .png recommended"
+    },
+   
+    {
+      "id": "logo_height",
+      "type": "range",
+      "label": "Logo image max-height",
+      "min": 40,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "id": "logo_width",
+      "type": "range",
+      "label": "Logo image max-width",
+      "min": 150,
+      "max": 250,
+      "step": 1,
+      "unit": "px",
+      "default": 200,
+      "info": "When adjusting the max-width, your logo image may disappear momentarily while a new logo image is generated"
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "id": "filter_search_by",
+      "type": "select",
+      "label": "Refined search",
+      "info": "Allow customers to refine their search. [Learn more](https://support.pixelunion.net/hc/en-us/articles/360025901534-Customizing-Empire-s-header-Search-bar)",
+      "options": [
+        {
+          "value": "disabled",
+          "label": "Disabled"
+        },
+        {
+          "value": "product_type",
+          "label": "By product type"
+        },
+        {
+          "value": "tag",
+          "label": "By tag"
+        }
+      ],
+      "default": "disabled"
+    },
+    {
+      "id": "enable_live_search",
+      "type": "checkbox",
+      "label": "Enable live search",
+      "default": true
+    },
+    {
+      "id": "show_mobile_search_bar",
+      "type": "checkbox",
+      "label": "Show search bar on mobile",
+      "default": true
+    },
+    {
+      "id": "enable_live_search_images",
+      "type": "checkbox",
+      "label": "Show product images in live search results",
+      "default": true
+    },
+    {
+      "id": "enable_live_search_articles_pages",
+      "type": "checkbox",
+      "label": "Show blog posts and pages in live search results",
+      "default": true
+    },
+    {
+      "id": "quick_links",
+      "type": "link_list",
+      "label": "Quick links",
+      "info": "Displays menu links below the search box the first time it is opened. This menu won't show dropdown items."
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "id": "menu",
+      "type": "link_list",
+      "label": "Main menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "side_menu",
+      "label": "Side menu"
+    },
+    {
+      "type": "header",
+      "content": "Small Promo"
+    },
+    {
+      "id": "small_promo_heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "small_promo_text",
+      "type": "richtext",
+      "label": "Text"
+    },
+    {
+      "id": "small_promo_text_mobile",
+      "type": "richtext",
+      "label": "Text (mobile)",
+      "info": "Use this option if you want to display alternate text in mobile. Recommended for shortening promo text to make suitable for mobile."
+    },
+    {
+      "id": "small_promo_link",
+      "type": "url",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "small_promo_icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "none",
+          "label": "No icon"
+        },
+        {
+          "value": "icon-cell-phone",
+          "label": "Cell phone"
+        },
+        {
+          "value": "icon-chat",
+          "label": "Chat"
+        },
+        {
+          "value": "icon-chat-alternate",
+          "label": "Chat alternate"
+        },
+        {
+          "value": "icon-chat-solid",
+          "label": "Chat solid"
+        },
+        {
+          "value": "icon-credit-card",
+          "label": "Credit card"
+        },
+        {
+          "value": "icon-delivery",
+          "label": "Delivery"
+        },
+        {
+          "value": "icon-email",
+          "label": "Email"
+        },
+        {
+          "value": "icon-envelope",
+          "label": "Envelope"
+        },
+        {
+          "value": "icon-gift-card",
+          "label": "Gift card"
+        },
+        {
+          "value": "icon-heart",
+          "label": "Heart"
+        },
+        {
+          "value": "icon-label-tag",
+          "label": "Label tag"
+        },
+        {
+          "value": "icon-lock-alternate",
+          "label": "Lock"
+        },
+        {
+          "value": "icon-people",
+          "label": "People"
+        },
+        {
+          "value": "icon-people-alternate",
+          "label": "People alternate"
+        },
+        {
+          "value": "icon-pin",
+          "label": "Pin"
+        },
+        {
+          "value": "icon-pin-solid",
+          "label": "Pin solid"
+        },
+        {
+          "value": "icon-question-mark",
+          "label": "Question mark"
+        },
+        {
+          "value": "icon-smile",
+          "label": "Smile"
+        },
+        {
+          "value": "icon-store",
+          "label": "Store"
+        },
+        {
+          "value": "icon-transfer",
+          "label": "Transfer"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image",
+      "info": "50x50 recommended. Uploading an image will override any icon selected above."
+    },
+    {
+      "type": "header",
+      "content": "Small Promo 2"
+    },
+    {
+      "id": "small_promo_heading2",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "small_promo_text2",
+      "type": "richtext",
+      "label": "Text"
+    },
+    {
+      "id": "small_promo_text_mobile2",
+      "type": "richtext",
+      "label": "Text (mobile)",
+      "info": "Use this option if you want to display alternate text in mobile. Recommended for shortening promo text to make suitable for mobile."
+    },
+    {
+      "id": "small_promo_link2",
+      "type": "url",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "small_promo_icon2",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "none",
+          "label": "No icon"
+        },
+        {
+          "value": "icon-cell-phone",
+          "label": "Cell phone"
+        },
+        {
+          "value": "icon-chat",
+          "label": "Chat"
+        },
+        {
+          "value": "icon-chat-alternate",
+          "label": "Chat alternate"
+        },
+        {
+          "value": "icon-chat-solid",
+          "label": "Chat solid"
+        },
+        {
+          "value": "icon-credit-card",
+          "label": "Credit card"
+        },
+        {
+          "value": "icon-delivery",
+          "label": "Delivery"
+        },
+        {
+          "value": "icon-email",
+          "label": "Email"
+        },
+        {
+          "value": "icon-envelope",
+          "label": "Envelope"
+        },
+        {
+          "value": "icon-gift-card",
+          "label": "Gift card"
+        },
+        {
+          "value": "icon-heart",
+          "label": "Heart"
+        },
+        {
+          "value": "icon-label-tag",
+          "label": "Label tag"
+        },
+        {
+          "value": "icon-lock-alternate",
+          "label": "Lock"
+        },
+        {
+          "value": "icon-people",
+          "label": "People"
+        },
+        {
+          "value": "icon-people-alternate",
+          "label": "People alternate"
+        },
+        {
+          "value": "icon-pin",
+          "label": "Pin"
+        },
+        {
+          "value": "icon-pin-solid",
+          "label": "Pin solid"
+        },
+        {
+          "value": "icon-question-mark",
+          "label": "Question mark"
+        },
+        {
+          "value": "icon-smile",
+          "label": "Smile"
+        },
+        {
+          "value": "icon-store",
+          "label": "Store"
+        },
+        {
+          "value": "icon-transfer",
+          "label": "Transfer"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "id": "image2",
+      "type": "image_picker",
+      "label": "Image",
+      "info": "50x50 recommended. Uploading an image will override any icon selected above."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "meganav_images",
+      "name": "Mega navigation",
+      "settings": [
+        {
+          "id": "meganav_trigger",
+          "type": "text",
+          "label": "Mega navigation trigger",
+          "info": "Add the menu item that you want to turn into a mega-nav."
+        },
+        {
+          "type": "header",
+          "content": "Custom Image 1"
+        },
+        {
+          "id": "image_1",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "text_1",
+          "type": "text",
+          "label": "Text"
+        },
+        {
+          "id": "link_1",
+          "type": "url",
+          "label": "Link"
+        },
+        {
+          "id": "position_1",
+          "type": "select",
+          "label": "Position",
+          "options": [
+            {
+              "value": "first",
+              "label": "First column"
+            },
+            {
+              "value": "last",
+              "label": "Last column"
+            }
+          ],
+          "default": "first"
+        },
+        {
+          "id": "size_1",
+          "type": "select",
+          "label": "Size",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "small"
+        },
+        {
+          "type": "header",
+          "content": "Custom Image 2"
+        },
+        {
+          "id": "image_2",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "text_2",
+          "type": "text",
+          "label": "Text"
+        },
+        {
+          "id": "link_2",
+          "type": "url",
+          "label": "Link"
+        },
+        {
+          "id": "position_2",
+          "type": "select",
+          "label": "Position",
+          "options": [
+            {
+              "value": "first",
+              "label": "First column"
+            },
+            {
+              "value": "last",
+              "label": "Last column"
+            }
+          ],
+          "default": "first"
+        },
+        {
+          "id": "size_2",
+          "type": "select",
+          "label": "Size",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "small"
+        }
+      ]
+    },
+    {
+      "type": "multi_column_menu",
+      "name": "Multi-column single menu",
+      "settings": [
+        {
+          "id": "menu_trigger",
+          "type": "text",
+          "label": "Menu trigger",
+          "info": "Add the menu item that you want to turn into a multi-column single menu."
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

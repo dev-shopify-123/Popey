@@ -1,0 +1,140 @@
+<section
+  class="account-page account-page-details"
+  data-template-account>
+  {% include 'breadcrumbs' %}
+  <header class="account-page-masthead">
+    
+    <h2 style="font-style: normal" class="account-page-title">
+      
+      <span data-i18n='customers.account.title'>{{ 'customers.account.title' | t }}</span>
+    </h2>
+    <div style="text-align: left">
+      <a href="/account/logout" data-no-instant>
+        <span data-i18n='header.account.logout'>{{ 'header.account.logout' | t }}</span>
+      </a>
+    </div>
+  </header> 
+
+  <div class="account-page-content">
+    <div class="account-page--two-column">
+      {% comment %}
+        Customer order summary
+      {% endcomment %}
+<!--       <div class="account-page--column-large account-order-history">
+         -->
+     
+        
+      {% comment %}
+        Customer address summary
+      {% endcomment %}
+      <div class="account-page--column-small account-info">
+
+     
+        
+        
+        <div class="account-info-block">
+          
+                  
+<h2 style="font-style: normal;" class="account-page-subtitle">
+          <span data-i18n='customers.account.order_history'>{{ 'customers.account.order_history' | t }}</span>
+        </h2>
+          
+          {% if customer.default_address != nil %}
+            <h2 style="font-style: normal;" class="account-page-subtitle">
+              <span data-i18n='customers.account.account_details'>{{ 'customers.account.account_details' | t }}</span>
+            </h2>
+
+            {%
+              include 'account-address-list',
+              address: customer.default_address
+            %}
+          {% endif %}
+
+          <p style="text-decoration: underline;" class="account-address-item">
+            {% if customer.addresses_count == 0 %}
+              <a href="/account/addresses">
+                <span data-i18n='customers.account.new_address_link'>{{ 'customers.account.new_address_link' | t }}</span>
+              </a>
+            {% else %}
+              <a href="/account/addresses">
+                {{ 'customers.account.view_addresses' | t, count: customer.addresses_count }}
+              </a>
+            {% endif %}
+          </p>
+<!--         </div> -->
+        
+        
+<!--         <div class="account-info-block"> -->
+          <h2 style="font-style: normal; padding: 0px;" class="account-page-subtitle">
+            <span data-i18n='{% render 'translationData' with  customer.name  %}'>{% render 'translationText' with  customer.name  %}</span>
+          </h2>
+
+          <p class="account-info-item">
+            <a href="mailto:{{ customer.email }}">
+              <span data-i18n='{% render 'translationData' with  customer.email  %}'>{% render 'translationText' with  customer.email  %}</span>
+            </a>
+          </p>
+<!--         </div> -->
+      
+        </div>
+        </div>
+    <div class="account-page--two-column">
+      {% comment %}
+        Customer order summary
+      {% endcomment %}
+      <div  class="account-page--column-large account-order-history">
+        <h2 style="font-style: normal;"class="account-page-subtitle">
+          <span data-i18n='customers.account.order_history'>{{ 'customers.account.order_history' | t }}</span>
+        </h2>
+        <br>
+        <br>
+        {% if customer.orders.size > 0 %}
+          {% paginate customer.orders by 20 %}
+            <table class="account-table account-order-list">
+              <thead>
+                <tr>
+                  <th style="font-style: normal;"><span data-i18n='customers.account.order'>{{ 'customers.account.order' | t }}</span></th>
+                  <th style="font-style: normal;"><span data-i18n='customers.account.date'>{{ 'customers.account.date' | t }}</span></th>
+                  <th style="font-style: normal;"><span data-i18n='customers.account.status'>{{ 'customers.account.status' | t }}</span></th>
+                  <th style="font-style: normal; text-align: center;"><span data-i18n='customers.account.total'>{{ 'customers.account.total' | t }}</span></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for order in customer.orders %}
+                  <tr>
+                    <td style="text-align: center;text-decoration: underline" class="account-order-number">
+                      {%- capture order_link -%}
+                        <span data-i18n='{% render 'translationData' with  order.name  %}'>{% render 'translationText' with  order.name  %}</span> 
+                      {%- endcapture -%}
+
+                      {{ order_link | strip_newlines | link_to: order.customer_url, order.name }}
+                    </td>
+<!--                     <td style="text-align: center;" class="payment-status--{{ order.financial_status }}">
+                      <span data-i18n='{% render 'translationData' with  order.financial_status_label  %}'>{% render 'translationText' with  order.financial_status_label  %}</span>
+                    </td> -->
+                    
+                   <td style="text-align: center;" class="account-order-number"> {{ order.created_at | date: format: 'short_day_month_year' }} </td>
+                    
+                    
+                    <td style="text-align: center;" class="fulfillment-status--{{ order.fulfillment_status }}">
+                      <span data-i18n='{% render 'translationData' with  order.fulfillment_status_label  %}'>{% render 'translationText' with  order.fulfillment_status_label  %}</span>
+                    </td>
+                    <td style="text-align: center;" class="account-order-list-total">
+                      {{ order.total_price | money }}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+            {% include 'pagination' %}
+          {% endpaginate %}
+        {% else %}
+          <p class="empty"><span data-i18n='customers.account.empty'>{{ 'customers.account.empty' | t }}</span></p>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</section>

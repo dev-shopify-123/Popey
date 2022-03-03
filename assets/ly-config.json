@@ -1,0 +1,60 @@
+{
+  "switcher": {
+    "version": "2.0.1",
+    "customCSS": "",
+    "languageDetection": false,
+    "languageDetectionDefault": "fr",
+    "breakpoints": [
+      {
+        "key": 0,
+        "label": "0px",
+        "config": {
+          "type": "custom",
+          "corner": "bottom_right",
+          "position": "fixed",
+          "show_flags": true,
+          "show_label": true,
+          "show_custom_name": true,
+          "show_name": false,
+          "show_iso_code": false,
+          "round_flags": false,
+          "is_dark": false,
+          "is_transparent": false,
+          "dropdown_open": false,
+          "h_space": 0,
+          "v_space": 0,
+          "switcherLabel": "show_custom_name"
+        }
+      },
+      {
+        "key": 1000,
+        "label": "1000px",
+        "config": {
+          "type": "links",
+          "corner": "top_right",
+          "position": "custom",
+          "show_flags": false,
+          "show_label": true,
+          "show_custom_name": false,
+          "show_name": false,
+          "show_iso_code": true,
+          "round_flags": false,
+          "is_dark": true,
+          "is_transparent": true,
+          "dropdown_open": false,
+          "h_space": 0,
+          "v_space": 0,
+          "switcherLabel": "show_iso_code"
+        }
+      }
+    ]
+  },
+  "core": {
+    "debug": false,
+    "observe": true,
+    "observeLinks": true,
+    "observeImages": true,
+    "observeCustomContents": true,
+    "linksBlacklist": []
+  }
+}

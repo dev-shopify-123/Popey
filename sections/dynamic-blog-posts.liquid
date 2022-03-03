@@ -1,0 +1,116 @@
+<div {% if section.settings.padding != blank %}class="home-section--title"{% endif %} style="background-color: {{section.settings.background_color}}; padding: {{ section.settings.padding }};">
+  {% assign blog = blogs[section.settings.blog] %}
+  {% assign blog_url = '#' %}
+  {% assign onboarding = true %}
+
+  {% if section.settings.blog != 'none' and blog.articles.size > 0 %}
+    {% assign onboarding = false %}
+    {% assign blog_url = blog.url %}
+  {% endif %}
+
+  {% assign article_count = 3 %}
+  {% if onboarding == false and blog.articles.size < article_count %}
+    {% assign article_count = blog.articles.size %}
+  {% endif %}
+
+  <script
+    type="application/json"
+    data-section-id="{{ section.id }}"
+    data-section-type="dynamic-blog-posts">
+  </script>
+
+  <section class="blogposts--container blogposts--count-{{ article_count }}">
+    {% if section.settings.title != blank %}
+      <h2 class="home-section--title" {% if section.settings.padding != blank %}style="margin-top: 0;"{% endif %}>
+        <span data-i18n='{% render 'translationData' with  section.settings.title  %}'>{% render 'translationText' with  section.settings.title  %}</span>
+      </h2>
+    {% endif %}
+
+    <ul class="home-section--content blogposts--inner" data-blog-posts>
+      {% if onboarding %}
+        {% for i in (1..article_count) %}
+          {%
+            include 'article-excerpt',
+            onboarding: true
+          %}
+        {% endfor %}
+      {% else %}
+        {% for article in blog.articles limit: article_count %}
+          {%
+            include 'article-excerpt',
+            article: article
+          %}
+        {% endfor %}
+      {% endif %}
+    </ul>
+
+    <div class="blogposts--footer">
+      <a class="blogposts--footer-link button-primary all-brands-btn" href="{{ blog_url }}">
+        <span data-i18n='blog.general.see_more'>{{ 'blog.general.see_more' | t }}</span>
+
+        <span class="blogposts--footer-icon">
+          {% include 'icon-chevron-down-small' %}
+        </span>
+      </a>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "class": "blogposts--section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Blog posts"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show date published",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Show post author",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show post excerpt",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color"
+    },
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "Padding",
+      "info": "Ex: 10px 10px 10px 10px"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Blog",
+      "name": "Blog posts",
+      "settings": {
+        "blog": "none"
+      }
+    }
+  ]
+}
+
+{% endschema %}

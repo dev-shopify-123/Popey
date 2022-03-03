@@ -1,0 +1,32 @@
+{% assign languagePath = "/" | append: request.locale.iso_code | append: "/" %}
+{% assign pathWithoutLang = request.path | replace: languagePath, "/" %}
+
+{%- for locale in shop.published_locales -%}
+    {% assign toReplace = "/" | append: locale.iso_code %}
+
+    {% assign sliceStart = toReplace | size | times: -1 %}
+    {% assign urlEndsWith = pathWithoutLang | slice: sliceStart, toReplace.size %}
+
+    {% if urlEndsWith == toReplace %}
+        {% assign pathWithoutLang = pathWithoutLang | replace: toReplace, "/" %}
+    {% else %}
+        {% assign toReplace = toReplace | append: "/" %}
+        {% assign pathWithoutLang = pathWithoutLang | replace: toReplace, "/" %}
+    {% endif %}
+{%- endfor -%}
+
+{% if settings.lang_list != "" %}
+{%- capture lang_list -%}{%- for locale in shop.published_locales -%}{%- if locale.primary -%}{{- locale.iso_code -}}{%- endif -%}{%- endfor -%}{%- for locale in shop.published_locales -%}{%- if locale.primary -%}{%- continue -%}{%- endif -%},{{- locale.iso_code -}}{%- endfor -%}{%- endcapture -%}
+{% assign langs = lang_list | split: "," %}
+<span class="lang-selector-container" style="font-size: initial; padding: 10px; text-transform: uppercase; margin-left: 10px; cursor: pointer; font-weight: bold; color: black;">
+    {% for lang in langs %}	
+        {%- assign is_primary = false -%}
+        {%- for locale in shop.published_locales -%}
+            {%- if lang == locale.iso_code and locale.primary -%}
+                {%- assign is_primary = true -%}
+            {%- endif -%}
+        {%- endfor -%}
+        <span {% if lang == request.locale.iso_code %}style="display: none;"{% endif %} class="lang-select" data-lang="{{lang}}" data-language-path="{% unless is_primary %}/{{lang}}{% endunless %}{{pathWithoutLang}}">{{lang}}</span>
+    {% endfor %}
+</span>
+{% endif %}

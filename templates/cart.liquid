@@ -1,0 +1,19 @@
+<script data-cfasync="false" type="text/javascript">if (typeof Shopify === "undefined") var Shopify = {}; Shopify.cart = {{ cart | json }};</script> 
+<div id="sca-fg-owl-carousel">
+  <div id="freegift_cart_container" class="sca-fg-cart-container" style="display: none;">
+    <div id="freegift_message" class="owl-carousel"></div>
+  </div> 
+  <div id="sca-fg-slider-cart" style="display: none;">
+    <div class="sca-fg-cart-title">
+      <strong>Select your free gift (s)</strong>
+    </div>
+    <div id="sca_freegift_list" class="owl-carousel"></div>
+  </div>
+</div>
+<div id="sca_fg_cart">
+{% section 'static-cart' %}
+
+<script src="https://widget.sezzle.com/v1/javascript/price-widget?uuid=a8a4e694-2853-43e6-9338-5f9a6a71bb2c"></script>
+</div>
+
+<script src="https://widget.sezzle.com/v1/javascript/price-widget?uuid=9bd0d323-03c3-4685-becf-bf3b34dd8ecd"></script>

@@ -1,0 +1,200 @@
+{% raw %}
+<script id="globo_preorder_partial_payment_template" type="text/template">
+  {% assign show = false %}
+  {% if config.fullPayment.enable and config.fullPayment.discountValue > 0 %}
+    {% assign show = true %}
+  {% endif %}
+  {% if config.partialPayment.enable %}
+    {% assign show = true %}
+  {% endif %}
+  {% if show %}
+  <div class="gPreorderPartialPaymentWrapper">
+    {% if config.fullPayment.discountValue > 0 or config.partialPayment.discountValue > 0 %}
+    <div class="gPreorderPrice">
+      {{translation.preorderPrice | default: 'PreOrder Price: '}}
+      <span class="gPreorderPriceHtml">{% if config.fullPayment.enable %}{{ full_price | money_without_trailing_zeros }}{% elsif config.partialPayment.enable %}{{ partial_discounted_price | money_without_trailing_zeros }}{% endif %}</span>
+    </div>
+    {% endif %}
+    {% if config.fullPayment.enable or config.partialPayment.enable %}
+    <div class="gPreorderPartialPaymentLabel">{{translation.partialPaymentLabel | default: 'Payment option'}}</div>
+    <div class="gPreorderPartialPayment">
+      <ul class="gPreorderPartialPaymentChoices">
+        {% if config.fullPayment.enable %}
+        <li>
+          <label for="fullPayment-{{randomID}}">
+            <span class="gPreorderPartialPaymentControl">
+              <span class="gPreorderPartialPaymentRadioButton">
+                <input checked name="_preorder_partial_payment" id="fullPayment-{{randomID}}" type="radio" class="gPreorderPartialPaymentInput" data-priceHTML="{{full_price | money_without_trailing_zeros | escape}}" data-discount-type="{{config.fullPayment.discountType}}" data-discount-value="{{config.fullPayment.discountValue}}" value="full">
+                <span class="gPreorderPartialPaymentBackdrop"></span>
+                <span class="gPreorderPartialPaymentIcon"></span>
+              </span>
+            </span>
+            <span class="gPreorderPartialPaymentLabel">{{translation.partialPaymentOptionFull | default: 'Full Payment'}}</span>
+          </label>
+        </li>
+        {% endif %}
+        {% if config.partialPayment.enable %}
+        <li>
+          <label for="partialPayment-{{randomID}}">
+            <span class="gPreorderPartialPaymentControl">
+              <span class="gPreorderPartialPaymentRadioButton">
+                <input {% unless config.fullPayment.enable %}checked{% endunless %} name="_preorder_partial_payment" id="partialPayment-{{randomID}}" type="radio" class="gPreorderPartialPaymentInput" data-priceHTML="{{partial_discounted_price | money_without_trailing_zeros | escape}}" data-discount-type="{{config.partialPayment.discountType}}" data-discount-value="{{config.partialPayment.discountValue}}" value="part">
+                <span class="gPreorderPartialPaymentBackdrop"></span>
+                <span class="gPreorderPartialPaymentIcon"></span>
+              </span>
+            </span>
+            <span class="gPreorderPartialPaymentLabel">{{translation.partialPaymentOptionPart | default: 'Partial Payment'}} - <span>{{ partial_price | money_without_trailing_zeros }}</span></span>
+          </label>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+</script>
+<script id="globo_preorder_cart_mixed_template" type="text/template">
+  {% if translation.cartWarningTitle or translation.cartWarningContent %}
+  <div id="Globo-Modal">
+    <div>
+      <div class="Globo-Modal-Dialog__Container">
+        <div>
+          <div tabindex="-1" class="Globo-Modal-Dialog">
+            <div class="Globo-Modal-Dialog__Modal">
+              <div class="Globo-Modal-Header">
+                <div class="Globo-Modal-Header__Title">
+                  <h4 class="Globo-DisplayText Globo-DisplayText--sizeSmall">{{translation.cartWarningTitle}}</h4>
+                </div>
+                <button class="Globo-Modal-CloseButton">
+                  <span class="Globo-Icon Globo-Icon--colorInkLighter Globo-Icon--isColored"><svg viewBox="0 0 20 20" class="Globo-Icon__Svg" focusable="false" aria-hidden="true"><path d="M11.414 10l6.293-6.293a.999.999 0 1 0-1.414-1.414L10 8.586 3.707 2.293a.999.999 0 1 0-1.414 1.414L8.586 10l-6.293 6.293a.999.999 0 1 0 1.414 1.414L10 11.414l6.293 6.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414L11.414 10z" fill-rule="evenodd"></path></svg></span>
+                </button>
+              </div>
+              <div class="Globo-Modal__BodyWrapper">
+                <div class="Globo-Modal__Body Globo-Scrollable">
+                  <section class="Globo-Modal-Section">
+                    <div class="Globo-TextContainer">
+                      {{translation.cartWarningContent}}
+                      {% if translation.cartWarningCheckboxLabel %}
+                      <div>
+                        <label for="Globo-Modal-Checkbox">
+                          <input type="checkbox" id="Globo-Modal-Checkbox" />
+                          {{translation.cartWarningCheckboxLabel}}
+                        </label>
+                      </div>
+                      {% endif %}
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Globo-Backdrop"></div>
+  </div>
+  {% endif %}
+</script>
+
+<script id="globo_preorder_bis_form_template" type="text/template">
+  {% unless config.customBisForm.display contains 'hidden' %}
+    <div id="Globo-Back-In-Stock">
+      {% if config.customBisForm.display contains 'button' %}
+        <div class="gBackInStock-Button">
+          <button class="gBackInStockBtn" type="button">{{translation.bisTextButton}}</button>
+        </div>
+      {% endif %}
+      {% if config.customBisForm.display contains 'form' %}
+      <div class="gBackInStock-Form gBackInStock-Bis-Form">
+        {% if translation.bisTitleForm or translation.bisHeaderContent %}
+          <div class="gBackInStock-Form-Header">
+            {% if translation.bisTitleForm %} <h2>{{translation.bisTitleForm}}</h2> {% endif %}
+            {% if translation.bisHeaderContent %} <p class="gBackInStock-Form-Description gBackInStock-Form-Header-Description">{{translation.bisHeaderContent}}</p> {% endif %}
+          </div>
+        {% endif %}
+        <div class="gBackInStock-Form-Content">
+          <p class="gBackInStock-Form-Product">{{product}}{% unless variant.title contains 'Default Title' %} ( {{variant.title}} ) {% endunless %}</p>
+          <input type="hidden" name="variant_id" class="gBackInStock-Form-Variant-Id" id="gBackInStock-Form-Variant-Id-{{variant.id}}" value="{{variant.id}}" />
+          <input type="email" name="gBackInStock-Form-Content-Input" id="gBackInStock-Form-Content-Input" class="gBackInStock-Form-Content-Input" placeholder="{{translation.bisPlaceHolderEmail}}" />
+          <button type="button" class="gSubscribeBtn" onclick="this.classList.toggle('button--loading')">
+            <span class="gSubscribeBtn-Text">{{translation.bisSubscribeTextButton}}</span>
+  		    </button>
+        </div>
+        {% if translation.bisFooterContent %}
+          <div class="gBackInStock-Form-Footer">
+            <p class="gBackInStock-Form-Description gBackInStock-Form-Footer-Description">{{translation.bisFooterContent}}</p>
+          </div>
+        {% endif %}
+        <div class="gBackInStock-Form-Message gBackInStock-Message-Hidden">
+          <p class="gBackInStock-Message"></p>
+          <p class="gBackInStock-Message-Dismiss"><svg viewBox="0 0 20 20" class="" focusable="false" aria-hidden="true"><path d="M11.414 10l4.293-4.293a.999.999 0 1 0-1.414-1.414L10 8.586 5.707 4.293a.999.999 0 1 0-1.414 1.414L8.586 10l-4.293 4.293a.999.999 0 1 0 1.414 1.414L10 11.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414L11.414 10z" fill-rule="evenodd"></path></svg></p>
+        </div>
+        <div class="gBackInStock-Form-Made-By">
+          <p>Made by <span><a href="https://apps.shopify.com/pre-order-pro" target="_blank">Globo Pre-order</a></span></p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  {% endunless %}
+</script>
+
+<script id="globo_preorder_bis_popup_form_template" type="text/template">
+  <div id="Globo-Modal">
+    <div>
+      <div class="Globo-Modal-Dialog__Container">
+        <div>
+          <div tabindex="-1" class="Globo-Modal-Dialog">
+            <div class="Globo-Modal-Dialog__Modal Globo-Modal-Dialog__Bis-Modal">
+              <div class="Globo-Modal-Header">
+                <div class="Globo-Modal-Header__Title gBackInStock-Form-Header">
+                  <h2>{{translation.bisTitleForm}}</h2>
+                </div>
+                <button class="Globo-Modal-CloseButton">
+                  <span class="Globo-Icon Globo-Icon--colorInkLighter Globo-Icon--isColored"><svg viewBox="0 0 20 20" class="Globo-Icon__Svg" focusable="false" aria-hidden="true"><path d="M11.414 10l6.293-6.293a.999.999 0 1 0-1.414-1.414L10 8.586 3.707 2.293a.999.999 0 1 0-1.414 1.414L8.586 10l-6.293 6.293a.999.999 0 1 0 1.414 1.414L10 11.414l6.293 6.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414L11.414 10z" fill-rule="evenodd"></path></svg></span>
+                </button>
+              </div>
+              <div class="Globo-Modal__BodyWrapper">
+                <div class="Globo-Modal__Body Globo-Scrollable">
+                  <section class="Globo-Modal-Section">
+                    <div class="Globo-TextContainer gBackInStock-Popup-Form gBackInStock-Bis-Form">
+                      
+                      {% if translation.bisHeaderContent %}
+                        <div class="gBackInStock-Form-Header">
+                          <p class="gBackInStock-Form-Description gBackInStock-Form-Header-Description">{{translation.bisHeaderContent}}</p>
+                        </div>
+                      {% endif %}
+
+                      <div class="gBackInStock-Form-Content">
+                        <p class="gBackInStock-Form-Product">{{product}}{% unless variant.title contains 'Default Title' %} ( {{variant.title}} ) {% endunless %}</p>
+                        <input type="hidden" name="variant_id" class="gBackInStock-Form-Variant-Id" id="gBackInStock-Form-Variant-Id-{{variant.id}}" value="{{variant.id}}" />
+                        <input type="email" name="gBackInStock-Form-Content-Input" id="gBackInStock-Form-Content-Input" class="gBackInStock-Form-Content-Input" placeholder="{{translation.bisPlaceHolderEmail}}" />
+                        <button type="button" class="gSubscribeBtn" onclick="this.classList.toggle('button--loading')">
+                          <span class="gSubscribeBtn-Text">{{translation.bisSubscribeTextButton}}</span>
+                        </button>
+                      </div>
+                      {% if translation.bisFooterContent %}
+                        <div class="gBackInStock-Form-Footer">
+                          <p class="gBackInStock-Form-Description gBackInStock-Form-Footer-Description">{{translation.bisFooterContent}}</p>
+                        </div>
+                      {% endif %}
+                      <div class="gBackInStock-Form-Message gBackInStock-Message-Hidden">
+                        <p class="gBackInStock-Message"></p>
+                        <p class="gBackInStock-Message-Dismiss"><svg viewBox="0 0 20 20" class="" focusable="false" aria-hidden="true"><path d="M11.414 10l4.293-4.293a.999.999 0 1 0-1.414-1.414L10 8.586 5.707 4.293a.999.999 0 1 0-1.414 1.414L8.586 10l-4.293 4.293a.999.999 0 1 0 1.414 1.414L10 11.414l4.293 4.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414L11.414 10z" fill-rule="evenodd"></path></svg></p>
+                      </div>
+                      <div class="gBackInStock-Form-Made-By">
+                        <p>Made by <span><a href="https://apps.shopify.com/pre-order-pro" target="_blank">Globo Pre-order</a></span></p>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Globo-Backdrop"></div>
+  </div>
+</script>
+
+{% endraw %}

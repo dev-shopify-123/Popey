@@ -1,0 +1,79 @@
+{%- if type == 'select' -%}
+  <div class="productgrid--utils utils-sortby">
+    <label
+      class="utils-sortby-title"
+      for="product_grid_sort"
+      data-i18n="product_grid.sort_by.title"
+    >
+      {{ 'product_grid.sort_by.title' | t }}
+    </label>
+
+    <button
+      class="utils-sortby-button"
+      aria-hidden="true"
+      data-productgrid-modal-sort
+      data-i18n="product_grid.sort_by.title"
+    >
+      {{ 'product_grid.sort_by.title' | t }}
+    </button>
+
+    <div class="utils-sortby-select form-field-select-wrapper no-label">
+      <select
+        class="form-field form-field-select"
+        id="product_grid_sort"
+        tabindex="0"
+        data-productgrid-trigger-sort>
+        {%- for option in collection.sort_options -%}
+          {% assign sort_active = false %}
+          {% if collection.sort_by == blank and collection.default_sort_by == option.value %}
+            {% assign sort_active = true %}
+          {% elsif collection.sort_by == option.value %}
+            {% assign sort_active = true %}
+          {% endif %}
+          <option value="{{ option.value }}" {% if sort_active %}selected="selected"{% endif %} data-i18n='{% render 'translationData' with option.name, notHtml: true %}'>
+            {% render 'translationText' with option.name %}
+          </option>
+        {%- endfor -%}
+      </select>
+      {% include 'icon-chevron-down-small' %}
+    </div>
+
+  </div>
+{%- endif -%}
+
+{%- if type == 'modal' -%}
+  <div class="utils-sortby--modal" aria-hidden="true" data-productgrid-sort-content>
+    <span class="utils-sortby--modal-title">
+      <span data-i18n='product_grid.sort_by.title'>{{ 'product_grid.sort_by.title' | t }}</span>
+    </span>
+
+    <ul class="utils-sortby--modal-list">
+      {%- for option in collection.sort_options -%}
+        {% assign sort_active = false %}
+        {% if collection.sort_by == blank and collection.default_sort_by == option.value %}
+          {% assign sort_active = true %}
+        {% elsif collection.sort_by == option.value %}
+          {% assign sort_active = true %}
+        {% endif %}
+
+        {% assign button_class = 'utils-sortby--modal-button' %}
+        {% if sort_active %}
+          {% assign button_class = button_class | append: ' utils-sortby--modal-button--active' %}
+        {% endif %}
+
+        <li class="utils-sortby--modal-item">
+          <button
+            class="{{ button_class }}"
+            value="{{ option.value }}"
+            data-productgrid-trigger-sort-button
+            {% if sort_active %}
+              disabled
+            {% endif %}
+          >
+            {{ option.name }}
+          </button>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}

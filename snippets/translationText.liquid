@@ -1,0 +1,157 @@
+{%- capture lang_list -%}{%- for locale in shop.published_locales -%}{%- if locale.primary -%}{{- locale.iso_code -}}{%- endif -%}{%- endfor -%}{%- for locale in shop.published_locales -%}{%- if locale.primary -%}{%- continue -%}{%- endif -%},{{- locale.iso_code -}}{%- endfor -%}{%- endcapture -%}
+{%- assign langArray = lang_list | remove: " " | split: "," -%}
+{%- assign currentLangIndex = 0 -%}
+
+{%- for lang in langArray -%}
+    {%- if lang == request.locale.iso_code -%}
+        {%- assign currentLangIndex = forloop.index0 -%}
+    {%- endif -%}
+{%- endfor -%}
+{% if split_character == blank %}{% assign split_character = '||' %}{% endif %}
+{% assign split_p = split_character | prepend: "<p>" | append: "</p>" %}
+{%- assign translationText = translationText | replace: split_p, split_character -%}
+{%- assign translations = translationText | split: split_character -%}
+{% assign translationText = blank %}
+{%- if translations[currentLangIndex] != blank -%}
+	{%- assign translationText = translations[currentLangIndex] | strip -%}
+{%- else -%}
+	{%- assign translationText = translations[0] | strip -%}
+{%- endif -%}
+
+{%- if link_to_add_tag != blank -%}
+	{%- assign translationText = translationText | link_to_add_tag: link_to_add_tag -%}
+{%- endif -%}
+
+{%- if link_to_remove_tag != blank -%}
+	{%- assign translationText = translationText | link_to_remove_tag: link_to_remove_tag -%}
+{%- endif -%}
+
+{%- if append != blank -%}
+	{%- assign translationText = translationText | append: append -%}
+{%- endif -%}
+
+{%- if camelcase == true -%}
+	{%- assign translationText = translationText | camelcase -%}
+{%- endif -%}
+
+{%- if capitalize == true -%}
+	{%- assign translationText = translationText | capitalize -%}
+{%- endif -%}
+
+{%- if downcase == true -%}
+	{%- assign translationText = translationText | downcase -%}
+{%- endif -%}
+
+{%- if escape == true -%}
+	{%- assign translationText = translationText | escape -%}
+{%- endif -%}
+
+{%- if handleize == true -%}
+	{%- assign translationText = translationText | handleize -%}
+{%- endif -%}
+
+{%- if hmac_sha1 != blank -%}
+	{%- assign translationText = translationText | hmac_sha1: hmac_sha1 -%}
+{%- endif -%}
+
+{%- if hmac_sha256 != blank -%}
+	{%- assign translationText = translationText | hmac_sha256: hmac_sha256 -%}
+{%- endif -%}
+
+{%- if md5 != blank -%}
+	{%- assign translationText = translationText | md5: md5 -%}
+{%- endif -%}
+
+{%- if newline_to_br == true -%}
+	{%- assign translationText = translationText | newline_to_br -%}
+{%- endif -%}
+
+{%- if prepend != blank -%}
+	{%- assign translationText = translationText | prepend: prepend -%}
+{%- endif -%}
+
+{%- if remove != blank -%}
+	{%- assign translationText = translationText | remove: remove -%}
+{%- endif -%}
+
+{%- if remove_first != blank -%}
+	{%- assign translationText = translationText | remove_first: remove_first -%}
+{%- endif -%}
+
+{%- if replace != blank -%}
+	{%- assign translationText = translationText | replace: replace, replace2 -%}
+{%- endif -%}
+
+{%- if replace_first != blank -%}
+	{%- assign translationText = translationText | replace_first: replace_first, replace_first2 -%}
+{%- endif -%}
+
+{%- if slice != blank -%}
+	{%- if slice2 != blank -%}
+		{%- assign translationText = translationText | slice: slice, slice2 -%}
+	{%- else -%}
+		{%- assign translationText = translationText | slice: slice -%}
+	{%- endif -%}
+{%- endif -%}
+
+{%- if split != blank -%}
+	{%- assign translationText = translationText | split: split -%}
+{%- endif -%}
+
+{%- if strip == true -%}
+	{%- assign translationText = translationText | strip -%}
+{%- endif -%}
+
+{%- if lstrip == true -%}
+	{%- assign translationText = translationText | lstrip -%}
+{%- endif -%}
+
+{%- if reverse == true -%}
+	{%- assign translationText = translationText | reverse -%}
+{%- endif -%}
+
+{%- if rstrip == true -%}
+	{%- assign translationText = translationText | rstrip -%}
+{%- endif -%}
+
+{%- if sha1 != blank -%}
+	{%- assign translationText = translationText | sha1: sha1 -%}
+{%- endif -%}
+
+{%- if sha256 != blank -%}
+	{%- assign translationText = translationText | sha256: sha256 -%}
+{%- endif -%}
+
+{%- if strip_html == true -%}
+	{%- assign translationText = translationText | strip_html -%}
+{%- endif -%}
+
+{%- if strip_newlines == true -%}
+	{%- assign translationText = translationText | strip_newlines -%}
+{%- endif -%}
+
+{%- if truncate != blank -%}
+	{%- assign translationText = translationText | truncate: truncate -%}
+{%- endif -%}
+
+{%- if truncatewords != blank -%}
+	{%- assign translationText = translationText | truncatewords: truncatewords -%}
+{%- endif -%}
+
+{%- if upcase == true -%}
+	{%- assign translationText = translationText | upcase -%}
+{%- endif -%}
+
+{%- if url_encode == true -%}
+	{%- assign translationText = translationText | url_encode -%}
+{%- endif -%}
+
+{%- if url_escape == true -%}
+	{%- assign translationText = translationText | url_escape -%}
+{%- endif -%}
+
+{%- if url_param_escape == true -%}
+	{%- assign translationText = translationText | url_param_escape -%}
+{%- endif -%}
+
+{{- translationText -}}

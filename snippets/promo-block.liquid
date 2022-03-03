@@ -1,0 +1,92 @@
+{% assign has_link = false %}
+{% if block.settings.block_link != blank %}
+  {% assign has_link = true %}
+{% endif %}
+
+{%- capture classes -%}
+  promo-block
+  promo-block--{{ block.id }}
+  {% if forloop.index %}promo-block--index-{{ forloop.index }}{% endif %}
+  {% if maintain_aspect_ratio %}promo-mosaic--maintain-aspect-ratio{% endif %}
+  {{ additional_classes | strip_newlines }}
+{%- endcapture -%}
+
+
+<{% if block.settings.title != blank and block.settings.text != blank %}article{% else %}div{% endif %}
+  class="{{ classes | replace: '  ', ' ' | strip_newlines }}"
+  {{ block.shopify_attributes }}
+  {% if block.settings.image %}
+    {%
+      include 'rimg'
+      img: block.settings.image,
+      background: true,
+      lazy: true,
+      size: '300x'
+    %}
+  {% endif %}
+>
+  {% if block.settings.image %}
+    {%
+      include 'rimg'
+      img: block.settings.image,
+      lazy: true,
+      canvas: true,
+      class: 'promo-block--background',
+      size: '300x'
+    %}
+  {% endif %}
+
+  {%- capture wrapper_classes -%}
+    promo-block--content
+    promo-block--content-align-{{ text_alignment }}
+    {% unless maintain_aspect_ratio %}promo-grid--maintain-aspect-ratio{% endunless %}
+    {% unless compress_blocks %}promo-block--expanded{% endunless %}
+    {% unless has_link %}promo-block--unlinked{% endunless %}
+  {%- endcapture -%}
+
+  {% if has_link %}
+    <a
+      class="{{ wrapper_classes | replace: '  ', ' ' | strip_newlines }}"
+      href="{{ block.settings.block_link }}"
+      data-promo-block-content
+    >
+  {% else %}
+    <div
+      class="{{ wrapper_classes | replace: '  ', ' ' | strip_newlines }}"
+      data-promo-block-content
+    >
+  {% endif %}
+
+  <div class="promo-block--content-wrapper">
+    {% if block.settings.title != blank %}
+      <h2 class="promo-block--header">
+        <span data-i18n='{% render 'translationData' with  block.settings.title  %}'>{% render 'translationText' with  block.settings.title  %}</span>
+      </h2>
+    {% endif %}
+
+    {% if block.settings.text != blank %}
+      <div class="promo-block--text">
+        <span data-i18n='{% render 'translationData' with  block.settings.text  %}'>{% render 'translationText' with  block.settings.text  %}</span>
+        
+        {% if bottom_caption %} <span>{% include 'icon-arrow' %}</span>{% endif %}
+      </div>
+    {% endif %}
+
+    {% if block.settings.button_text != blank and block.settings.block_link != blank %}
+      <span
+        class="button-{{ block.settings.button_style }} promo-block--button">
+        <span data-i18n='{% render 'translationData' with  block.settings.button_text  %}'>{% render 'translationText' with  block.settings.button_text  %}</span>
+      </span>
+    {% endif %}
+
+  </div>
+    <span class="promo-block--expander">
+      {% include 'icon-chevron-down' %}
+    </span>
+
+  {% if has_link %}
+    </a>
+  {% else %}
+    </div>
+  {% endif %}
+</{% if block.settings.title != blank and block.settings.text != blank %}article{% else %}div{% endif %}>

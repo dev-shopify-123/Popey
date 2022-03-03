@@ -1,0 +1,69 @@
+{% include 'breadcrumbs' %}
+
+{% section 'static-product' %}
+
+{% section 'static-product-reviews' %}
+
+{% section 'static-product-recommendations' %}
+
+{% section 'static-recently-viewed' %}
+
+<script type="text/javascript">
+     var _learnq = _learnq || [];
+     document.querySelector('.product-form--track.product-form--atc-button').addEventListener('click',function (){
+           _learnq.push(['track', 'Added to Cart', item]);
+     });
+</script>
+
+<script src="https://widget.sezzle.com/v1/javascript/price-widget?uuid=a8a4e694-2853-43e6-9338-5f9a6a71bb2c"></script>
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>
+
+<script src="https://widget.sezzle.com/v1/javascript/price-widget?uuid=a8a4e694-2853-43e6-9338-5f9a6a71bb2c"></script>
+
+{% if product.metafields.loox.num_reviews %}
+<script id="looxSchemaJson" type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "Product",
+	"@id": {{ canonical_url | json }},
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "{{ product.metafields.loox.avg_rating }}",
+		"reviewCount": "{{ product.metafields.loox.num_reviews }}"
+	},
+	"name": {{ product.title | json }}
+}
+</script>
+{% endif %}
+
+
+	<div id="looxReviews" data-product-id="{{product.id}}" class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div>
+
+<script src="https://widget.sezzle.com/v1/javascript/price-widget?uuid=9bd0d323-03c3-4685-becf-bf3b34dd8ecd"></script>

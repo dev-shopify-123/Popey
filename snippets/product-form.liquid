@@ -1,0 +1,128 @@
+{% comment %}
+  Product form
+
+  @param product
+
+  @param selected_variant
+{% endcomment %}
+
+{% if is_product_modal and settings.quickshop_show_dcb %}
+  {% assign quickshop_smart_buttons = true %}
+{% endif %}
+
+{% if is_product_modal == false and section.settings.show_dcb %}
+  {% assign product_smart_buttons = true %}
+{% endif %}
+
+{% if selected_variant.available == false %}
+  {% assign quickshop_smart_buttons = false %}
+  {% assign product_smart_buttons = false %}
+{% endif %}
+
+{% assign product_form_class = '' %}
+{% if product_smart_buttons or quickshop_smart_buttons %}
+  {% assign product_form_class = 'smart-payment-enabled' %}
+{% endif %}
+
+{% form 'product', product, class: product_form_class, data-product-form: '' %}
+  {% if product.has_only_default_variant %}
+    <input
+      name="id"
+      value="{{ product.variants[0].id }}"
+      type="hidden">
+  {% else %}
+    {%
+      include 'product-options',
+      product: product,
+      selected_variant: selected_variant,
+      style: settings.product_option_style
+    %}
+  {% endif %}
+
+  <div class="product-form--atc">
+    <div class="product-form--atc-qty form-fields--qty" data-quantity-wrapper>
+      <div class="form-field form-field--qty-select">
+        <div class="form-field-select-wrapper">
+          <select
+            id="product-quantity-select"
+            class="form-field-input form-field-select"
+            aria-label="{{ 'general.general.quantity' | t }}"
+            data-quantity-select
+          >
+            {% for i in (1..9) %}
+              <option {% if i == 1 %}selected {% endif %}value="{{ i }}">
+                {{ i }}
+              </option>
+            {% endfor %}
+            <option value="10+">
+              10+
+            </option>
+          </select>
+
+          <label
+            for="product-quantity-select"
+            class="form-field-title"
+            data-i18n="general.general.quantity"
+          >
+            {{ 'general.general.quantity' | t }}
+          </label>
+          {% include 'icon-chevron-down-small' %}
+        </div>
+      </div>
+      <div class="form-field form-field--qty-input hidden">
+        <input
+          id="product-quantity-input"
+          class="form-field-input form-field-number form-field-filled"
+          value="1"
+          name="quantity"
+          type="text"
+          pattern="\d*"
+          aria-label="{{ 'general.general.quantity' | t }}"
+          data-quantity-input
+        >
+        <label
+          for="product-quantity-input"
+          data-i18n="general.general.quantity"
+          class="form-field-title"
+        >
+          {{ 'general.general.quantity' | t }}
+        </label>
+      </div>
+    </div>
+
+    <button
+      class="product-form--atc-button {% if selected_variant.available %}product-form--track{% else %}disabled{% endif %}"
+      type="submit"
+      name="add"
+      {% unless selected_variant.available %}disabled{% endunless %}
+      data-product-atc>
+      <span class="atc-button--text">
+        {% if selected_variant.available %}
+          <span data-i18n='product.buttons.add_to_cart'>{{ 'product.buttons.add_to_cart' | t }}</span>
+        {% else %}
+          <span data-i18n='product.buttons.sold_out'>{{ 'product.buttons.sold_out' | t }}</span>
+        {% endif %}
+      </span>
+      <span class="atc-button--icon">
+        {%- include 'icon-spinner' -%}
+      </span>
+    </button>
+  </div>
+
+  {% if product_smart_buttons or quickshop_smart_buttons %}
+    {{ form | payment_button }}
+  {% endif %}
+{% endform %}
+
+<script>
+document.querySelector('.product-form--track').addEventListener('click', function() {
+  fbq('track', 'AddToCart', {
+      content_type: "product_group",
+      content_ids: [{{product.id}}],
+      content_name: "{{product.title}}",
+      value: "{{selected_variant.price | money_without_currency}}",
+      num_items: document.querySelector("#product-quantity-input").value || "",
+      currency: "CAD"
+  })
+})
+</script> 
